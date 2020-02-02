@@ -123,7 +123,7 @@ const routes: Routes = [
         component: AboutUsComponent,
     },
     {
-        path: '', redirectTo: '/Login', pathMatch: 'full'
+        path: '', redirectTo: '/BoxNumberPage', pathMatch: 'full'
     },
 
 ];
