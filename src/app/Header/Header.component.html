@@ -13,6 +13,14 @@
 
 </head>
 
+<div class="web-tool" [hidden]="!webTool">
+    <!-- cart-side-icon start -->
+    <div class="cart-side-icon">
+        <a href="javascript:void(0)" routerLink="/MyCart"><i
+                class="ti-shopping-cart-full"></i><span>Checkout 1 item</span></a>
+    </div>
+    <!-- cart-side-icon end -->
+</div>
 
 <!-- header section start -->
 <header class="head w-100 bg-white">
@@ -57,10 +65,75 @@
                     <!-- header navbar end -->
                 </div>
                 <div class="col-xl-2 text-right d-flex sm-display-none md-display-none">
-                    <div class="navbar-cus">
+                    <div class="navbar-cus show-cart">
                         <a routerLink="/CartView">
                             <img src="assets/img/cartset.png">
                         </a>
+
+                        <!-- start dropdown -->
+                        <div class="cart-drop-down">
+                            <div class="item-limit">
+                                <!-- cart item1 start -->
+                                <div class="row padding-15px-tb">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-4 padding-left-15px padding-right-0px">
+                                        <div class="padding-left-0px">
+                                            <a href="javascript:void(0)">
+                                                <img src="./assets/img/img-1.png" alt="cart-1" class="img-fluid">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-8 padding-left-15px">
+                                        <div class="padding-right-15px">
+                                            <div class="cart-pro-name font-weight-600 d-block">
+                                                <a href="javascript:void(0)" class="text-black">Himalaya Lip Balm</a>
+                                            </div>
+                                            <div class="quantity d-block">
+                                                <div class="plus-minus">
+                                                    <span class="padding-5px border-light-gray sm-text-large">
+                                                        <a href="javascript:void(0)"
+                                                           class="minus-btn text-black padding-left-0px">
+                                                            <i class="fas fa-minus"></i>
+                                                        </a>
+                                                        <input type="text" name="name" value="1"
+                                                               class="border-left-light-gray border-right-light-gray">
+
+                                                        <a href="javascript:void(0)"
+                                                           class="plus-btn text-black">
+                                                            <i class="fas fa-plus"></i>
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-pro-price d-block">
+                                                <div class="price d-inline-block">
+                                                    <div class="text-black cokl">₹35.00</div>
+                                                </div>
+                                                <div class="delete d-inline-block float-right">
+                                                    <a href="javaScript:void(0)" class="trash text-black">
+                                                        <i class="ti-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- cart item1 end -->
+                            </div>
+                            <!-- cart button start -->
+                            <div class="row addpaddings">
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-6">
+                                    <!-- cart view-cart button start -->
+                                    <div class="continue-shop padding-left-15px text-left">
+                                        <button href="#" class="btn btn-small">Viewcart</button>
+                                    </div>
+                                    <!-- cart view-cart button end -->
+                                </div>
+
+                            </div>
+                            <!-- cart button end -->
+                        </div>
+                        <!-- end dropdown -->
                         <a style="background:transparent; border:none;-webkit-appearance: none;" type="button"
                            data-toggle="collapse"
                            data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
@@ -77,7 +150,7 @@
         <div class="container">
             <div class="row padding-fifteen">
                 <div class="col-xl-9">
-                    <a class=""> <i class="fas  icon-right fa-chevron-left"></i> My Orders</a>
+                    <a routerLink="/MyOrders" class=""> <i class="fas  icon-right fa-chevron-left"></i> My Orders</a>
                 </div>
                 <div class="col-xl-3">
 

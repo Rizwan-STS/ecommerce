@@ -1,6 +1,103 @@
-<app-Header></app-Header>
+<app-Header webTool="true"></app-Header>
 <section class="padding-top-20px color-them-1">
+    <!-- pop-up section start -->
+    <div class="popup  animated modal zoomIn" id="myModal1" role="dialog">
+        <div class="  modal-dialog bd-example-modal-lg">
+            <!-- pop-up modal content start -->
+            <div class="modal-content">
+                <!-- pop-up modal body start -->
+                <div class="modal-body bg-white">
+                    <div class="row">
+                        <a class="rounder-1 animated zoomIn" data-dismiss="modal"> <img src="assets/img/close-btn.png">
+                        </a>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center">
+                            <div class="padding-nine-top padding-nine-bottom padding-right-15px padding-left-15px width-100-d">
+                                <div class="clearfix text-center border-light-site padding-25px  margin-bottom-10px">
+                                    <img src="assets/img/img-2.png">
+                                </div>
+                                <h5 class="text-large"> Himalaya Lip Balm </h5>
+                                <!-- pop-up news-letter start -->
+                                <div class="clearfix list-item margin-three-top">
+                                    <div class="content-section">
+                                        <!-- product price-tag start -->
+                                        <div class="price product-price d-block margin-bottom-15px sm-margin-bottom-10px">
 
+                                            <span class="product-final-price font-weight-600 cokl">₹35.00</span>
+
+                                        </div>
+                                        <!-- product price-tag end -->
+                                        <!-- product description start -->
+                                        <div class="product-description d-block margin-bottom-15px sm-margin-bottom-10px">
+                                            <p class="no-margin-bottom text-small-1"> Himalaya's Lip Balm, made up of
+                                                completely
+                                                natural actives, relieves sore and chapped lips,
+                                                especially during the winter season.</p>
+                                        </div>
+                                        <!-- product description end -->
+                                        <hr class="border-light-site margin-one-top margin-one-bottom">
+
+                                        <!-- product color Brand -->
+                                        <div class="color d-block   ">
+                                            <label class="font-weight-600 no-margin-bottom cokl">Brand</label>
+                                            <p class="text-medium margin-one-bottom">Himalaya Global Holdings Ltd.</p>
+                                        </div>
+                                        <!-- product Brand end -->
+                                        <hr class="border-light-site margin-one-top margin-one-bottom">
+                                        <!-- product color Brand -->
+                                        <div class="color d-block    ">
+                                            <label class="font-weight-600 no-margin-bottom cokl">Category</label>
+                                            <p class="text-medium margin-one-bottom">Beauty</p>
+                                        </div>
+                                        <!-- product Brand end -->
+                                        <hr class="border-light-site margin-one-top margin-one-bottom">
+                                        <!-- product color Brand -->
+                                        <div class="color d-block  ">
+                                            <label class="font-weight-600 no-margin-bottom cokl">Size</label>
+                                            <p class="text-medium margin-one-bottom">Medium</p>
+                                        </div>
+                                        <!-- product Brand end -->
+                                    </div>
+                                </div>
+                                <!-- pop-up news-letter end -->
+                            </div>
+                        </div>
+                        <!-- product action start -->
+                        <!-- product action end -->
+                    </div>
+                    <div class="row ">
+                        <div class="col-xl-12 ">
+                            <div
+                                    class="site-bg padding-top-15px padding-bottom-15px padding-left-15px padding-right-15px ">
+                                <div class="d-inline-block" style="width:40%">
+                                    <div class="quantity d-block margin-bottom-25px sm-margin-bottom-20px">
+                                        <label
+                                                class="d-block font-weight-600 no-margin-bottom colo text-white">Quantity:</label>
+                                        <span class="  sm-text-large">
+                                            <a href="javascript:void(0)"
+                                               class="minus-btn op-set text-black text-white"><i
+                                                    class="fas fa-minus bg-transparent"></i></a>
+                                            <input type="text" name="name" style="border:none!important" value="1"
+                                                   class="text-white border-none">
+                                            <a href="javascript:void(0)"
+                                               class="plus-btn op-set text-black text-white"><i
+                                                    class="fas fa-plus bg-transparent"></i></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="d-inline-block">
+                                    <a href="javascript:void(0)" class="btn btn-small op-set"> <img
+                                            src="assets/img/cart-white.png"> Add to Cart </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pop-up modal body end -->
+            </div>
+            <!-- pop-up modal content end -->
+        </div>
+    </div>
+    <!-- pop-up section end -->
     <!-- start slider -->
     <section class="padding-25px-tb">
         <div class="container-fluid">
@@ -28,7 +125,7 @@
                                 <!-- product image end -->
 
                             </div>
-                            <a class="carts">
+                            <a class="carts" (click)="AddtoCart()">
                                 <img src="assets/img/cartset.png">
                             </a>
                         </div>
@@ -54,7 +151,7 @@
                                 <!-- product image end -->
 
                             </div>
-                            <a class="carts">
+                            <a class="carts" (click)="AddtoCart()">
                                 <img src="assets/img/cartset.png">
                             </a>
                         </div>
@@ -80,7 +177,7 @@
                                 <!-- product image end -->
 
                             </div>
-                            <a class="carts">
+                            <a class="carts" (click)="AddtoCart()">
                                 <img src="assets/img/cartset.png">
                             </a>
                         </div>
@@ -106,7 +203,7 @@
                                 <!-- product image end -->
 
                             </div>
-                            <a class="carts">
+                            <a class="carts" (click)="AddtoCart()">
                                 <img src="assets/img/cartset.png">
                             </a>
                         </div>
@@ -132,7 +229,7 @@
                                 <!-- product image end -->
 
                             </div>
-                            <a class="carts">
+                            <a class="carts" (click)="AddtoCart()">
                                 <img src="assets/img/cartset.png">
                             </a>
                         </div>
@@ -158,7 +255,7 @@
                                 <!-- product image end -->
 
                             </div>
-                            <a class="carts">
+                            <a class="carts" (click)="AddtoCart()">
                                 <img src="assets/img/cartset.png">
                             </a>
                         </div>
@@ -192,7 +289,7 @@
 
                 <!-- 4 grid image start -->
                 <div class="grid-list bg-white padding-5px  d-inline-block">
-                    <a href="listing-products.html" data-toggle="tooltip" title="BOX">
+                    <a href="javascript:void(0)" (click)="displaytype = 'box'" data-toggle="tooltip" title="BOX">
                         <img src="assets/img/gr-1.png" alt="BOX" class="id">
                         <img src="assets/img/gr-1.png" alt="BOX" class="id1">
                     </a>
@@ -200,7 +297,7 @@
                 <!-- 4 grid image end -->
                 <!-- 3 grid image start -->
                 <div class="grid-list bg-white padding-5px d-inline-block margin-left-5px">
-                    <a href="listing-products2.html" data-toggle="tooltip" title="LINE">
+                    <a href="javascript:void(0)" (click)="displaytype = 'frame'" data-toggle="tooltip" title="LINE">
                         <img src="assets/img/gr-2.png" alt="LINE" class="id">
                         <img src="assets/img/gr-2.png" alt="LINE" class="id1">
                     </a>
@@ -214,21 +311,21 @@
         <div class="border-bottom-light-new padding-top-15px margin-bottom-15px  sm-display-none"
             style="  width: 82%;  margin-top: -33px;  margin-left: 117px;"></div>
         <!-- border end -->
-        <div class="row padding-top-15px">
+        <div [hidden]="displaytype === 'frame'" id="box" class="row padding-top-15px">
 
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px">
+            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of products">
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="assets/img/img-1.png" alt="blog-grid1" class="img-fluid"></a>
+                    <a href="blog.html"><img src="{{product.image}}" alt="blog-grid1" class="img-fluid"></a>
                     <hr>
                     <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">Berry Bar 30 gm</p>
+                        <p class="text-left text-medium1 margin-bottom-5px">{{product.name}}</p>
                         <p class="d-flex margin-bottom-5px">
                             <span class="text-left width-100-px cokl">
-                                ₹30.00
+                                ₹{{product.price | number:'1.00-0'}}
                             </span>
                             <span class="text-right  ">
-                                <img src="assets/img/star.png"> 4.7
+                                <img src="assets/img/star.png"> {{product.ratings}}
                             </span>
                         </p>
                     </div>
@@ -247,7 +344,7 @@
                         </span>
                     </div>
                     <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="cart-page.html"
+                        <a href="javascript:void(0)" (click)="AddtoCart()"
                             class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
                                 src="assets/img/cart-white.png" width="15px"> Add to cart</a>
                     </div>
@@ -255,437 +352,52 @@
                 <!-- blog image end -->
 
             </div>
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px">
+        </div>
+        <div [hidden]="displaytype === 'box'" id="frame" class="row padding-top-15px">
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of products">
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="assets/img/img-2.png" alt="blog-grid1" class="img-fluid"></a>
-                    <hr>
-                    <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">Berry Bar 30 gm</p>
-                        <p class="d-flex margin-bottom-5px">
-                            <span class="text-left width-100-px cokl">
-                                ₹30.00
+                    <div class="d-inline-block">
+                        <a href="javascript:void(0)">
+                            <img src="{{product.image}}" alt="blog-grid1" class="img-fluid d-inline-block">
+                        </a>
+                    </div>
+                    <div class="padding-left-5px d-inline-block" style="vertical-align: top;">
+                        <p class="text-left text-medium1 margin-bottom-5px">{{product.name}}</p>
+                        <p class=" margin-bottom-5px">
+                            <span class="text-left d-block cokl">
+                                 ₹{{product.price | number:'1.00-0'}}
                             </span>
-                            <span class="text-right  ">
-                                <img src="assets/img/star.png"> 4.7
+                            <span class="d-block text-left ">
+
+                                <div class="d-inline-block text-left width-100-px">
+                                    <img src="assets/img/star.png"> {{product.ratings}}
+                                </div>
+                                <div class="d-inline-block text-right">
+                                    <span class="quantity d-block">
+
+                                        <span class="padding-5px border-light-gray sm-text-large">
+                                            <a href="javascript:void(0)" class="minus-btn cokl text-black"><i
+                                                    class="fas fa-minus bg-transparent"></i></a>
+                                            <input type="text" name="name" value="1"
+                                                   class="border-left-light-gray border-right-light-gray">
+                                            <a href="javascript:void(0)" class="plus-btn cokl text-black"><i
+                                                    class="fas fa-plus bg-transparent"></i></a>
+                                        </span>
+                                    </span>
+                                </div>
                             </span>
                         </p>
-                    </div>
-                    <hr>
-                    <div class="margin-bottom-15px">
-                        <span class="quantity d-block">
-
-                            <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="#" class="minus-btn cokl text-black"><i
-                                        class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1"
-                                    class="border-left-light-gray border-right-light-gray">
-
-                            </span>
-                        </span>
-                    </div>
-                    <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="cart-page.html"
-                            class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                src="assets/img/cart-white.png" width="15px"> Add to cart</a>
+                        <div class=" clearfix settop-margin15  padding-bottom-15px padding-right-15px">
+                            <a href="javascript:void(0)" (click)="AddtoCart()"
+                               class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
+                                    src="assets/img/cart-white.png" width="15px"> Add to cart</a>
+                        </div>
                     </div>
                 </div>
                 <!-- blog image end -->
-
             </div>
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px">
-                <!-- blog image start -->
-                <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="assets/img/img-3.png" alt="blog-grid1" class="img-fluid"></a>
-                    <hr>
-                    <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">Berry Bar 30 gm</p>
-                        <p class="d-flex margin-bottom-5px">
-                            <span class="text-left width-100-px cokl">
-                                ₹30.00
-                            </span>
-                            <span class="text-right  ">
-                                <img src="assets/img/star.png"> 4.7
-                            </span>
-                        </p>
-                    </div>
-                    <hr>
-                    <div class="margin-bottom-15px">
-                        <span class="quantity d-block">
-
-                            <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="#" class="minus-btn cokl text-black"><i
-                                        class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1"
-                                    class="border-left-light-gray border-right-light-gray">
-                                <a href="#" class="plus-btn cokl text-black"><i
-                                        class="fas fa-plus bg-transparent"></i></a>
-                            </span>
-                        </span>
-                    </div>
-                    <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="cart-page.html"
-                            class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                    </div>
-                </div>
-                <!-- blog image end -->
-
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px">
-                <!-- blog image start -->
-                <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="assets/img/img-4.png" alt="blog-grid1" class="img-fluid"></a>
-                    <hr>
-                    <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">Berry Bar 30 gm</p>
-                        <p class="d-flex margin-bottom-5px">
-                            <span class="text-left width-100-px cokl">
-                                ₹30.00
-                            </span>
-                            <span class="text-right  ">
-                                <img src="assets/img/star.png"> 4.7
-                            </span>
-                        </p>
-                    </div>
-                    <hr>
-                    <div class="margin-bottom-15px">
-                        <span class="quantity d-block">
-
-                            <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="#" class="minus-btn cokl text-black"><i
-                                        class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1"
-                                    class="border-left-light-gray border-right-light-gray">
-                                <a href="#" class="plus-btn cokl text-black"><i
-                                        class="fas fa-plus bg-transparent"></i></a>
-                            </span>
-                        </span>
-                    </div>
-                    <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="cart-page.html"
-                            class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                    </div>
-                </div>
-                <!-- blog image end -->
-
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px">
-                <!-- blog image start -->
-                <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="assets/img/img-5.png" alt="blog-grid1" class="img-fluid"></a>
-                    <hr>
-                    <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">Berry Bar 30 gm</p>
-                        <p class="d-flex margin-bottom-5px">
-                            <span class="text-left width-100-px cokl">
-                                ₹30.00
-                            </span>
-                            <span class="text-right  ">
-                                <img src="assets/img/star.png"> 4.7
-                            </span>
-                        </p>
-                    </div>
-                    <hr>
-                    <div class="margin-bottom-15px">
-                        <span class="quantity d-block">
-
-                            <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="#" class="minus-btn cokl text-black"><i
-                                        class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1"
-                                    class="border-left-light-gray border-right-light-gray">
-                                <a href="#" class="plus-btn cokl text-black"><i
-                                        class="fas fa-plus bg-transparent"></i></a>
-                            </span>
-                        </span>
-                    </div>
-                    <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="cart-page.html"
-                            class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                    </div>
-                </div>
-                <!-- blog image end -->
-
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px">
-                <!-- blog image start -->
-                <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="assets/img/img-6.png" alt="blog-grid1" class="img-fluid"></a>
-                    <hr>
-                    <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">Berry Bar 30 gm</p>
-                        <p class="d-flex margin-bottom-5px">
-                            <span class="text-left width-100-px cokl">
-                                ₹30.00
-                            </span>
-                            <span class="text-right  ">
-                                <img src="assets/img/star.png"> 4.7
-                            </span>
-                        </p>
-                    </div>
-                    <hr>
-                    <div class="margin-bottom-15px">
-                        <span class="quantity d-block">
-
-                            <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="#" class="minus-btn cokl text-black"><i
-                                        class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1"
-                                    class="border-left-light-gray border-right-light-gray">
-                                <a href="#" class="plus-btn cokl text-black"><i
-                                        class="fas fa-plus bg-transparent"></i></a>
-                            </span>
-                        </span>
-                    </div>
-                    <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="cart-page.html"
-                            class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                    </div>
-                </div>
-                <!-- blog image end -->
-
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px">
-                <!-- blog image start -->
-                <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="assets/img/img-7.png" alt="blog-grid1" class="img-fluid"></a>
-                    <hr>
-                    <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">Berry Bar 30 gm</p>
-                        <p class="d-flex margin-bottom-5px">
-                            <span class="text-left width-100-px cokl">
-                                ₹30.00
-                            </span>
-                            <span class="text-right  ">
-                                <img src="assets/img/star.png"> 4.7
-                            </span>
-                        </p>
-                    </div>
-                    <hr>
-                    <div class="margin-bottom-15px">
-                        <span class="quantity d-block">
-
-                            <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="#" class="minus-btn cokl text-black"><i
-                                        class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1"
-                                    class="border-left-light-gray border-right-light-gray">
-                                <a href="#" class="plus-btn cokl text-black"><i
-                                        class="fas fa-plus bg-transparent"></i></a>
-                            </span>
-                        </span>
-                    </div>
-                    <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="cart-page.html"
-                            class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                    </div>
-                </div>
-                <!-- blog image end -->
-
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px">
-                <!-- blog image start -->
-                <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="assets/img/img-8.png" alt="blog-grid1" class="img-fluid"></a>
-                    <hr>
-                    <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">Berry Bar 30 gm</p>
-                        <p class="d-flex margin-bottom-5px">
-                            <span class="text-left width-100-px cokl">
-                                ₹30.00
-                            </span>
-                            <span class="text-right  ">
-                                <img src="assets/img/star.png"> 4.7
-                            </span>
-                        </p>
-                    </div>
-                    <hr>
-                    <div class="margin-bottom-15px">
-                        <span class="quantity d-block">
-
-                            <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="#" class="minus-btn cokl text-black"><i
-                                        class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1"
-                                    class="border-left-light-gray border-right-light-gray">
-                                <a href="#" class="plus-btn cokl text-black"><i
-                                        class="fas fa-plus bg-transparent"></i></a>
-                            </span>
-                        </span>
-                    </div>
-                    <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="cart-page.html"
-                            class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                    </div>
-                </div>
-                <!-- blog image end -->
-
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px">
-                <!-- blog image start -->
-                <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="assets/img/img-9.png" alt="blog-grid1" class="img-fluid"></a>
-                    <hr>
-                    <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">Berry Bar 30 gm</p>
-                        <p class="d-flex margin-bottom-5px">
-                            <span class="text-left width-100-px cokl">
-                                ₹30.00
-                            </span>
-                            <span class="text-right  ">
-                                <img src="assets/img/star.png"> 4.7
-                            </span>
-                        </p>
-                    </div>
-                    <hr>
-                    <div class="margin-bottom-15px">
-                        <span class="quantity d-block">
-
-                            <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="#" class="minus-btn cokl text-black"><i
-                                        class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1"
-                                    class="border-left-light-gray border-right-light-gray">
-                                <a href="#" class="plus-btn cokl text-black"><i
-                                        class="fas fa-plus bg-transparent"></i></a>
-                            </span>
-                        </span>
-                    </div>
-                    <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="cart-page.html"
-                            class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                    </div>
-                </div>
-                <!-- blog image end -->
-
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px">
-                <!-- blog image start -->
-                <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="assets/img/img-10.png" alt="blog-grid1" class="img-fluid"></a>
-                    <hr>
-                    <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">Berry Bar 30 gm</p>
-                        <p class="d-flex margin-bottom-5px">
-                            <span class="text-left width-100-px cokl">
-                                ₹30.00
-                            </span>
-                            <span class="text-right  ">
-                                <img src="assets/img/star.png"> 4.7
-                            </span>
-                        </p>
-                    </div>
-                    <hr>
-                    <div class="margin-bottom-15px">
-                        <span class="quantity d-block">
-
-                            <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="#" class="minus-btn cokl text-black"><i
-                                        class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1"
-                                    class="border-left-light-gray border-right-light-gray">
-                                <a href="#" class="plus-btn cokl text-black"><i
-                                        class="fas fa-plus bg-transparent"></i></a>
-                            </span>
-                        </span>
-                    </div>
-                    <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="cart-page.html"
-                            class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                    </div>
-                </div>
-                <!-- blog image end -->
-
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px">
-                <!-- blog image start -->
-                <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="assets/img/img-11.png" alt="blog-grid1" class="img-fluid"></a>
-                    <hr>
-                    <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">Berry Bar 30 gm</p>
-                        <p class="d-flex margin-bottom-5px">
-                            <span class="text-left width-100-px cokl">
-                                ₹30.00
-                            </span>
-                            <span class="text-right  ">
-                                <img src="assets/img/star.png"> 4.7
-                            </span>
-                        </p>
-                    </div>
-                    <hr>
-                    <div class="margin-bottom-15px">
-                        <span class="quantity d-block">
-
-                            <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="#" class="minus-btn cokl text-black"><i
-                                        class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1"
-                                    class="border-left-light-gray border-right-light-gray">
-                                <a href="#" class="plus-btn cokl text-black"><i
-                                        class="fas fa-plus bg-transparent"></i></a>
-                            </span>
-                        </span>
-                    </div>
-                    <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="cart-page.html"
-                            class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                    </div>
-                </div>
-                <!-- blog image end -->
-
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px">
-                <!-- blog image start -->
-                <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="assets/img/img-12.png" alt="blog-grid1" class="img-fluid"></a>
-                    <hr>
-                    <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">Berry Bar 30 gm</p>
-                        <p class="d-flex margin-bottom-5px">
-                            <span class="text-left width-100-px cokl">
-                                ₹30.00
-                            </span>
-                            <span class="text-right  ">
-                                <img src="assets/img/star.png"> 4.7
-                            </span>
-                        </p>
-                    </div>
-                    <hr>
-                    <div class="margin-bottom-15px">
-                        <span class="quantity d-block">
-
-                            <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="#" class="minus-btn cokl text-black"><i
-                                        class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1"
-                                    class="border-left-light-gray border-right-light-gray">
-                                <a href="#" class="plus-btn cokl text-black"><i
-                                        class="fas fa-plus bg-transparent"></i></a>
-                            </span>
-                        </span>
-                    </div>
-                    <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="cart-page.html"
-                            class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                    </div>
-                </div>
-                <!-- blog image end -->
-
-            </div>
-
-
-
         </div>
         <!-- pagination start -->
         <div class="page-bar d-flex justify-content-start">
@@ -705,6 +417,5 @@
         <br>
     </div>
 </section>
-
 <!-- blog grid section end -->
 <app-Footer></app-Footer>

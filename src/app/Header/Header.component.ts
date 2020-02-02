@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { AppService } from 'src/app/app.service';
 
 @Component({
@@ -8,9 +8,16 @@ import { AppService } from 'src/app/app.service';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input()
+  webTool: boolean;
+  addShowCart = false
+
   constructor(private appService: AppService) { }
 
   ngOnInit() {
   }
 
+  hoverMouse() {
+    this.addShowCart = true
+  }
 }
