@@ -109,10 +109,10 @@
                                 <figure class="margin-bottom-10px">
                                     <a href="javascript:void(0)" class="image">
                                         <!-- product first image start -->
-                                        <img class="pic-1 img-fluid" src="{{banner.url}}" alt="productimg16">
+                                        <img class="pic-1 img-fluid" src="{{isMobile() ? banner.idUrlMobile : banner.idUrl}}" alt="productimg16">
                                         <!-- product first image end -->
                                         <!-- product second image start -->
-                                        <img class="pic-2 img-fluid" src="{{banner.url}}" alt="productimg16-16">
+                                        <img class="pic-2 img-fluid" src="{{isMobile() ? banner.idUrlMobile : banner.idUrl}}" alt="productimg16-16">
                                         <!-- product second image end -->
 
                                     </a>

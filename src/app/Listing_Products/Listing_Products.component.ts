@@ -24,6 +24,18 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     boxNum = null;
     productsBanner = [];
 
+    isMobile() {
+        const devices = [/Android/i,/BlackBerry/i,/iPhone|iPad|iPod/i,/Opera Mini/i,/IEMobile/i,/WPDesktop/i];
+        let flag = false;
+        for (const dev of devices) {
+            if (navigator.userAgent.match(dev)) {
+                flag = true;
+            }
+        }
+        return flag;
+        // if ()
+    }
+
     constructor(private appService: AppService, private boxService: BoxService, private cartService: CartService, private activatedRoute: ActivatedRoute) {
         for (let i = 1; i <= 12; i++) {
             this.products.push({
@@ -162,7 +174,6 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        localStorage.setItem('boxNumber', '2633');
         this.getProducts();
         this.getBanner(localStorage.getItem('boxNumber'));
     }
