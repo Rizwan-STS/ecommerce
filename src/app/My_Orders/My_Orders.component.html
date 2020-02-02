@@ -3,24 +3,38 @@
     <div class="container">
         <div class="clearfix">
             <!-- start -->
-            <div class="row margin-one-top" >
+            <div class="row margin-one-top" *ngFor="let data of usersList.data; let ind = index;">
                 <div class=" border-radius-3 col-xl-12 col-lg-12 col-md-12">
-                    <div class="clearfix"><h5 class=" text-extra-medium">2019</h5></div>
+                    <div class="clearfix">
+                        <h5 class=" text-extra-medium">{{data.createdDate.split('-')[2].split(' ')[0]}} </h5>
+                    </div>
                     <div class="">
                         <!-- question start -->
                         <div class="bg-white  padding-two  ">
                             <!-- question title start -->
                             <div class="faqs">
-                                <a class="text-black-ni"   data-toggle="collapse" href="#collapse8">
+                                <a class="text-black-ni" data-toggle="collapse" href="#collapse{{ind}}">
                                     <span class="text-extra-medium text-black-ni order-line-width"></span>
                                             <span class="datesets">
-                                                <span class="date">26 </span>
-                                                <span>Dec</span>
+                                                <span class="date">{{data.createdDate.split('-')[0]}} </span>
+                                                <span>{{data.createdDate.split('-')[1]}}</span>
                                             </span>
                                             <span class="datesets-order">
-                                                <span>Order : <span class="text-dark-orange"> #3840 </span>
-                                                <span class="dis-block text-dark-orange"> ₹70.00 </span>
-                                            </span>
+                                                <div class="col-md-4 col-sm-12 col-xs-12">
+                                                    <span>Order : <span class="text-dark-orange"> #{{data.id}} </span>
+                                                    <span class="dis-block text-dark-orange"> ₹70.00 </span>
+                                                </span>
+                                                </div>
+                                                <div class="col-md-4 col-sm-12 col-xs-12">
+                                                    <ng-container *ngIf="data.status == 'Active'">
+                                                        <button *ngIf="!data.isRated && !data.cancelOrder" mat-button (click)="rating(data.id)">Rate
+                                                        </button>
+                                                        <button mat-button *ngIf="data.cancelOrder && CheckTiming(data, ind)" (click)="cancel(data.id)">Cancel</button>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="data.status == 'Refund'">
+                                                        <p>Order Status : Cancelled</p>
+                                                    </ng-container>
+                                                </div>
                                         </span>
 
                                         <i class="mr-fix color-them-1 cokl fas fa-plus b  padding-10px"></i>
@@ -28,8 +42,29 @@
                             </div>
                             <!-- question title end -->
                             <!-- question description start -->
-                            <div id="collapse8" class="collapse   padding-three-top ">
-                                <p class="text-small    no-margin-bottom sm-text-large">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <div id="collapse{{ind}}" class="collapse   padding-three-top ">
+                                <div class="row bottompadding" *ngFor="let prodct of data.product">
+                                    <ng-container *ngIf="prodct.type!='Tip'">
+                                        <div class="col-md-3 col-sm-3 col-xs-3" fxFlex.xs="25" fxFlex.sm="25" fxFlex.md="25" fxFlex.lg="25" fxFlex.xl="25">
+                                            <img src="{{prodct.mainImage}}" class="imagestyle" width="{{imageWidth}}" height="{{imageHeight}}" />
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 col-xs-9" fxFlex.xs="75" fxFlex.sm="75" fxFlex.md="25" fxFlex.lg="75" fxFlex.xl="75">
+                                            <h4 style="text-align:left;">{{prodct.productName}}</h4>
+                                            <div class="row" style="text-align:left;">
+                                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                                    <p>Price : Rs. {{prodct.mainPrice | number : '1.2-2'}}</p>
+                                                    <p>Product Type : {{prodct.productType}}</p>
+                                                    <!-- <p>Commission : {{prodct.totalCommission | number : '1.2-2'}}</p> -->
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <p>Quantity: {{prodct.quantity}}</p>
+                                                    <!-- <p>Type: {{prodct.type}}</p> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    <!--<div class="col-md-3"></div>-->
+                                </div>
                             </div>
                             <!-- question description end -->
                         </div>
@@ -38,41 +73,44 @@
                 </div>
             </div>
             <!-- end -->
-            <!-- start -->
-            <div class="row margin-one-top" >
-                <div class=" border-radius-3 col-xl-12 col-lg-12 col-md-12">
-                    <div class="clearfix"><h5 class=" text-extra-medium">2019</h5></div>
-                    <div class="">
-                        <!-- question start -->
-                        <div class="bg-white  padding-two  ">
-                            <!-- question title start -->
-                            <div class="faqs">
-                                <a class="text-black-ni"   data-toggle="collapse" href="#collapse10">
-                                    <span class="text-extra-medium text-black-ni order-line-width"></span>
-                                            <span class="datesets">
-                                                <span class="date">26 </span>
-                                                <span>Dec</span>
-                                            </span>
-                                            <span class="datesets-order">
-                                                <span>Order : <span class="text-dark-orange"> #3840 </span>
-                                                <span class="dis-block text-dark-orange"> ₹70.00 </span>
-                                            </span>
-                                        </span>
-                                        <i class="mr-fix color-them-1 cokl fas fa-plus b  padding-10px"></i>
-                                </a>
+            <div class="popup  animated modal zoomIn" id="myModal1" role="dialog">
+                <div class="modal-dialog ">
+                    <!-- pop-up modal content start -->
+                    <div class="modal-content">
+                        <!-- pop-up modal body start -->
+                        <div class="modal-body bg-white">
+                            <div class="row">
+                                <a class="rounder animated zoomIn" data-dismiss="modal"> <img src="assets/img/close-btn.png">
+                                    </a>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center">
+
+                                    <div class="padding-nineteen-top padding-nineteen-bottom padding-right-15px padding-left-15px">
+                                        <h5>Rate this order!</h5>
+
+                                        <!-- pop-up news-letter start -->
+                                        <p class="padding-eight-top margin-one-half-bottom">Rating</p>
+                                        <div class="clearfix">
+                                            <div class="input-mail">
+                                                <select class="color-them-1 arrodown-n no-border form-control" [(ngModel)]="ratingVal">
+                                                    <option  *ngFor="let rate of rates" [value]="rate">{{rate}}<option>
+                                                </select>
+                                                <br/>
+                                                <textarea rows="1"  type="text" [(ngModel)]="comments" placeholder="Comments*"></textarea>
+                                            </div>
+                                            <br>
+                                            <button class="padding-two btn btn-button form-control confirm-c" (click)="onSaveRating()">Rate</button>
+                                        </div>
+                                        <!-- pop-up news-letter end -->
+                                    </div>
+                                </div>
+
                             </div>
-                            <!-- question title end -->
-                            <!-- question description start -->
-                            <div id="collapse10" class="collapse   padding-three-top ">
-                                <p class="text-small    no-margin-bottom sm-text-large">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                            </div>
-                            <!-- question description end -->
                         </div>
-                        <!-- question end -->
+                        <!-- pop-up modal body end -->
                     </div>
+                    <!-- pop-up modal content end -->
                 </div>
             </div>
-            <!-- end -->
         </div>
     </div>
 </section>
