@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -27,11 +26,15 @@ import { ProductDetailComponent } from './Product_Detail/Product_Detail.componen
 import { WhenOpenCartComponent } from './When_Open_Cart/When_Open_Cart.component'
 import { AppComponent } from './app.component';
 import { APP_BASE_HREF, Location } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FooterComponent } from './Footer/Footer.component';
 import { HeaderComponent } from './Header/Header.component';
 import { FormsModule } from '@angular/forms';
 import { SignUpComponent } from './Sign_Up/Signup.component';
+import { LoaderService } from "./loader.service";
+import { LoaderInterceptor } from "./loader.interceptor";
+import { HttpConfigInterceptor } from "./httpconfig.interceptor";
+import { LoaderComponent } from "./Loader/loader.component";
 
 @NgModule({
   declarations: [
@@ -60,7 +63,8 @@ import { SignUpComponent } from './Sign_Up/Signup.component';
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    SignUpComponent
+    SignUpComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,21 @@ import { SignUpComponent } from './Sign_Up/Signup.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    LoaderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpConfigInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
+
 })
-export class AppModule { }
+export class AppModule {
+}
