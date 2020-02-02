@@ -99,21 +99,20 @@
     <section class="padding-25px-tb">
         <div class="container-fluid">
 
-            <div class="swiper-container single-item-rtl swiper-container-initialized swiper-container-horizontal"
-                id="product-slider">
+            <div class="swiper-container single-item-rtl swiper-container-initialized swiper-container-horizontal" [hidden]="productsBanner.length === 0"  id="product-slider">
                 <div class="swiper-wrapper" style="transform: translate3d(-570px, 0px, 0px); transition-duration: 0ms;">
-                    <div class="swiper-slide border-radius-4" style="width: 255px; margin-right: 30px;">
+                    <div class="swiper-slide border-radius-4" style="width: 255px; margin-right: 30px;" *ngFor="let banner of productsBanner;">
                         <!-- product start -->
                         <div class="column padding-top-25px padding-bottom-25px">
                             <div class="product-img">
                                 <!-- product image start -->
                                 <figure class="margin-bottom-10px">
-                                    <a href="product-detail-sticky.html" class="image">
+                                    <a href="javascript:void(0)" class="image">
                                         <!-- product first image start -->
-                                        <img class="pic-1 img-fluid" src="assets/img/img-1.png" alt="productimg16">
+                                        <img class="pic-1 img-fluid" src="{{banner.url}}" alt="productimg16">
                                         <!-- product first image end -->
                                         <!-- product second image start -->
-                                        <img class="pic-2 img-fluid" src="assets/img/img-1.png" alt="productimg16-16">
+                                        <img class="pic-2 img-fluid" src="{{banner.url}}" alt="productimg16-16">
                                         <!-- product second image end -->
 
                                     </a>
@@ -122,139 +121,9 @@
                                 <!-- product image end -->
 
                             </div>
-                            <a class="carts" (click)="AddtoCart()">
+                           <!-- <a class="carts" (click)="AddtoCart()">
                                 <img src="assets/img/cartset.png">
-                            </a>
-                        </div>
-                        <!-- product end -->
-                    </div>
-                    <div class="swiper-slide border-radius-4" style="width: 255px; margin-right: 30px;">
-                        <!-- product start -->
-                        <div class="column padding-top-25px padding-bottom-25px">
-                            <div class="product-img">
-                                <!-- product image start -->
-                                <figure class="margin-bottom-10px">
-                                    <a href="product-detail-sticky.html" class="image">
-                                        <!-- product first image start -->
-                                        <img class="pic-1 img-fluid" src="assets/img/img-1.png" alt="productimg16">
-                                        <!-- product first image end -->
-                                        <!-- product second image start -->
-                                        <img class="pic-2 img-fluid" src="assets/img/img-1.png" alt="productimg16-16">
-                                        <!-- product second image end -->
-
-                                    </a>
-
-                                </figure>
-                                <!-- product image end -->
-
-                            </div>
-                            <a class="carts" (click)="AddtoCart()">
-                                <img src="assets/img/cartset.png">
-                            </a>
-                        </div>
-                        <!-- product end -->
-                    </div>
-                    <div class="swiper-slide border-radius-4" style="width: 255px; margin-right: 30px;">
-                        <!-- product start -->
-                        <div class="column padding-top-25px padding-bottom-25px">
-                            <div class="product-img">
-                                <!-- product image start -->
-                                <figure class="margin-bottom-10px">
-                                    <a href="product-detail-sticky.html" class="image">
-                                        <!-- product first image start -->
-                                        <img class="pic-1 img-fluid" src="assets/img/img-1.png" alt="productimg16">
-                                        <!-- product first image end -->
-                                        <!-- product second image start -->
-                                        <img class="pic-2 img-fluid" src="assets/img/img-1.png" alt="productimg16-16">
-                                        <!-- product second image end -->
-
-                                    </a>
-
-                                </figure>
-                                <!-- product image end -->
-
-                            </div>
-                            <a class="carts" (click)="AddtoCart()">
-                                <img src="assets/img/cartset.png">
-                            </a>
-                        </div>
-                        <!-- product end -->
-                    </div>
-                    <div class="swiper-slide border-radius-4" style="width: 255px; margin-right: 30px;">
-                        <!-- product start -->
-                        <div class="column padding-top-25px padding-bottom-25px">
-                            <div class="product-img">
-                                <!-- product image start -->
-                                <figure class="margin-bottom-10px">
-                                    <a href="product-detail-sticky.html" class="image">
-                                        <!-- product first image start -->
-                                        <img class="pic-1 img-fluid" src="assets/img/img-1.png" alt="productimg16">
-                                        <!-- product first image end -->
-                                        <!-- product second image start -->
-                                        <img class="pic-2 img-fluid" src="assets/img/img-1.png" alt="productimg16-16">
-                                        <!-- product second image end -->
-
-                                    </a>
-
-                                </figure>
-                                <!-- product image end -->
-
-                            </div>
-                            <a class="carts" (click)="AddtoCart()">
-                                <img src="assets/img/cartset.png">
-                            </a>
-                        </div>
-                        <!-- product end -->
-                    </div>
-                    <div class="swiper-slide border-radius-4" style="width: 255px; margin-right: 30px;">
-                        <!-- product start -->
-                        <div class="column padding-top-25px padding-bottom-25px">
-                            <div class="product-img">
-                                <!-- product image start -->
-                                <figure class="margin-bottom-10px">
-                                    <a href="product-detail-sticky.html" class="image">
-                                        <!-- product first image start -->
-                                        <img class="pic-1 img-fluid" src="assets/img/img-1.png" alt="productimg16">
-                                        <!-- product first image end -->
-                                        <!-- product second image start -->
-                                        <img class="pic-2 img-fluid" src="assets/img/img-1.png" alt="productimg16-16">
-                                        <!-- product second image end -->
-
-                                    </a>
-
-                                </figure>
-                                <!-- product image end -->
-
-                            </div>
-                            <a class="carts" (click)="AddtoCart()">
-                                <img src="assets/img/cartset.png">
-                            </a>
-                        </div>
-                        <!-- product end -->
-                    </div>
-                    <div class="swiper-slide border-radius-4" style="width: 255px; margin-right: 30px;">
-                        <!-- product start -->
-                        <div class="column padding-top-25px padding-bottom-25px">
-                            <div class="product-img">
-                                <!-- product image start -->
-                                <figure class="margin-bottom-10px">
-                                    <a href="product-detail-sticky.html" class="image">
-                                        <!-- product first image start -->
-                                        <img class="pic-1 img-fluid" src="assets/img/img-1.png" alt="productimg16">
-                                        <!-- product first image end -->
-                                        <!-- product second image start -->
-                                        <img class="pic-2 img-fluid" src="assets/img/img-1.png" alt="productimg16-16">
-                                        <!-- product second image end -->
-
-                                    </a>
-
-                                </figure>
-                                <!-- product image end -->
-
-                            </div>
-                            <a class="carts" (click)="AddtoCart()">
-                                <img src="assets/img/cartset.png">
-                            </a>
+                            </a>-->
                         </div>
                         <!-- product end -->
                     </div>

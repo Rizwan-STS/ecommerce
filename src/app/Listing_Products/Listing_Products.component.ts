@@ -3,6 +3,7 @@ import {AppService} from 'src/app/app.service';
 import {isNullOrUndefined} from "util";
 import {BoxService} from "./box.service";
 import {CartService} from "../cart.service";
+import {ActivatedRoute} from "@angular/router";
 
 declare var Swiper: any;
 declare var $: any;
@@ -21,8 +22,9 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     productsArray = [];
     promocodes = null;
     boxNum = null;
+    productsBanner = [];
 
-    constructor(private appService: AppService, private boxService: BoxService, private cartService: CartService) {
+    constructor(private appService: AppService, private boxService: BoxService, private cartService: CartService, private activatedRoute: ActivatedRoute) {
         for (let i = 1; i <= 12; i++) {
             this.products.push({
                 image: 'assets/img/img-' + i + '.png',
@@ -135,6 +137,18 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
 
     }
 
+    getBanner(id) {
+        this.boxService.getBanners(id).subscribe((data: any) => {
+            if (data != null && data.data != null) {
+                this.productsBanner = data.data;
+                setTimeout(() => {
+                    this.InitSlider();
+                }, 200);
+            }
+        });
+
+    }
+
     GetImage(product) {
         debugger
         return (product.productsImagesResponseModel && product.productsImagesResponseModel.length > 0) ?  product.productsImagesResponseModel[0].idUrl : ''
@@ -150,10 +164,11 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         localStorage.setItem('boxNumber', '2633');
         this.getProducts();
+        this.getBanner(localStorage.getItem('boxNumber'));
     }
 
     ngAfterViewInit(): void {
-        try {
+        /*try {
             if (Swiper) {
                 this.InitSlider();
             }
@@ -161,7 +176,7 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
             setTimeout(() => {
                 this.InitSlider();
             }, 200);
-        }
+        }*/
     }
 
     AddtoCart(p) {
