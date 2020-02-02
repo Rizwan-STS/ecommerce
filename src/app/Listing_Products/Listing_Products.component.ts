@@ -156,7 +156,7 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
 
     private getPromocodes() {
         this.promocodes = null;
-        this.cartService.getPromocodes(this.boxNum).subscribe((data: any) => {
+        this.cartService.getPromocodes(localStorage.getItem('boxNumber')).subscribe((data: any) => {
             this.promocodes = data.data;
         });
     }
