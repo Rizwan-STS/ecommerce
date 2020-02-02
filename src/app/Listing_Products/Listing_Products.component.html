@@ -313,11 +313,11 @@
             <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of productsArray">
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="javascript:void(0)">
-                        <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}" alt="blog-grid1" class="img-fluid">
+                    <a href="javascript:void(0)" (click)="AddtoCart(product)">
+                        <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}" alt="blog-grid1" class="img-fluid cust-prod-image ">
                     </a>
                     <hr>
-                    <div class="padding-left-5px">
+                    <div class="padding-left-5px productname">
                         <p class="text-left text-medium1 margin-bottom-5px">{{product.adminProductsResponseModels.name}}</p>
                         <p class="d-flex margin-bottom-5px">
                             <span class="text-left width-100-px cokl">
@@ -358,8 +358,8 @@
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
                     <div class="d-inline-block">
-                        <a href="javascript:void(0)">
-                            <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}" alt="blog-grid1" class="img-fluid d-inline-block">
+                        <a href="javascript:void(0)" (click)="AddtoCart(product)">
+                            <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}" alt="blog-grid1" class="img-fluid d-inline-block cust-prod-image">
                         </a>
                     </div>
                     <div class="padding-left-5px d-inline-block" style="vertical-align: top;">

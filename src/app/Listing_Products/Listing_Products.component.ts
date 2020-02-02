@@ -59,6 +59,39 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
         if (isNullOrUndefined(localStorage.getItem("boxNumber"))) {
         } else {
             let id = localStorage.getItem("boxNumber");
+            if (localStorage.getItem('boxValue')) {
+                const data = JSON.parse(localStorage.getItem('boxValue'));
+                if (data != null && data.data != null) {
+                    localStorage.removeItem('response');
+                    // this.errorMessage = null;
+                    this.productsArray = data.data.adminProductsResponseModels;
+                    for (var j = 0; j < this.productsArray.length; j++) {
+                        const adminProductsResponseModels = this.productsArray[j].adminProductsResponseModels;
+                        adminProductsResponseModels.prQuantity = 0
+                        this.productsArray[j].adminProductsResponseModels = adminProductsResponseModels;
+                    }
+                    localStorage.setItem('maxFreeQuant', data.data.maxFree);
+                    this.getPromocodes();
+                    let allObjs: any[] = !isNullOrUndefined(localStorage.getItem('cart_item')) ? JSON.parse(localStorage.getItem('cart_item')) : [];
+                    for (var i = 0; i < allObjs.length; i++) {
+                        console.log(allObjs[i]);
+                        let isExist: boolean = false;
+                        for (var j = 0; j < this.productsArray.length; j++) {
+                            if (this.productsArray[j].id == allObjs[i].id) {
+                                isExist = true;
+                                break;
+                            }
+                        }
+                        if (!isExist) {
+                            allObjs.splice(i, 1);
+                        }
+                    }
+                    localStorage.setItem('cart_item', JSON.stringify(allObjs));
+                    // this.embryoService.calculateLocalCartProdCounts();
+
+                    // this.getBanner(id);
+                }
+            }
             this.boxService.getProduct(id).subscribe((data: any) => {
                 if (data != null && data.data != null) {
                     localStorage.removeItem('response');
@@ -67,7 +100,6 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
                     for (var j = 0; j < this.productsArray.length; j++) {
                         const adminProductsResponseModels = this.productsArray[j].adminProductsResponseModels;
                         adminProductsResponseModels.prQuantity = 0
-                        debugger
                         this.productsArray[j].adminProductsResponseModels = adminProductsResponseModels;
                     }
                     localStorage.setItem('maxFreeQuant', data.data.maxFree);
