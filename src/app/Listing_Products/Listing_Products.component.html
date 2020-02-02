@@ -8,30 +8,30 @@
                 <!-- pop-up modal body start -->
                 <div class="modal-body bg-white">
                     <div class="row">
-                        <a class="rounder-1 animated zoomIn" data-dismiss="modal"> <img src="assets/img/close-btn.png">
+                        <a class="rounder-1 animated zoomIn" data-dismiss="modal">
+                            <img src="assets/img/close-btn.png">
                         </a>
                         <div class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center">
-                            <div class="padding-nine-top padding-nine-bottom padding-right-15px padding-left-15px width-100-d">
+                            <div class="padding-nine-top padding-nine-bottom padding-right-15px padding-left-15px width-100-d" *ngIf="selectedProduct">
                                 <div class="clearfix text-center border-light-site padding-25px  margin-bottom-10px">
-                                    <img src="assets/img/img-2.png">
+                                    <img src="{{(selectedProduct && selectedProduct && selectedProduct.adminProductsResponseModels.productsImagesResponseModel && selectedProduct.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  selectedProduct.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"/>
                                 </div>
-                                <h5 class="text-large"> Himalaya Lip Balm </h5>
+                                <h5 class="text-large"> {{selectedProduct.adminProductsResponseModels.name}} </h5>
                                 <!-- pop-up news-letter start -->
                                 <div class="clearfix list-item margin-three-top">
                                     <div class="content-section">
                                         <!-- product price-tag start -->
                                         <div class="price product-price d-block margin-bottom-15px sm-margin-bottom-10px">
 
-                                            <span class="product-final-price font-weight-600 cokl">₹35.00</span>
+                                            <span class="product-final-price font-weight-600 cokl">₹{{selectedProduct.adminProductsResponseModels.mainprice | number:'1.00-0'}}</span>
 
                                         </div>
                                         <!-- product price-tag end -->
                                         <!-- product description start -->
                                         <div class="product-description d-block margin-bottom-15px sm-margin-bottom-10px">
-                                            <p class="no-margin-bottom text-small-1"> Himalaya's Lip Balm, made up of
-                                                completely
-                                                natural actives, relieves sore and chapped lips,
-                                                especially during the winter season.</p>
+                                            <p class="no-margin-bottom text-small-1">
+                                            {{selectedProduct.adminProductsResponseModels.description}}
+                                            </p>
                                         </div>
                                         <!-- product description end -->
                                         <hr class="border-light-site margin-one-top margin-one-bottom">
@@ -39,21 +39,21 @@
                                         <!-- product color Brand -->
                                         <div class="color d-block   ">
                                             <label class="font-weight-600 no-margin-bottom cokl">Brand</label>
-                                            <p class="text-medium margin-one-bottom">Himalaya Global Holdings Ltd.</p>
+                                            <p class="text-medium margin-one-bottom">{{selectedProduct.adminProductsResponseModels.brandname}}</p>
                                         </div>
                                         <!-- product Brand end -->
                                         <hr class="border-light-site margin-one-top margin-one-bottom">
                                         <!-- product color Brand -->
                                         <div class="color d-block    ">
                                             <label class="font-weight-600 no-margin-bottom cokl">Category</label>
-                                            <p class="text-medium margin-one-bottom">Beauty</p>
+                                            <p class="text-medium margin-one-bottom">{{selectedProduct.adminProductsResponseModels.categoryname}}</p>
                                         </div>
                                         <!-- product Brand end -->
                                         <hr class="border-light-site margin-one-top margin-one-bottom">
                                         <!-- product color Brand -->
                                         <div class="color d-block  ">
                                             <label class="font-weight-600 no-margin-bottom cokl">Size</label>
-                                            <p class="text-medium margin-one-bottom">Medium</p>
+                                            <p class="text-medium margin-one-bottom">{{selectedProduct.adminProductsResponseModels.sizesname}}</p>
                                         </div>
                                         <!-- product Brand end -->
                                     </div>
@@ -64,21 +64,18 @@
                         <!-- product action start -->
                         <!-- product action end -->
                     </div>
-                    <div class="row ">
+                    <div class="row " *ngIf="selectedProduct">
                         <div class="col-xl-12 ">
                             <div
                                     class="site-bg padding-top-15px padding-bottom-15px padding-left-15px padding-right-15px ">
                                 <div class="d-inline-block" style="width:40%">
                                     <div class="quantity d-block margin-bottom-25px sm-margin-bottom-20px">
-                                        <label
-                                                class="d-block font-weight-600 no-margin-bottom colo text-white">Quantity:</label>
+                                        <label class="d-block font-weight-600 no-margin-bottom colo text-white">Quantity:</label>
                                         <span class="  sm-text-large">
-                                            <a href="javascript:void(0)"
-                                               class="minus-btn op-set text-black text-white"><i
+                                            <a href="javascript:void(0)" (click)="MinusProductQt(selectedProduct)" class="minus-btn op-set text-black text-white"><i
                                                     class="fas fa-minus bg-transparent"></i></a>
-                                            <input type="text" name="name" style="border:none!important" value="1"
-                                                   class="text-white border-none">
-                                            <a href="javascript:void(0)"
+                                            <input type="text" name="name" style="border:none!important" value="1" class="text-white border-none" [(ngModel)]="selectedProduct.adminProductsResponseModels.prQuantity">
+                                            <a href="javascript:void(0)" (click)="AddProductQt(selectedProduct)"
                                                class="plus-btn op-set text-black text-white"><i
                                                     class="fas fa-plus bg-transparent"></i></a>
                                         </span>
@@ -313,19 +310,21 @@
         <!-- border end -->
         <div [hidden]="displaytype === 'frame'" id="box" class="row padding-top-15px">
 
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of products">
+            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of productsArray">
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
-                    <a href="blog.html"><img src="{{product.image}}" alt="blog-grid1" class="img-fluid"></a>
+                    <a href="javascript:void(0)">
+                        <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}" alt="blog-grid1" class="img-fluid">
+                    </a>
                     <hr>
                     <div class="padding-left-5px">
-                        <p class="text-left text-medium1 margin-bottom-5px">{{product.name}}</p>
+                        <p class="text-left text-medium1 margin-bottom-5px">{{product.adminProductsResponseModels.name}}</p>
                         <p class="d-flex margin-bottom-5px">
                             <span class="text-left width-100-px cokl">
-                                ₹{{product.price | number:'1.00-0'}}
+                                ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
                             </span>
                             <span class="text-right  ">
-                                <img src="assets/img/star.png"> {{product.ratings}}
+                                <img src="assets/img/star.png"> {{product.adminProductsResponseModels?.rating}}
                             </span>
                         </p>
                     </div>
@@ -334,17 +333,17 @@
                         <span class="quantity d-block">
 
                             <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="#" class="minus-btn cokl text-black"><i
+                                <a href="javascript:void(0)" (click)="MinusProductQt(product)" class="minus-btn cokl text-black"><i
                                         class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1"
+                                <input type="text" name="name" value="1" [(ngModel)]="product.adminProductsResponseModels.prQuantity"
                                     class="border-left-light-gray border-right-light-gray">
-                                <a href="#" class="plus-btn cokl text-black"><i
+                                <a href="javascript:void(0)" (click)="AddProductQt(product)" class="plus-btn cokl text-black"><i
                                         class="fas fa-plus bg-transparent"></i></a>
                             </span>
                         </span>
                     </div>
                     <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="javascript:void(0)" (click)="AddtoCart()"
+                        <a href="javascript:void(0)" (click)="AddtoCart(product)"
                             class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
                                 src="assets/img/cart-white.png" width="15px"> Add to cart</a>
                     </div>
@@ -355,34 +354,34 @@
         </div>
         <div [hidden]="displaytype === 'box'" id="frame" class="row padding-top-15px">
 
-            <div class="col-xl-4 col-lg-4 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of products">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of productsArray">
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
                     <div class="d-inline-block">
                         <a href="javascript:void(0)">
-                            <img src="{{product.image}}" alt="blog-grid1" class="img-fluid d-inline-block">
+                            <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}" alt="blog-grid1" class="img-fluid d-inline-block">
                         </a>
                     </div>
                     <div class="padding-left-5px d-inline-block" style="vertical-align: top;">
-                        <p class="text-left text-medium1 margin-bottom-5px">{{product.name}}</p>
+                        <p class="text-left text-medium1 margin-bottom-5px">{{product.adminProductsResponseModels.name}}</p>
                         <p class=" margin-bottom-5px">
                             <span class="text-left d-block cokl">
-                                 ₹{{product.price | number:'1.00-0'}}
+                                 ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
                             </span>
                             <span class="d-block text-left ">
 
                                 <div class="d-inline-block text-left width-100-px">
-                                    <img src="assets/img/star.png"> {{product.ratings}}
+                                    <img src="assets/img/star.png"> {{product.adminProductsResponseModels?.rating}}
                                 </div>
                                 <div class="d-inline-block text-right">
                                     <span class="quantity d-block">
 
                                         <span class="padding-5px border-light-gray sm-text-large">
-                                            <a href="javascript:void(0)" class="minus-btn cokl text-black"><i
+                                            <a href="javascript:void(0)" (click)="MinusProductQt(product)" class="minus-btn cokl text-black"><i
                                                     class="fas fa-minus bg-transparent"></i></a>
-                                            <input type="text" name="name" value="1"
+                                            <input type="text" name="name" value="1" [(ngModel)]="product.adminProductsResponseModels.prQuantity"
                                                    class="border-left-light-gray border-right-light-gray">
-                                            <a href="javascript:void(0)" class="plus-btn cokl text-black"><i
+                                            <a href="javascript:void(0)" (click)="PlusProductQt(product)" class="plus-btn cokl text-black"><i
                                                     class="fas fa-plus bg-transparent"></i></a>
                                         </span>
                                     </span>
@@ -400,7 +399,7 @@
             </div>
         </div>
         <!-- pagination start -->
-        <div class="page-bar d-flex justify-content-start">
+        <!--<div class="page-bar d-flex justify-content-start">
             <ul class="pag-nav">
                 <li><a href="javascript:void(0)" class="sm-text-large"><i class="fas fa-long-arrow-alt-left"></i></a>
                 </li>
@@ -412,7 +411,7 @@
                 <li><a href="javascript:void(0)" class="sm-text-large"><i class="fas fa-long-arrow-alt-right"></i></a>
                 </li>
             </ul>
-        </div>
+        </div>-->
         <!-- pagination end -->
         <br>
     </div>

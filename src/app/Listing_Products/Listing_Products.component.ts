@@ -16,8 +16,9 @@ declare var $: any;
 export class ListingProductsComponent implements OnInit, AfterViewInit {
     displaytype = 'box';
     swiper;
+    selectedProduct = null;
     products = [];
-    productsArray: any;
+    productsArray = [];
     promocodes = null;
     boxNum = null;
 
@@ -33,6 +34,27 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
         }
     }
 
+    AddProductQt(product) {
+        if (product.adminProductsResponseModels.prQuantity ) {
+            let qty = +(product.adminProductsResponseModels.prQuantity );
+            qty += 1
+            product.adminProductsResponseModels.prQuantity = qty;
+        } else {
+            product.adminProductsResponseModels.prQuantity = 1
+        }
+    }
+
+    MinusProductQt(product) {
+        if (product.adminProductsResponseModels.prQuantity ) {
+            let qty = +(product.adminProductsResponseModels.prQuantity );
+            qty -= 1
+            qty = qty < 0 ? 0 : qty;
+            product.adminProductsResponseModels.prQuantity = qty;
+        } else {
+            product.adminProductsResponseModels.prQuantity = 0
+        }
+    }
+
     getProducts() {
         if (isNullOrUndefined(localStorage.getItem("boxNumber"))) {
         } else {
@@ -42,6 +64,12 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
                     localStorage.removeItem('response');
                     // this.errorMessage = null;
                     this.productsArray = data.data.adminProductsResponseModels;
+                    for (var j = 0; j < this.productsArray.length; j++) {
+                        const adminProductsResponseModels = this.productsArray[j].adminProductsResponseModels;
+                        adminProductsResponseModels.prQuantity = 0
+                        debugger
+                        this.productsArray[j].adminProductsResponseModels = adminProductsResponseModels;
+                    }
                     localStorage.setItem('maxFreeQuant', data.data.maxFree);
                     this.getPromocodes();
                     let allObjs: any[] = !isNullOrUndefined(localStorage.getItem('cart_item')) ? JSON.parse(localStorage.getItem('cart_item')) : [];
@@ -75,6 +103,11 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
 
     }
 
+    GetImage(product) {
+        debugger
+        return (product.productsImagesResponseModel && product.productsImagesResponseModel.length > 0) ?  product.productsImagesResponseModel[0].idUrl : ''
+    }
+
     private getPromocodes() {
         this.promocodes = null;
         this.cartService.getPromocodes(this.boxNum).subscribe((data: any) => {
@@ -99,7 +132,8 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
         }
     }
 
-    AddtoCart() {
+    AddtoCart(p) {
+        this.selectedProduct = p;
         $('#myModal1').modal("show")
     }
 

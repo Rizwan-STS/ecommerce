@@ -33,6 +33,7 @@ import {LoaderService} from "./loader.service";
 import {LoaderInterceptor} from "./loader.interceptor";
 import {HttpConfigInterceptor} from "./httpconfig.interceptor";
 import {LoaderComponent} from "./Loader/loader.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -65,6 +66,7 @@ import {LoaderComponent} from "./Loader/loader.component";
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         HttpClientModule,
         AppRoutingModule
     ],
