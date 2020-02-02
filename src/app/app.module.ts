@@ -30,6 +30,8 @@ import { APP_BASE_HREF, Location } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './Footer/Footer.component';
 import { HeaderComponent } from './Header/Header.component';
+import { FormsModule } from '@angular/forms';
+import { SignUpComponent } from './Sign_Up/Signup.component';
 
 @NgModule({
   declarations: [
@@ -57,12 +59,14 @@ import { HeaderComponent } from './Header/Header.component';
     AboutUsComponent,
     AppComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,6 +9,7 @@ import { ErrorPageComponent } from './Error_Page/Error_Page.component'
 import { PrivacyPolicyComponent } from './Privacy_Policy/Privacy_Policy.component'
 import { ProfileComponent } from './Profile/Profile.component'
 import { LoginComponent } from './Login/Login.component'
+import { SignUpComponent } from './Sign_Up/Signup.component'
 import { TermsAndConditionComponent } from './Terms_And_Condition/Terms_And_Condition.component'
 import { AddPaymentMethodComponent } from './Add_Payment_Method/Add_Payment_Method.component'
 import { CartViewComponent } from './Cart_View/Cart_View.component'
@@ -55,7 +56,7 @@ const routes: Routes = [
     component: MyCartPaymentComponent,
   },
   {
-    path: 'MyCart',
+    path: 'cart',
     component: MyCartComponent,
   },
   {
@@ -63,7 +64,7 @@ const routes: Routes = [
     component: ListingProducts2Component,
   },
   {
-    path: 'ListingProducts',
+    path: 'home',
     component: ListingProductsComponent,
   },
   {
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path: 'Login',
     component: LoginComponent,
+  },
+  {
+    path: 'Register',
+    component: SignUpComponent,
   },
   {
     path: 'Profile',

@@ -12,29 +12,39 @@
                         </a>
                         <div class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center">
 
-                            <div
-                                class="padding-nineteen-top padding-nineteen-bottom padding-right-15px padding-left-15px">
-                                <h5>Hi Josh!</h5>
+                            <div class="padding-nineteen-top padding-nineteen-bottom padding-right-15px padding-left-15px" *ngIf="otpSent">
+                                <h5>Hi There!</h5>
 
                                 <!-- pop-up news-letter start -->
                                 <p class="padding-eight-top margin-one-half-bottom">OTP Code</p>
                                 <div class="clearfix">
                                     <div class="input-mail">
-                                        <input type="text" name="mail"
-                                            class="width-50-px  inputbox-heigt  no-border color-them-1">
-                                        <input type="text" name="mail"
-                                            class="width-50-px inputbox-heigt no-border color-them-1">
-                                        <input type="text" name="mail"
-                                            class="width-50-px inputbox-heigt no-border color-them-1">
-                                        <input type="text" name="mail"
-                                            class="width-50-px inputbox-heigt no-border color-them-1">
+                                        <input type="text" name="mail" [(ngModel)]="otp1" style="border: 1px solid #fd9652;" class="width-50-px  inputbox-heigt  no-border color-them-1">
+                                        <input type="text" name="mail" [(ngModel)]="otp2" style="border: 1px solid #fd9652;" class="width-50-px inputbox-heigt no-border color-them-1">
+                                        <input type="text" name="mail" [(ngModel)]="otp3" style="border: 1px solid #fd9652;" class="width-50-px inputbox-heigt no-border color-them-1">
+                                        <input type="text" name="mail" [(ngModel)]="otp4" style="border: 1px solid #fd9652;" class="width-50-px inputbox-heigt no-border color-them-1">
                                     </div>
                                     <br>
-                                    <button class="padding-two btn btn-button form-control confirm-c">Confirm</button>
+                                    <button class="padding-two btn btn-button form-control confirm-c" (click)="login()">Confirm</button>
                                 </div>
                                 <!-- pop-up news-letter end -->
                             </div>
 
+                            <div class="padding-nineteen-top padding-nineteen-bottom padding-right-15px padding-left-15px" *ngIf="!otpSent">
+                                <h5>Hi There!</h5>
+
+                                <!-- pop-up news-letter start -->
+                                <p class="padding-eight-top margin-one-half-bottom">Phone Number</p>
+                                <div class="clearfix">
+                                    <div class="input-mail">
+                                        <input type="number" [(ngModel)]="phonenumber" class=" inputbox-heigt  no-border color-them-1">
+                                    </div>
+                                    <br>
+                                    <button class="padding-two btn btn-button form-control confirm-c" (click)="sendOtp()">Confirm</button><br/>
+                                    <p style="font-size: 13px;"><a (click)="register()" class="accent-color">Register with us</a></p>
+                                </div>
+                                <!-- pop-up news-letter end -->
+                            </div>
                         </div>
 
                     </div>
