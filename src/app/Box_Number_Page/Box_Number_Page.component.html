@@ -30,15 +30,15 @@
 
                         <!-- input email or user start -->
                         <div class="email-user">
-                            <input type="number" style="border: 1px solid #fd9652;">
-                            <input type="number" style="border: 1px solid #fd9652;">
-                            <input type="number" style="border: 1px solid #fd9652;">
-                            <input type="number" style="border: 1px solid #fd9652;">
+                            <input id="bx0" type="text" maxlength="1" style="border: 1px solid #fd9652;" [(ngModel)]="nums[0]" required (keypress)="isNumberKey($event, 'bx1', '')" (keydown)="KeyDown($event, 'bx1', '')">
+                            <input id="bx1" type="text" maxlength="1" style="border: 1px solid #fd9652;" [(ngModel)]="nums[1]" required (keypress)="isNumberKey($event, 'bx2', 'bx1')" (keydown)="KeyDown($event, 'bx2', 'bx1')">
+                            <input id="bx2" type="text" maxlength="1" style="border: 1px solid #fd9652;" [(ngModel)]="nums[2]" required (keypress)="isNumberKey($event, 'bx3', 'bx2')" (keydown)="KeyDown($event, 'bx3', 'bx2')">
+                            <input id="bx3" type="text" maxlength="1" style="border: 1px solid #fd9652;" [(ngModel)]="nums[3]" required (keypress)="isNumberKey($event, 'submit', 'bx3')" (keydown)="KeyDown($event, 'submit', 'bx3')">
                         </div>
                         <!-- input email or user end -->
                         <!-- get password start -->
                         <div class="new-pwd">
-                            <a href="#" class="btn btn-small"> Search </a>
+                            <a id="submit" href="javascript:void(0)" class="btn btn-small" (click)="submitBoxNUmber()"> Search </a>
                         </div>
                         <!-- get password end -->
                     </div>
