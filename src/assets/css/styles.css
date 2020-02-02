@@ -2151,7 +2151,7 @@ select.month, select.year{border:1px solid #eeeeee;}
 
 /* forgot password css start */
 .forgot-pwd .email-user{padding:30px;}
-.forgot-pwd .email-user input{width:67px; display:inline-block; text-align:center; background-color: #FFF5EE; height: 48px; border: none;}
+.forgot-pwd .email-user input{width:50px; margin: 10px; display:inline-block; text-align:center; background-color: #FFF5EE; height: 48px; border: none;}
 .forgot-pwd .forgot-box{border:1px solid #fff;}
 .forgot-pwd .forgot-box p{padding:15px; background-color:#e2524a; color:#fff;}
 .forgot-pwd .forgot-box .new-pwd {padding:15px; }
