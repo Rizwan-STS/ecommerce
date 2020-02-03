@@ -25,7 +25,7 @@
 
                     <div class="row  padding-top-25px border-bottom-s">
                         <div class="col-xl-6 col-6 col-xs-6 col-sm-6 text-left">
-                            <p class="font-weight-600 text-medium2">My Cart <span class="cokl"> 1 </span> </p>
+                            <p class="font-weight-600 text-medium2">My Cart <span class="cokl">  </span> </p>
                         </div>
                         <div class="col-xl-6 col-6  col-xs-6 col-sm-6 text-right">
                             <p>Clean <img src="assets/img/shape.png"></p>
@@ -34,23 +34,25 @@
 
                     </div>
                     <div class="row   padding-top-25px border-bottom-s" *ngFor="let product of allProducts">
-                        <ng-container *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
-                            <ng-container *ngIf="images.isDefault">
-                                <img style="width: 100px; height: auto" [src]="images.idUrl" alt="cart image">
+                        <div class="col-xl-9 col-xs-9 col-sm-9 col-9">
+                            <ng-container *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
+                                <ng-container *ngIf="images.isDefault">
+                                    <img style="width: 100px; height: auto; float: left" [src]="images.idUrl" alt="cart image">
+                                </ng-container>
                             </ng-container>
-                        </ng-container>
-                        <div class="vertical-algintop " style="margin-left: 10px">
-                            <p class="font-weight-600 text-medium2 no-margin-bottom"> {{product?.adminProductsResponseModels?.name}} </p>
-                            <p class="font-weight-600 text-medium2  no-margin-bottom cokl"> ₹ {{ calculateProductSinglePrice(product, quantity.value)}}  </p>
-                            <p class="font-weight-600 text-medium2  "> <img src="assets/img/star.png"> 4.7 </p>
-                        </div>
-                        <div fxFlex.xs="10" fxFlex.sm="10" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10">
-                            <div class="cart-item-price">
-                                <!-- <h4>₹ {{ calculateProductSinglePrice(product, quantity.value)}} 
+                            <div class="vertical-algintop " style="margin-left: 110px">
+                                <p class="font-weight-600 text-medium2 no-margin-bottom"> {{product?.adminProductsResponseModels?.name}} </p>
+                                <p class="font-weight-600 text-medium2  no-margin-bottom cokl"> ₹ {{ calculateProductSinglePrice(product, quantity.value)}} </p>
+                                <p class="font-weight-600 text-medium2  "> <img src="assets/img/star.png"> 4.7 </p>
+                            </div>
+                            <div fxFlex.xs="10" fxFlex.sm="10" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10">
+                                <div class="cart-item-price">
+                                    <!-- <h4>₹ {{ calculateProductSinglePrice(product, quantity.value)}} 
                                 </h4> -->
+                                </div>
                             </div>
                         </div>
-                        <div fxFlex.xs="30" fxFlex.sm="30" fxFlex.md="30" fxFlex.lg="30" fxFlex.xl="30">
+                        <!-- <div fxFlex.xs="30" fxFlex.sm="30" fxFlex.md="30" fxFlex.lg="30" fxFlex.xl="30">
                             <div class="cart-item-price">
 
                                 <label *ngIf="product.maxFree >= fetchQunt(product)">Sample ({{fetchQunt(product)}} Quantity) <span style="float: right !important">₹ {{0 }} </span>  </label><br/>
@@ -64,8 +66,8 @@
                                 </label>
 
                             </div>
-                        </div>
-                        <div class="col-xl-6 col-xs-6 col-sm-6 col-6 text-right">
+                        </div> -->
+                        <div class="col-xl-3 col-xs-3 col-sm-3 col-3 text-right">
                             <div class="d-block text-right">
                                 <div class="d-inline-block padding-right-15px">
                                     <div class="quantity sm-border-lr-light-gray sm-border-bottom-light-gray">
@@ -108,7 +110,8 @@
 
                         <div class="clearfix text-center position-relative">
                             <div class="search-bar collapse show" id="search">
-                                    <input class="text-black border-radius-4" type="text" id="tip_amount" [(ngModel)]="tipamount" (blur)="tipPrice($event);" placeholder="Tip amount" />
+                                <input class="text-black border-radius-4" type="text" id="tip_amount" [(ngModel)]="tipamount" (blur)="tipPrice($event);"
+                                    placeholder="Tip amount" />
                                 <img style=" position: absolute; left: 30px; top: 10px; " src="assets/img/ic.png">
                             </div>
                         </div>

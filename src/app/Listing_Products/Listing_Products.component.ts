@@ -1,13 +1,10 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {AppService} from 'src/app/app.service';
-import {isNullOrUndefined} from "util";
-import {BoxService} from "./box.service";
-import {CartService} from "../cart.service";
-<<<<<<< HEAD
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AppService } from 'src/app/app.service';
+import { isNullOrUndefined } from "util";
+import { BoxService } from "./box.service";
+import { CartService } from "../cart.service";
 import { EmbryoService } from 'src/app/Embryo.service';
-=======
-import {ActivatedRoute} from "@angular/router";
->>>>>>> 1222a2c35e95cef58c2544dca403396eb465c501
+import { ActivatedRoute } from "@angular/router";
 
 declare var Swiper: any;
 declare var $: any;
@@ -29,7 +26,7 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     productsBanner = [];
 
     isMobile() {
-        const devices = [/Android/i,/BlackBerry/i,/iPhone|iPad|iPod/i,/Opera Mini/i,/IEMobile/i,/WPDesktop/i];
+        const devices = [/Android/i, /BlackBerry/i, /iPhone|iPad|iPod/i, /Opera Mini/i, /IEMobile/i, /WPDesktop/i];
         let flag = false;
         for (const dev of devices) {
             if (navigator.userAgent.match(dev)) {
@@ -40,12 +37,7 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
         // if ()
     }
 
-<<<<<<< HEAD
-    constructor(
-        public embryoService: EmbryoService,private appService: AppService, private boxService: BoxService, private cartService: CartService) {
-=======
-    constructor(private appService: AppService, private boxService: BoxService, private cartService: CartService, private activatedRoute: ActivatedRoute) {
->>>>>>> 1222a2c35e95cef58c2544dca403396eb465c501
+    constructor(public embryoService: EmbryoService, private appService: AppService, private boxService: BoxService, private cartService: CartService, private activatedRoute: ActivatedRoute) {
         for (let i = 1; i <= 12; i++) {
             this.products.push({
                 image: 'assets/img/img-' + i + '.png',
@@ -58,8 +50,8 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     }
 
     AddProductQt(product) {
-        if (product.adminProductsResponseModels.prQuantity ) {
-            let qty = +(product.adminProductsResponseModels.prQuantity );
+        if (product.adminProductsResponseModels.prQuantity) {
+            let qty = +(product.adminProductsResponseModels.prQuantity);
             qty += 1
             product.adminProductsResponseModels.prQuantity = qty;
         } else {
@@ -68,14 +60,44 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     }
 
     MinusProductQt(product) {
-        if (product.adminProductsResponseModels.prQuantity ) {
-            let qty = +(product.adminProductsResponseModels.prQuantity );
+        if (product.adminProductsResponseModels.prQuantity) {
+            let qty = +(product.adminProductsResponseModels.prQuantity);
             qty -= 1
             qty = qty < 0 ? 0 : qty;
             product.adminProductsResponseModels.prQuantity = qty;
         } else {
             product.adminProductsResponseModels.prQuantity = 0
         }
+    }
+
+    public fetchQunt(data: any) {
+        if (data) {
+            let products: any;
+            products = JSON.parse(localStorage.getItem('cart_item')) || [];
+            let qnt = 0;
+            for (let i = 0; i < products.length; i++) {
+                if (products[i].id === data.id) {
+                    /*qnt = qnt + 1;*/
+                    qnt = products[i].adminProductsResponseModels.selectedquantity;
+                }
+            }
+            if (qnt > 0) {
+                return qnt;
+            } else {
+                return 0;
+            }
+        } else {
+            return 0;
+        }
+    }
+
+
+    public addToCartProduct(value: any) {
+        this.embryoService.addToCart(value);
+    }
+
+    public removeTCart(value: any) {
+        this.embryoService.removeToCart(value);
     }
 
     getProducts() {
@@ -158,12 +180,10 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
 
     }
 
-<<<<<<< HEAD
     public addToCartVal(value) {
         debugger
         this.embryoService.addToCart(value);
-      }
-=======
+    }
     getBanner(id) {
         this.boxService.getBanners(id).subscribe((data: any) => {
             if (data != null && data.data != null) {
@@ -175,11 +195,10 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
         });
 
     }
->>>>>>> 1222a2c35e95cef58c2544dca403396eb465c501
 
     GetImage(product) {
         debugger
-        return (product.productsImagesResponseModel && product.productsImagesResponseModel.length > 0) ?  product.productsImagesResponseModel[0].idUrl : ''
+        return (product.productsImagesResponseModel && product.productsImagesResponseModel.length > 0) ? product.productsImagesResponseModel[0].idUrl : ''
     }
 
     private getPromocodes() {

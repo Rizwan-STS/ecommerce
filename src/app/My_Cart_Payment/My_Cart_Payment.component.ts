@@ -503,7 +503,7 @@ export class MyCartPaymentComponent implements OnInit {
     }
   
     public fetchQunt(data: any) {
-      console.log(data);
+      
       debugger;
       if (data) {
         let products: any;
@@ -513,9 +513,11 @@ export class MyCartPaymentComponent implements OnInit {
           if (products[i].id === data.id) {
             /*qnt = qnt + 1;*/
             qnt = products[i].adminProductsResponseModels.selectedquantity;
+            console.log('selectedquantity is ', qnt);
           }
         }
         if (qnt > 0) {
+          console.log('qnt is ', qnt);
           return qnt;
         } else {
           return 0;

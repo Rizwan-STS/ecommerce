@@ -14,7 +14,8 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center">
                             <div class="padding-nine-top padding-nine-bottom padding-right-15px padding-left-15px width-100-d" *ngIf="selectedProduct">
                                 <div class="clearfix text-center border-light-site padding-25px  margin-bottom-10px">
-                                    <img class="cust-prod-image" src="{{(selectedProduct && selectedProduct && selectedProduct.adminProductsResponseModels.productsImagesResponseModel && selectedProduct.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  selectedProduct.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"/>
+                                    <img class="cust-prod-image" src="{{(selectedProduct && selectedProduct && selectedProduct.adminProductsResponseModels.productsImagesResponseModel && selectedProduct.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  selectedProduct.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"
+                                    />
                                 </div>
                                 <h5 class="text-large"> {{selectedProduct.adminProductsResponseModels.name}} </h5>
                                 <!-- pop-up news-letter start -->
@@ -30,7 +31,7 @@
                                         <!-- product description start -->
                                         <div class="product-description d-block margin-bottom-15px sm-margin-bottom-10px">
                                             <p class="no-margin-bottom text-small-1">
-                                            {{selectedProduct.adminProductsResponseModels.description}}
+                                                {{selectedProduct.adminProductsResponseModels.description}}
                                             </p>
                                         </div>
                                         <!-- product description end -->
@@ -66,16 +67,15 @@
                     </div>
                     <div class="row " *ngIf="selectedProduct">
                         <div class="col-xl-12 ">
-                            <div
-                                    class="site-bg padding-top-15px padding-bottom-15px padding-left-15px padding-right-15px ">
+                            <div class="site-bg padding-top-15px padding-bottom-15px padding-left-15px padding-right-15px ">
                                 <div class="d-inline-block" style="width:40%">
                                     <div class="quantity d-block margin-bottom-25px sm-margin-bottom-20px">
                                         <label class="d-block font-weight-600 no-margin-bottom colo text-white">Quantity:</label>
                                         <span class="  sm-text-large">
-                                            <a href="javascript:void(0)" (click)="MinusProductQt(selectedProduct)" class="minus-btn op-set text-black text-white"><i
+                                            <a href="javascript:void(0)"  (click)="removeTCart(selectedProduct)" class="minus-btn op-set text-black text-white"><i
                                                     class="fas fa-minus bg-transparent"></i></a>
-                                            <input type="text" name="name" style="border:none!important" value="1" class="text-white border-none" [(ngModel)]="selectedProduct.adminProductsResponseModels.prQuantity">
-                                            <a href="javascript:void(0)" (click)="AddProductQt(selectedProduct)"
+                                                    <input type="text" disabled id="quantity" name="quantity" value="{{fetchQunt(selectedProduct)}}">
+                                            <a href="javascript:void(0)" (click)="addToCartProduct(selectedProduct)"
                                                class="plus-btn op-set text-black text-white"><i
                                                     class="fas fa-plus bg-transparent"></i></a>
                                         </span>
@@ -99,7 +99,8 @@
     <section class="padding-25px-tb">
         <div class="container-fluid">
 
-            <div class="swiper-container single-item-rtl swiper-container-initialized swiper-container-horizontal" [hidden]="productsBanner.length === 0"  id="product-slider">
+            <div class="swiper-container single-item-rtl swiper-container-initialized swiper-container-horizontal" [hidden]="productsBanner.length === 0"
+                id="product-slider">
                 <div class="swiper-wrapper" style="transform: translate3d(-570px, 0px, 0px); transition-duration: 0ms;">
                     <div class="swiper-slide border-radius-4" style="width: 255px; margin-right: 30px;" *ngFor="let banner of productsBanner;">
                         <!-- product start -->
@@ -121,7 +122,7 @@
                                 <!-- product image end -->
 
                             </div>
-                           <!-- <a class="carts" (click)="AddtoCart()">
+                            <!-- <a class="carts" (click)="AddtoCart()">
                                 <img src="assets/img/cartset.png">
                             </a>-->
                         </div>
@@ -149,8 +150,7 @@
             </div>
             <!-- grid & list button end -->
             <!-- sortby start -->
-            <div
-                class="col-xl-4 col-lg-4 col-md-6 col-12 d-flex align-items-center justify-content-end sm-display-block">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-12 d-flex align-items-center justify-content-end sm-display-block">
 
 
                 <!-- 4 grid image start -->
@@ -174,8 +174,7 @@
             <!-- sortby end -->
         </div>
         <!-- border start -->
-        <div class="border-bottom-light-new padding-top-15px margin-bottom-15px  sm-display-none"
-            style="  width: 82%;  margin-top: -33px;  margin-left: 117px;"></div>
+        <div class="border-bottom-light-new padding-top-15px margin-bottom-15px  sm-display-none" style="  width: 82%;  margin-top: -33px;  margin-left: 117px;"></div>
         <!-- border end -->
         <div [hidden]="displaytype === 'frame'" id="box" class="row padding-top-15px">
 
@@ -200,21 +199,19 @@
                     <hr>
                     <div class="margin-bottom-15px">
                         <span class="quantity d-block">
-
                             <span class="padding-5px border-light-gray sm-text-large">
-                                <a href="javascript:void(0)" (click)="MinusProductQt(product)" class="minus-btn cokl text-black"><i
+                                    <a href="javascript:void(0)"  (click)="removeTCart(product)" class="minus-btn op-set text-black text-white"><i
                                         class="fas fa-minus bg-transparent"></i></a>
-                                <input type="text" name="name" value="1" [(ngModel)]="product.adminProductsResponseModels.prQuantity"
-                                    class="border-left-light-gray border-right-light-gray">
-                                <a href="javascript:void(0)" (click)="AddProductQt(product)" class="plus-btn cokl text-black"><i
+                                        <input type="text" disabled id="quantity" name="quantity" value="{{fetchQunt(product)}}">
+                                <a href="javascript:void(0)" (click)="addToCartProduct(product)"
+                                   class="plus-btn op-set text-black text-white"><i
                                         class="fas fa-plus bg-transparent"></i></a>
                             </span>
                         </span>
                     </div>
                     <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="javascript:void(0)" (click)="AddtoCart(product)"
-                            class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                src="assets/img/cart-white.png" width="15px"> Add to cart</a>
+                            <a href="javascript:void(0)" class="btn btn-small op-set" (click)="addToCartVal(product)"> <img
+                                src="assets/img/cart-white.png"> Add to Cart </a>
                     </div>
                 </div>
                 <!-- blog image end -->
@@ -253,22 +250,21 @@
                                             <a href="javascript:void(0)" (click)="PlusProductQt(product)" class="plus-btn cokl text-black"><i
                                                     class="fas fa-plus bg-transparent"></i></a>
                                         </span>
-                                    </span>
-                                </div>
                             </span>
-                        </p>
-                        <div class=" clearfix settop-margin15  padding-bottom-15px padding-right-15px">
-                            <a href="javascript:void(0)" (click)="AddtoCart()"
-                               class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
+                    </div>
+                    </span>
+                    </p>
+                    <div class=" clearfix settop-margin15  padding-bottom-15px padding-right-15px">
+                        <a href="javascript:void(0)" (click)="AddtoCart()" class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
                                     src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                        </div>
                     </div>
                 </div>
-                <!-- blog image end -->
             </div>
+            <!-- blog image end -->
         </div>
-        <!-- pagination start -->
-        <!--<div class="page-bar d-flex justify-content-start">
+    </div>
+    <!-- pagination start -->
+    <!--<div class="page-bar d-flex justify-content-start">
             <ul class="pag-nav">
                 <li><a href="javascript:void(0)" class="sm-text-large"><i class="fas fa-long-arrow-alt-left"></i></a>
                 </li>
@@ -281,8 +277,8 @@
                 </li>
             </ul>
         </div>-->
-        <!-- pagination end -->
-        <br>
+    <!-- pagination end -->
+    <br>
     </div>
 </section>
 <!-- blog grid section end -->
