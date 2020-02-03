@@ -3,6 +3,7 @@ import {AppService} from 'src/app/app.service';
 import {isNullOrUndefined} from "util";
 import {BoxService} from "./box.service";
 import {CartService} from "../cart.service";
+import { EmbryoService } from 'src/app/Embryo.service';
 
 declare var Swiper: any;
 declare var $: any;
@@ -22,7 +23,8 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     promocodes = null;
     boxNum = null;
 
-    constructor(private appService: AppService, private boxService: BoxService, private cartService: CartService) {
+    constructor(
+        public embryoService: EmbryoService,private appService: AppService, private boxService: BoxService, private cartService: CartService) {
         for (let i = 1; i <= 12; i++) {
             this.products.push({
                 image: 'assets/img/img-' + i + '.png',
@@ -134,6 +136,11 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
         }
 
     }
+
+    public addToCartVal(value) {
+        debugger
+        this.embryoService.addToCart(value);
+      }
 
     GetImage(product) {
         debugger

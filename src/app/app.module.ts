@@ -35,6 +35,8 @@ import { LoaderService } from "./loader.service";
 import { LoaderInterceptor } from "./loader.interceptor";
 import { HttpConfigInterceptor } from "./httpconfig.interceptor";
 import { LoaderComponent } from "./Loader/loader.component";
+// import { ToastyService } from 'ng2-toasty';
+import { EmbryoService } from './Embryo.service';
 
 @NgModule({
   declarations: [
@@ -74,6 +76,8 @@ import { LoaderComponent } from "./Loader/loader.component";
   ],
   providers: [
     LoaderService,
+    EmbryoService,
+    // ToastyService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
