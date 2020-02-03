@@ -3,7 +3,11 @@ import {AppService} from 'src/app/app.service';
 import {isNullOrUndefined} from "util";
 import {BoxService} from "./box.service";
 import {CartService} from "../cart.service";
+<<<<<<< HEAD
 import { EmbryoService } from 'src/app/Embryo.service';
+=======
+import {ActivatedRoute} from "@angular/router";
+>>>>>>> 1222a2c35e95cef58c2544dca403396eb465c501
 
 declare var Swiper: any;
 declare var $: any;
@@ -22,9 +26,26 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     productsArray = [];
     promocodes = null;
     boxNum = null;
+    productsBanner = [];
 
+    isMobile() {
+        const devices = [/Android/i,/BlackBerry/i,/iPhone|iPad|iPod/i,/Opera Mini/i,/IEMobile/i,/WPDesktop/i];
+        let flag = false;
+        for (const dev of devices) {
+            if (navigator.userAgent.match(dev)) {
+                flag = true;
+            }
+        }
+        return flag;
+        // if ()
+    }
+
+<<<<<<< HEAD
     constructor(
         public embryoService: EmbryoService,private appService: AppService, private boxService: BoxService, private cartService: CartService) {
+=======
+    constructor(private appService: AppService, private boxService: BoxService, private cartService: CartService, private activatedRoute: ActivatedRoute) {
+>>>>>>> 1222a2c35e95cef58c2544dca403396eb465c501
         for (let i = 1; i <= 12; i++) {
             this.products.push({
                 image: 'assets/img/img-' + i + '.png',
@@ -137,10 +158,24 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
 
     }
 
+<<<<<<< HEAD
     public addToCartVal(value) {
         debugger
         this.embryoService.addToCart(value);
       }
+=======
+    getBanner(id) {
+        this.boxService.getBanners(id).subscribe((data: any) => {
+            if (data != null && data.data != null) {
+                this.productsBanner = data.data;
+                setTimeout(() => {
+                    this.InitSlider();
+                }, 200);
+            }
+        });
+
+    }
+>>>>>>> 1222a2c35e95cef58c2544dca403396eb465c501
 
     GetImage(product) {
         debugger
@@ -149,18 +184,18 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
 
     private getPromocodes() {
         this.promocodes = null;
-        this.cartService.getPromocodes(this.boxNum).subscribe((data: any) => {
+        this.cartService.getPromocodes(localStorage.getItem('boxNumber')).subscribe((data: any) => {
             this.promocodes = data.data;
         });
     }
 
     ngOnInit() {
-        localStorage.setItem('boxNumber', '2633');
         this.getProducts();
+        this.getBanner(localStorage.getItem('boxNumber'));
     }
 
     ngAfterViewInit(): void {
-        try {
+        /*try {
             if (Swiper) {
                 this.InitSlider();
             }
@@ -168,7 +203,7 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
             setTimeout(() => {
                 this.InitSlider();
             }, 200);
-        }
+        }*/
     }
 
     AddtoCart(p) {
