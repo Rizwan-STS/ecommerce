@@ -8,11 +8,11 @@
                 <h5 class="padding-eight-top text-extra-medium"> My Profile </h5>
                 <br>
                 <div class="row">
-                    <div class="col-xl-6">
+                    <div class="col-xl-6" style="margin-bottom: 10px !important;">
                         <label>Name</label>
                         <input value="Enter Name" [(ngModel)]="name" class="color-them-1 no-border form-control" type="text">
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-6" style="margin-bottom: 10px !important;">
                         <label>Gender</label>
                         <select class="color-them-1 arrodown-n no-border form-control" [(ngModel)]="gender" >
                             <option *ngFor="let gender of genders" [value]="gender">{{gender}}<option>
@@ -22,12 +22,12 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-xl-6">
+                    <div class="col-xl-6" style="margin-bottom: 10px !important;">
                         <label>DOB</label>
                         <input class="color-them-1    no-border form-control" type="text" [(ngModel)]="dob" >
                         <img class="calenderset" src="assets/img/calendar.png">
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-6" style="margin-bottom: 10px !important;">
                         <label>Email</label>
                         <input class="color-them-1 no-border form-control" type="text" [(ngModel)]="email" >
                     </div>
@@ -38,8 +38,8 @@
                         <div class="forgot-box">
 
                             <!-- get password start -->
-                            <div class="new-pwd no-padding">
-                                <a class="btn btn-small" (click)="submitForm()"> <i class="fas fa-check" (click)="submitForm()"></i> Update Details </a>
+                            <div class="">
+                                <a class="btn btn-small col-12 col-md-5 col-sm-12 col-xs-12" (click)="submitForm()"> <i class="fas fa-check" (click)="submitForm()"></i> Update Details </a>
                             </div>
                             <!-- get password end -->
 

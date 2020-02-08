@@ -47,11 +47,9 @@ export class HeaderComponent implements OnInit {
         if (products[i].id === data.id) {
           /*qnt = qnt + 1;*/
           qnt = products[i].adminProductsResponseModels.selectedquantity;
-          console.log('selectedquantity is ', qnt);
         }
       }
       if (qnt > 0) {
-        console.log('qnt is ', qnt);
         return qnt;
       } else {
         return 0;

@@ -4631,7 +4631,7 @@ ul.tag-list li a{color:#fff; background-color:#212121; padding:5px 10px; display
     margin-top: 200px;
 }
 .no-border {
-    border: none!important;
+    border: 1px solid #fd9652 !important;
 }
 .inputbox-heigt {
     height: 48px;
