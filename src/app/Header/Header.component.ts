@@ -14,6 +14,48 @@ export class HeaderComponent implements OnInit {
   webTool: boolean;
   addShowCart = false
   allProducts: any = [];
+  headerLinks = [
+      {
+        name: 'My Profile',
+        routerLink: '/Profile',
+          image: 'assets/img/user.png'
+      },
+      {
+        name: 'Orders',
+        routerLink: '/MyOrders',
+          image: 'assets/img/box-nav.png'
+      },
+      {
+        name: 'My Cart',
+        routerLink: '/cart',
+          image: 'assets/img/cart-white.png'
+      },
+      {
+        name: 'About',
+        routerLink: '/AboutUs',
+          image: 'assets/img/info.png'
+      },
+      {
+        name: 'Terms & Condition',
+        routerLink: '/TermsAndCondition',
+          image: 'assets/img/file-text.png'
+      },
+      {
+        name: 'Privacy Policy',
+        routerLink: '/PrivacyPolicy',
+          image: 'assets/img/info.png'
+      },
+      {
+        name: 'FAQ',
+        routerLink: '/FAQ',
+          image: 'assets/img/infod.png'
+      },
+      {
+        name: 'Contact Us',
+        routerLink: '/ContactUs',
+          image: 'assets/img/user.png'
+      }
+  ];
 
   constructor(public embryoService: EmbryoService,private router: Router,private appService: AppService) { }
 
@@ -47,11 +89,11 @@ export class HeaderComponent implements OnInit {
         if (products[i].id === data.id) {
           /*qnt = qnt + 1;*/
           qnt = products[i].adminProductsResponseModels.selectedquantity;
-          console.log('selectedquantity is ', qnt);
+          // console.log('selectedquantity is ', qnt);
         }
       }
       if (qnt > 0) {
-        console.log('qnt is ', qnt);
+        // console.log('qnt is ', qnt);
         return qnt;
       } else {
         return 0;

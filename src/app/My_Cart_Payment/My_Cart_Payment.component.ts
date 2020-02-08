@@ -46,7 +46,7 @@ export class MyCartPaymentComponent implements OnInit {
     private router: Router,private appService: AppService,
     private cdRef: ChangeDetectorRef) { }
 
-  
+
     ngOnInit() {
       setInterval(() => {
         this.HandLing()
@@ -84,17 +84,17 @@ export class MyCartPaymentComponent implements OnInit {
         }
       });
     }
-  
+
     error(errormessage) {
       if (confirm(errormessage)) {
       }
     }
-  
+
     BackButton() {
       sessionStorage.setItem('doNotDisaplayDialog', 'true');
       this.router.navigate(['/home']);
     }
-  
+
     public getProducts(isFromCheckout) {
       let isUpdated = false;
       if (!isNullOrUndefined(this.boxNum)) {
@@ -135,9 +135,9 @@ export class MyCartPaymentComponent implements OnInit {
           }
         });
       }
-  
+
     }
-  
+
     ngAfterViewChecked(): void {
       this.imageWidth = 556;
       this.imageHeight = 700;
@@ -150,7 +150,7 @@ export class MyCartPaymentComponent implements OnInit {
       /*this.LoadJS('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js');*/
       this.LoadJS('https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js');
     }
-  
+
     public removeProduct(value: any) {
       // const message = 'Are you sure you want to delete this product?';
       // this.embryoService.confirmationPopup(message).subscribe(res => {
@@ -160,20 +160,20 @@ export class MyCartPaymentComponent implements OnInit {
       //   () => this.getPopupResponse(this.popupResponse, value)
       // );
     }
-  
+
     public getPopupResponse(response, value) {
       if (response) {
         this.embryoService.removeLocalCartProduct(value);
       }
     }
-  
+
     checkQuantity(prod) {
       console.log(prod);
       if (prod.quantity < prod.adminProductsResponseModels.selectedquantity) {
         prod.adminProductsResponseModels.selectedquantity = prod.quantity;
       }
     }
-  
+
     getLocation() {
       if (navigator && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -190,13 +190,13 @@ export class MyCartPaymentComponent implements OnInit {
       } else {
         console.log('Geolocation is not supported by this browser.');
       }
-  
+
       function errorCallback(error) {
         localStorage.setItem('locationerror', JSON.stringify(error));
       }
-  
+
       function showPosition(position) {
-  
+
         const isMobile = {
           Android: () => {
             return navigator.userAgent.match(/Android/i);
@@ -244,7 +244,7 @@ export class MyCartPaymentComponent implements OnInit {
         localStorage.setItem('myposition', JSON.stringify(pos));
       }
     }
-  
+
     public calculateProductSinglePrice(product: any, value: any) {
       let price = 0;
       product.adminProductsResponseModels.selectedquantity = value;
@@ -276,12 +276,12 @@ export class MyCartPaymentComponent implements OnInit {
           price = 0;
         }
       }
-  
+
       return price;
     }
-  
+
     public calculatBuyQuant(product: any, value: any) {
-  
+
       let price = 0;
       product.adminProductsResponseModels.selectedquantity = value;
       value = parseInt(value);
@@ -308,7 +308,7 @@ export class MyCartPaymentComponent implements OnInit {
                   dp = (product.adminProductsResponseModels.mainprice * (100 - product.adminProductsResponseModels.discountPercent) / 100) * mpQ;
                   totPQ = 0;
                 }
-  
+
               } else {
                 mp = product.adminProductsResponseModels.mainprice * totPQ;
                 tbQ = tbQ + totPQ;
@@ -323,9 +323,9 @@ export class MyCartPaymentComponent implements OnInit {
       }
       return tbQ;
     }
-  
+
     public calculatBuyPrice(product: any, value: any) {
-  
+
       let price = 0;
       product.adminProductsResponseModels.selectedquantity = value;
       value = parseInt(value);
@@ -349,7 +349,7 @@ export class MyCartPaymentComponent implements OnInit {
                   dp = (product.adminProductsResponseModels.mainprice * (100 - product.adminProductsResponseModels.discountPercent) / 100) * mpQ;
                   totPQ = 0;
                 }
-  
+
               } else {
                 mp = product.adminProductsResponseModels.mainprice * totPQ;
                 tbQ = tbQ + totPQ;
@@ -380,7 +380,7 @@ export class MyCartPaymentComponent implements OnInit {
                   dp = (product.adminProductsResponseModels.mainprice * (100 - product.adminProductsResponseModels.discountPercent) / 100) * mpQ;
                   totPQ = 0;
                 }
-  
+
               } else {
                 mp = product.adminProductsResponseModels.mainprice * totPQ;
                 tbQ = tbQ + totPQ;
@@ -395,7 +395,7 @@ export class MyCartPaymentComponent implements OnInit {
       }
       return price;
     }
-  
+
     public calculatFreeQuant(product: any, value: any) {
       let price = 0;
       product.adminProductsResponseModels.selectedquantity = value;
@@ -413,7 +413,7 @@ export class MyCartPaymentComponent implements OnInit {
               let mpQ = totPQ - product.adminProductsResponseModels.buyQuant;
               if (mpQ > 0) {
                 mp = product.adminProductsResponseModels.mainprice * product.adminProductsResponseModels.buyQuant;
-  
+
                 let dpQ = mpQ - product.adminProductsResponseModels.discountQuant;
                 if (dpQ > 0) {
                   dp = (product.adminProductsResponseModels.mainprice * (100 - product.adminProductsResponseModels.discountPercent) / 100) * product.adminProductsResponseModels.discountQuant;
@@ -424,7 +424,7 @@ export class MyCartPaymentComponent implements OnInit {
                   totPQ = 0;
                   tbQ = tbQ + mpQ;
                 }
-  
+
               } else {
                 mp = product.adminProductsResponseModels.mainprice * totPQ;
                 totPQ = 0;
@@ -438,7 +438,7 @@ export class MyCartPaymentComponent implements OnInit {
       }
       return tbQ;
     }
-  
+
     public calculateTotalPrice() {
       let subtotal = 0;
       let quant = 0;
@@ -459,9 +459,9 @@ export class MyCartPaymentComponent implements OnInit {
         return subtotal;
       }
       return subtotal;
-  
+
     }
-  
+
     getPricingSingle(value, product, price) {
       let totPQ = value;
       if (totPQ > 0) {
@@ -492,19 +492,17 @@ export class MyCartPaymentComponent implements OnInit {
       }
       return price;
     }
-  
-  
+
+
     public addToCartProduct(value: any) {
       this.embryoService.addToCart(value);
     }
-  
+
     public removeTCart(value: any) {
       this.embryoService.removeToCart(value);
     }
-  
+
     public fetchQunt(data: any) {
-      
-      debugger;
       if (data) {
         let products: any;
         products = JSON.parse(localStorage.getItem('cart_item')) || [];
@@ -513,11 +511,11 @@ export class MyCartPaymentComponent implements OnInit {
           if (products[i].id === data.id) {
             /*qnt = qnt + 1;*/
             qnt = products[i].adminProductsResponseModels.selectedquantity;
-            console.log('selectedquantity is ', qnt);
+            // console.log('selectedquantity is ', qnt);
           }
         }
         if (qnt > 0) {
-          console.log('qnt is ', qnt);
+          // console.log('qnt is ', qnt);
           return qnt;
         } else {
           return 0;
@@ -526,11 +524,11 @@ export class MyCartPaymentComponent implements OnInit {
         return 0;
       }
     }
-  
+
     public checkout() {
       this.isCheckout = true;
       if (!localStorage.getItem('token')) {
-        this.router.navigate(['./auth/login'], { queryParams: { callback: 'cart' } });
+        this.router.navigate(['./Login'], { queryParams: { callback: 'cart' } });
         return;
       }
       // this.getLocation();
@@ -618,7 +616,7 @@ export class MyCartPaymentComponent implements OnInit {
         this.PayThisAmount(requestObj);
       }
     }
-  
+
     PayThisAmount(modal) {
       const profile = JSON.parse(localStorage.getItem('login_data'));
       const totAmnt = this.getTotalPrice() * 100;
@@ -642,8 +640,8 @@ export class MyCartPaymentComponent implements OnInit {
         });
       } else {
         const options = {
-          // 'key': 'rzp_test_vkOkSpit7MKCcD',
-          'key': 'rzp_live_KBRcQhpDi7EcNy',
+          'key': 'rzp_test_vkOkSpit7MKCcD',
+          // 'key': 'rzp_live_KBRcQhpDi7EcNy',
           'amount': totAmnt, // 1000 paise = INR 10
           'name': 'RIDE KART',
           'description': 'Order Payment',
@@ -682,7 +680,7 @@ export class MyCartPaymentComponent implements OnInit {
         });
       }
     }
-  
+
     HandLing() {
       const response = JSON.parse(localStorage.getItem('response'));
       if (response) {
@@ -700,7 +698,7 @@ export class MyCartPaymentComponent implements OnInit {
             localStorage.removeItem('tipamount');
             localStorage.removeItem('promocode');
             this.embryoService.calculateLocalCartProdCounts();
-  
+
             this.errorMessage = null;
             Constant.ROOT_LOADER = false;
             localStorage.removeItem('response');
@@ -734,7 +732,7 @@ export class MyCartPaymentComponent implements OnInit {
       } else {
       }
     }
-  
+
     LoadJS(file) {
       // DOM: Create the script element
       const jsElm = document.createElement('script');
@@ -745,9 +743,9 @@ export class MyCartPaymentComponent implements OnInit {
       // finally insert the element to the body element in order to load the script
       document.body.appendChild(jsElm);
     }
-  
+
     tipPrice(event) {
-  
+
       this.tipamount = parseFloat(event.target.value);
       if (isNaN(this.tipamount)) {
         this.tipamount = 0;
@@ -757,11 +755,11 @@ export class MyCartPaymentComponent implements OnInit {
       }
       localStorage.setItem('tipamount', this.tipamount + '');
     }
-  
+
     public getTotalPrice() {
       let total = 0;
       let quant = 0;
-  
+
       const cartOb: any = JSON.parse(localStorage.getItem('cart_item')) || [];
       if (cartOb && cartOb.length > 0) {
         for (const product of cartOb) {
@@ -799,14 +797,14 @@ export class MyCartPaymentComponent implements OnInit {
       } else {
         return total;
       }
-  
+
     }
-  
+
     changePromoVal(val) {
       console.log(val);
       this.promoCodeEnt = val.target.value;
     }
-  
+
     checkPromoCode() {
       const boxNumber = localStorage.getItem('boxNumber');
       if (this.promoCodeEnt === '') {
@@ -828,13 +826,13 @@ export class MyCartPaymentComponent implements OnInit {
         });
       }
     }
-  
+
     public updateLocalCartProduct() {
       const cartOb: any = JSON.parse(localStorage.getItem('cart_item')) || [];
       this.embryoService.updateAllLocalCartProduct(cartOb);
       this.router.navigate(['/checkout']);
     }
-  
+
     public getQuantityValue(product) {
       if (product.selectedquantity) {
         return product.selectedquantity;

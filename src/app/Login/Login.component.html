@@ -19,13 +19,13 @@
                                 <p class="padding-eight-top margin-one-half-bottom">OTP Code</p>
                                 <div class="clearfix">
                                     <div class="input-mail">
-                                        <input type="text" name="mail" [(ngModel)]="otp1" style="border: 1px solid #fd9652;" class="width-50-px  inputbox-heigt  no-border color-them-1">
-                                        <input type="text" name="mail" [(ngModel)]="otp2" style="border: 1px solid #fd9652;" class="width-50-px inputbox-heigt no-border color-them-1">
-                                        <input type="text" name="mail" [(ngModel)]="otp3" style="border: 1px solid #fd9652;" class="width-50-px inputbox-heigt no-border color-them-1">
-                                        <input type="text" name="mail" [(ngModel)]="otp4" style="border: 1px solid #fd9652;" class="width-50-px inputbox-heigt no-border color-them-1">
+                                        <input type="text" maxlength="1" name="mail" [(ngModel)]="otp1" id="otp1" (keypress)="ValidatePassKey($event)" style="border: 1px solid #fd9652 !important;margin: 12px;" class="width-50-px custum-input inputbox-heigt  no-border color-them-1">
+                                        <input type="text" maxlength="1" name="mail" [(ngModel)]="otp2" id="otp2" (keypress)="ValidatePassKey($event)" style="border: 1px solid #fd9652 !important;margin: 12px;" class="width-50-px custum-input inputbox-heigt no-border color-them-1">
+                                        <input type="text" maxlength="1" name="mail" [(ngModel)]="otp3" id="otp3" (keypress)="ValidatePassKey($event)" style="border: 1px solid #fd9652 !important;margin: 12px;" class="width-50-px custum-input inputbox-heigt no-border color-them-1">
+                                        <input type="text" maxlength="1" name="mail" [(ngModel)]="otp4" id="otp4" (keypress)="ValidatePassKey($event)" style="border: 1px solid #fd9652 !important;margin: 12px;" class="width-50-px custum-input inputbox-heigt no-border color-them-1">
                                     </div>
                                     <br>
-                                    <button class="padding-two btn btn-button form-control confirm-c" (click)="login()">Confirm</button>
+                                    <button class="padding-two btn btn-button form-control confirm-c" id="confirm" (click)="login()">Confirm</button>
                                 </div>
                                 <!-- pop-up news-letter end -->
                             </div>

@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- title -->
     <title>RideKaart</title>
-    <meta name="description" content="shop item" />
-    <meta name="keywords" content="shop" />
+    <meta name="description" content="shop item"/>
+    <meta name="keywords" content="shop"/>
     <meta name="author" content="spacingtech_webify">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon -->
@@ -45,19 +45,70 @@
                     <!-- header navbar start -->
                     <nav class="navbar  navbar-cus navbar-expand-lg" id="navbar">
                         <!-- navbar toggler start -->
-                        <button style="margin-right: 65px;" class="  navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1">
-                            <a> <img src="assets/img/cartset.png">
-
+                        <button style="margin-right: 65px;" class="  navbar-toggler toggler-example" type="button" routerLink="/cart"
+                                data-toggle="collapse" data-target="#navbarSupportedContent1">
+                            <a>
+                                <img src="assets/img/cartset.png">
                             </a>
                         </button>
                         <!-- navbar toggler end -->
                         <!-- navbar toggler start -->
-                        <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1">
+                        <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent1">
                             <a class="text-tometo"><img src="assets/img/nav.png"></a>
                         </button>
                         <!-- navbar toggler end -->
+                        <!-- navbar toggler end -->
                         <div class="collapse navbar-collapsebg-white" id="navbarSupportedContent1">
+                            <ul class="nav navbar-nav topnav site-bg-dup">
+                                <!-- header-nav home start -->
+                                <li class="nav-home">
+                                    <a routerLink="/Profile"><img src="assets/img/user.png">My Profile </a>
 
+                                </li>
+                                <!-- header-nav home end -->
+                                <!-- header-nav category start -->
+                                <li class="nav-category" id="show">
+                                    <a routerLink="/MyOrders"> <img src="assets/img/box-nav.png">Orders </a>
+
+                                </li>
+                                <!-- header-nav category end -->
+                                <!-- header-nav blog start -->
+                                <li class="nav-blog">
+                                    <a class="drop-blog" routerLink="/cart"><img src="assets/img/cart-white.png">My Cart
+                                    </a>
+                                </li>
+                                <!-- header-nav blog end -->
+                                <!-- header-nav product start -->
+                                <li class="nav-product">
+                                    <a routerLink="/AnoutUs"><img src="assets/img/info.png">About </a>
+
+                                </li>
+                                <!-- header-nav product end -->
+                                <!-- header-nav page start -->
+                                <li class="active nav-page">
+                                    <a routerLink="/TermsAndCondition"><img src="assets/img/file-text.png"> Terms &
+                                        Condition </a>
+
+                                </li>
+                                <!-- header-nav page end -->
+                                <!-- header-nav store start -->
+                                <li class="nav-store">
+                                    <a routerLink="/PrivacyPolicy" class=""><img src="assets/img/info.png"> Privacy
+                                        Policy</a>
+                                </li>
+                                <!-- header-nav store end -->
+                                <!-- header-nav contact start -->
+                                <li class="nav-contact">
+                                    <a routerLink="/FAQ" class=""><img src="assets/img/infod.png">FAQ</a>
+                                </li>
+                                <!-- header-nav contact end -->
+                                <!-- header-nav contact start -->
+                                <li class="nav-contact">
+                                    <a routerLink="/ContactUs" class="">Contact Us</a>
+                                </li>
+                                <!-- header-nav contact end -->
+                            </ul>
                         </div>
                     </nav>
                     <!-- header navbar end -->
@@ -75,12 +126,16 @@
                                 <div class="row padding-15px-tb">
 
                                     <ng-container *ngFor="let product of allProducts; let i = index">
-                                        <div class="col-xl-4 col-lg-4 col-md-4 col-4 padding-left-15px padding-right-0px" *ngIf="i==0">
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-4 padding-left-15px padding-right-0px"
+                                             *ngIf="i==0">
                                             <div class="padding-left-0px">
                                                 <a href="javascript:void(0)">
-                                                    <ng-container *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
+                                                    <ng-container
+                                                            *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
                                                         <ng-container *ngIf="images.isDefault">
-                                                            <img class="img-fluid" g style="width: 100px; height: auto; float: left" [src]="images.idUrl" alt="cart image">
+                                                            <img class="img-fluid" g
+                                                                 style="width: 98px; height: 98px; object-fit: cover;"
+                                                                 [src]="images.idUrl" alt="cart image">
                                                         </ng-container>
                                                     </ng-container>
                                                 </a>
@@ -94,23 +149,29 @@
                                                 <div class="quantity d-block">
                                                     <div class="plus-minus">
                                                         <span class="padding-5px border-light-gray sm-text-large">
-                                                                <a href="javascript:void(0)"  (click)="removeTCart(product)" class="minus-btn op-set text-black text-white"><i
-                                                                    class="fas fa-minus bg-transparent"></i></a>
-                                                                    <input type="text" #quantity name="quantity" value="{{fetchQunt(product)}}">
-                                                            <a href="javascript:void(0)" (click)="addToCartProduct(product)"
-                                                                class="plus-btn op-set text-black text-white"><i
+                                                                <a href="javascript:void(0)"
+                                                                   (click)="removeTCart(product)"
+                                                                   class="minus-btn op-set text-black text-white"><i
+                                                                        class="fas fa-minus bg-transparent"></i></a>
+                                                                    <input type="text" #quantity name="quantity"
+                                                                           value="{{fetchQunt(product)}}">
+                                                            <a href="javascript:void(0)"
+                                                               (click)="addToCartProduct(product)"
+                                                               class="plus-btn op-set text-black text-white"><i
                                                                     class="fas fa-plus bg-transparent"></i></a>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="cart-pro-price d-block">
                                                     <div class="price d-inline-block">
-                                                        <div class="text-black cokl">₹ {{ calculateProductSinglePrice(product, quantity.value)}}</div>
+                                                        <div class="text-black cokl">₹ {{
+                                                            calculateProductSinglePrice(product, quantity.value)}}
+                                                        </div>
                                                     </div>
                                                     <div class="delete d-inline-block float-right">
                                                         <a href="javaScript:void(0)" class="trash text-black">
-                                                                                                <i class="ti-trash"></i>
-                                                                                            </a>
+                                                            <i class="ti-trash"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -134,10 +195,28 @@
                             <!-- cart button end -->
                         </div>
                         <!-- end dropdown -->
-                        <a style="background:transparent; border:none;-webkit-appearance: none;" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
-                            aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    </div>
+                    <div class="navbar-cus show-cart">
+                        <a style="background:transparent; border:none;-webkit-appearance: none;" type="button"
+                           data-toggle="collapse" data-target="#navbarToggleExternalContent"
+                           aria-controls="navbarToggleExternalContent" aria-expanded="false"
+                           aria-label="Toggle navigation">
                             <img src="assets/img/nav.png">
                         </a>
+                        <div class="cart-drop-down">
+                            <div class="item-limit textalignstart">
+                                <!-- cart item1 start -->
+                                <div class="d-flex topbottompaddings" *ngFor="let links of headerLinks">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-12 padding-left-15px  padding-right-25px">
+                                        <a [routerLink]="links.routerLink" class="cokl">
+                                            <img [src]="links.image" alt="cart-1" class="img-fluid">
+                                            {{links.name}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- cart item1 end -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

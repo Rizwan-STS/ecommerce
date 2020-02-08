@@ -5,3 +5,18 @@
   padding-bottom: 20px;
   padding-top: 10px;
 }
+.show-option {
+  z-index: 2;
+  opacity: 1;
+  display: block;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.topbottompaddings {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.textalignstart {
+  text-align: start;
+  max-height: 500px;
+}

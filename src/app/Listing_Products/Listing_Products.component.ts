@@ -4,7 +4,7 @@ import { isNullOrUndefined } from "util";
 import { BoxService } from "./box.service";
 import { CartService } from "../cart.service";
 import { EmbryoService } from 'src/app/Embryo.service';
-import { ActivatedRoute } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 declare var Swiper: any;
 declare var $: any;
@@ -37,7 +37,7 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
         // if ()
     }
 
-    constructor(public embryoService: EmbryoService, private appService: AppService, private boxService: BoxService, private cartService: CartService, private activatedRoute: ActivatedRoute) {
+    constructor(public embryoService: EmbryoService, private appService: AppService,private route: Router, private boxService: BoxService, private cartService: CartService, private activatedRoute: ActivatedRoute) {
         for (let i = 1; i <= 12; i++) {
             this.products.push({
                 image: 'assets/img/img-' + i + '.png',
@@ -183,6 +183,7 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     public addToCartVal(value) {
         debugger
         this.embryoService.addToCart(value);
+        // this.AddtoCart(value);
     }
     getBanner(id) {
         this.boxService.getBanners(id).subscribe((data: any) => {
@@ -209,6 +210,9 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
+        if (!localStorage.getItem('boxNumber')) {
+            this.route.navigate(['/BoxNumberPage'])
+        }
         this.getProducts();
         this.getBanner(localStorage.getItem('boxNumber'));
     }

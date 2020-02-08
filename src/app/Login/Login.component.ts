@@ -36,11 +36,23 @@ export class LoginComponent implements OnInit {
         if (this.activatedRoute.snapshot.queryParams.phonenumber) {
             this.phonenumber = this.activatedRoute.snapshot.queryParams.phonenumber;
             this.sendOtp();
-        } 
+        }
     }
 
     switchModal() {
         this.otpSent = !this.otpSent;
+    }
+
+    ValidatePassKey(tb) {
+        $(tb.target).val('');
+        const id = tb.target.id.split('otp')[1]
+        if (document.getElementById('otp' + (+id + 1))) {
+            document.getElementById('otp' + (+id + 1)).focus();
+        } else {
+            setTimeout(() => {
+                document.getElementById('confirm').focus();
+            }, 100)
+        }
     }
 
     login() {
@@ -62,6 +74,7 @@ export class LoginComponent implements OnInit {
             const response = data;
             Constant.ROOT_LOADER = false;
             if (response && response.data.token) {
+                $('.modal-backdrop').remove()
                 response.data.userid = btoa(response.data.userid);
                 response.data.userType = btoa(response.data.userType);
                 localStorage.setItem('token', response.data.token);
