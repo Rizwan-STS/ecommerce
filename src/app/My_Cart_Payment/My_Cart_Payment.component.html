@@ -1,23 +1,25 @@
 <app-Header></app-Header>
-<div class="breadcrum">
+<!--<div class="breadcrum">
     <div class="container">
         <div class="row padding-fifteen">
             <div class="col-xl-9 col-xs-4 col-6">
-                <a class="">  <span><img class="icon-breadcurm" src="assets/img/box2.png"></span> 3840</a>
+                <a class=""> <span><img class="icon-breadcurm" src="assets/img/box2.png"></span> 3840</a>
             </div>
             <div class="col-xl-3  col-xs-8 col-6 text-right no-padding-right">
                 <div class="search-bar collapse show" id="search" style="">
                     <input type="text" class="text-black form-control" placeholder="Search">
-                    <img class="d-block sm-display-none" style="    position: absolute; right: 5px; top: 6px; " src="assets/img/search.png">
+                    <img class="d-block sm-display-none" style="    position: absolute; right: 5px; top: 6px; "
+                         src="assets/img/search.png">
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div>-->
 <!-- product-detail section start -->
-<section class="breadcrumb-padding color-them-1">
+<section class="breadcrumb-padding color-them-1" *ngIf="(allProducts && allProducts.length>0); else elseBlock">
     <div class="container">
-        <div class="row product-service-without-sticky product-detail-list product-quickview-section" *ngIf="(allProducts && allProducts.length>0); else elseBlock">
+        <div class="row product-service-without-sticky product-detail-list product-quickview-section"
+             *ngIf="(allProducts && allProducts.length>0);">
 
             <div class="col-xl-9 ">
 
@@ -25,7 +27,7 @@
 
                     <div class="row  padding-top-25px border-bottom-s">
                         <div class="col-xl-6 col-6 col-xs-6 col-sm-6 text-left">
-                            <p class="font-weight-600 text-medium2">My Cart <span class="cokl">  </span> </p>
+                            <p class="font-weight-600 text-medium2">My Cart <span class="cokl">  </span></p>
                         </div>
                         <div class="col-xl-6 col-6  col-xs-6 col-sm-6 text-right">
                             <p>Clean <img src="assets/img/shape.png"></p>
@@ -34,16 +36,21 @@
 
                     </div>
                     <div class="row   padding-top-25px border-bottom-s" *ngFor="let product of allProducts">
-                        <div class="col-xl-9 col-xs-9 col-sm-9 col-9">
-                            <ng-container *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
+                        <div class="col-xl-6 col-xs-6 col-sm-6 col-6">
+                            <!--<ng-container
+                                    *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
                                 <ng-container *ngIf="images.isDefault">
-                                    <img style="width: 100px; height: auto; float: left" [src]="images.idUrl" alt="cart image">
+                                    <img style="width: 100px; height: auto; float: left" [src]="images.idUrl"
+                                         alt="cart image">
                                 </ng-container>
-                            </ng-container>
-                            <div class="vertical-algintop " style="margin-left: 110px">
-                                <p class="font-weight-600 text-medium2 no-margin-bottom"> {{product?.adminProductsResponseModels?.name}} </p>
-                                <p class="font-weight-600 text-medium2  no-margin-bottom cokl"> ₹ {{ calculateProductSinglePrice(product, quantity.value)}} </p>
-                                <p class="font-weight-600 text-medium2  "> <img src="assets/img/star.png"> 4.7 </p>
+                            </ng-container>-->
+                            <div class="vertical-algintop ">
+                                 <!--style="margin-left: 110px">-->
+                                <p class="font-weight-600 text-medium2 no-margin-bottom">
+                                    {{product?.adminProductsResponseModels?.name}} </p>
+                                <p class="font-weight-600 text-medium2  no-margin-bottom cokl"> ₹ {{
+                                    calculateProductSinglePrice(product, quantity.value)}} </p>
+                                <p class="font-weight-600 text-medium2  "><img src="assets/img/star.png"> 4.7 </p>
                             </div>
                             <div fxFlex.xs="10" fxFlex.sm="10" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10">
                                 <div class="cart-item-price">
@@ -67,23 +74,28 @@
 
                             </div>
                         </div> -->
-                        <div class="col-xl-3 col-xs-3 col-sm-3 col-3 text-right">
+                        <div class="col-xl-6 col-xs-6 col-sm-6 col-6 text-right">
                             <div class="d-block text-right">
                                 <div class="d-inline-block padding-right-15px">
                                     <div class="quantity sm-border-lr-light-gray sm-border-bottom-light-gray">
                                         <div class="plus-minus sm-padding-top-15px sm-padding-bottom-15px">
                                             <div class="padding-5px  d-inline-block">
-                                                <a href="javaScript:void(0)" class="minus-btn text-black color-them-1 padding-5px cokl" (click)="removeTCart(product)"><i
+                                                <a href="javaScript:void(0)"
+                                                   class="minus-btn text-black color-them-1 padding-5px cokl"
+                                                   (click)="removeTCart(product)"><i
                                                         class="fas fa-minus"></i></a>
-                                                <input type="text" name="name" #quantity (blur)="checkQuantity(product)" value="{{fetchQunt(product)}}" class="">
-                                                <a href="javaScript:void(0)" class="plus-btn text-black color-them-1 padding-5px cokl" (click)="addToCartProduct(product)"><i
+                                                <input type="text" name="name" #quantity (blur)="checkQuantity(product)"
+                                                       value="{{fetchQunt(product)}}" class="">
+                                                <a href="javaScript:void(0)"
+                                                   class="plus-btn text-black color-them-1 padding-5px cokl"
+                                                   (click)="addToCartProduct(product)"><i
                                                         class="fas fa-plus"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="d-inline-block">
-                                    <p> <img src="assets/img/delete.png"> </p>
+                                    <p><img src="assets/img/delete.png"></p>
                                 </div>
                             </div>
 
@@ -104,14 +116,15 @@
                         <h3 class="padding-top-25px padding-left-15px    product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
                             ADD A TIP FOR YOUR DRIVER </h3>
 
-                        <p class=" padding-left-15px  padding-right-15px text-small text-justify"> Your driver, (driver_name) is from a small town in Mandya. He dreams of owning a home one day </p>
-
+                        <p class=" padding-left-15px  padding-right-15px text-small text-justify"> Your driver,
+                            (driver_name) is from a small town in Mandya. He dreams of owning a home one day </p>
 
 
                         <div class="clearfix text-center position-relative">
                             <div class="search-bar collapse show" id="search">
-                                <input class="text-black border-radius-4" type="text" id="tip_amount" [(ngModel)]="tipamount" (blur)="tipPrice($event);"
-                                    placeholder="Tip amount" />
+                                <input class="text-black border-radius-4" type="text" id="tip_amount" style="padding-left: 40px;"
+                                       [(ngModel)]="tipamount" (blur)="tipPrice($event);"
+                                       placeholder="Tip amount"/>
                                 <img style=" position: absolute; left: 30px; top: 10px; " src="assets/img/ic.png">
                             </div>
                         </div>
@@ -124,7 +137,8 @@
                                 </div>
                                 <div class="d-inline-block">
                                     <h6 class="text-small padding-left-5px padding-right-4px">No Promo Code Applied</h6>
-                                    <p class="text-extra-small padding-left-10px no-margin-bottom">3 Promo Code Available
+                                    <p class="text-extra-small padding-left-10px no-margin-bottom">3 Promo Code
+                                        Available
                                     </p>
                                 </div>
                                 <div class="d-inline-block">
@@ -188,5 +202,46 @@
     </div>
 </section>
 <!-- product-detail section end -->
+<ng-template #elseBlock>
+    <section class="breadcrumb-padding color-them-1">
+        <div class="box-top">&nbsp;</div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 text-center col-md-12">
+                    <div class=" box-rounder padding-nine-top">
+                            <span>
+                                <img class="animated zoomIn" src="./assets/img/Cart.png">
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </section>
+    <section class="clearfix  ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12 center-col text-center">
+                    <div class="forgot-pwd">
+                        <!-- title start -->
+                        <div class="margin-bottom-15px">
+                            <h3 class="font-weight-600 text-extra-large md-title-mdall"> Your Shopping Cart is
+                                Empty </h3>
+
+                        </div>
+                        <!-- title end -->
+                        <div class="forgot-box">
+
+                            <!-- get password start -->
+                            <div class="new-pwd">
+                                <a routerLink="/" class="btn btn-small"> Go for Shopping </a>
+                            </div>
+                            <!-- get password end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>
 <app-Footer></app-Footer>

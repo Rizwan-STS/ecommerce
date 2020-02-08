@@ -45,8 +45,7 @@
                     <!-- header navbar start -->
                     <nav class="navbar  navbar-cus navbar-expand-lg" id="navbar">
                         <!-- navbar toggler start -->
-                        <button style="margin-right: 65px;" class="  navbar-toggler toggler-example" type="button" routerLink="/cart"
-                                data-toggle="collapse" data-target="#navbarSupportedContent1">
+                        <button style="margin-right: 65px;" class="  navbar-toggler toggler-example" type="button" routerLink="/MyCartPayment">
                             <a>
                                 <img src="assets/img/cartset.png">
                             </a>
@@ -75,7 +74,7 @@
                                 <!-- header-nav category end -->
                                 <!-- header-nav blog start -->
                                 <li class="nav-blog">
-                                    <a class="drop-blog" routerLink="/cart"><img src="assets/img/cart-white.png">My Cart
+                                    <a class="drop-blog" routerLink="/MyCartPayment"><img src="assets/img/cart-white.png">My Cart
                                     </a>
                                 </li>
                                 <!-- header-nav blog end -->
@@ -210,7 +209,7 @@
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-12 padding-left-15px  padding-right-25px">
                                         <a [routerLink]="links.routerLink" class="cokl">
                                             <img [src]="links.image" alt="cart-1" class="img-fluid">
-                                            {{links.name}}
+                                            <span style="padding-left: 15px;">{{links.name}}</span>
                                         </a>
                                     </div>
                                 </div>

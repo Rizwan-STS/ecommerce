@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-My_Cart',
@@ -8,7 +9,9 @@ import { AppService } from 'src/app/app.service';
 })
 export class MyCartComponent implements OnInit {
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private router: Router) {
+    this.router.navigate(['/MyCartPayment']);
+  }
 
   ngOnInit() {
   }
