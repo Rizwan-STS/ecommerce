@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
       },
       {
         name: 'My Cart',
-        routerLink: '/cart',
+        routerLink: '/MyCartPayment',
           // image: 'assets/img/cart-white-pro.png'
       },
       {
