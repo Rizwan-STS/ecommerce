@@ -12,9 +12,11 @@
                             <img src="assets/img/close-btn.png">
                         </a>
                         <div class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center">
-                            <div class="padding-nine-top padding-nine-bottom padding-right-15px padding-left-15px width-100-d" *ngIf="selectedProduct">
+                            <div class="padding-nine-top padding-nine-bottom padding-right-15px padding-left-15px width-100-d"
+                                 *ngIf="selectedProduct">
                                 <div class="clearfix text-center border-light-site padding-25px  margin-bottom-10px">
-                                    <img class="cust-prod-image" src="{{(selectedProduct && selectedProduct && selectedProduct.adminProductsResponseModels.productsImagesResponseModel && selectedProduct.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  selectedProduct.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"
+                                    <img class="cust-prod-image"
+                                         src="{{(selectedProduct && selectedProduct && selectedProduct.adminProductsResponseModels.productsImagesResponseModel && selectedProduct.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  selectedProduct.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"
                                     />
                                 </div>
                                 <h5 class="text-large"> {{selectedProduct.adminProductsResponseModels.name}} </h5>
@@ -40,21 +42,24 @@
                                         <!-- product color Brand -->
                                         <div class="color d-block   ">
                                             <label class="font-weight-600 no-margin-bottom cokl">Brand</label>
-                                            <p class="text-medium margin-one-bottom">{{selectedProduct.adminProductsResponseModels.brandname}}</p>
+                                            <p class="text-medium margin-one-bottom">
+                                                {{selectedProduct.adminProductsResponseModels.brandname}}</p>
                                         </div>
                                         <!-- product Brand end -->
                                         <hr class="border-light-site margin-one-top margin-one-bottom">
                                         <!-- product color Brand -->
                                         <div class="color d-block    ">
                                             <label class="font-weight-600 no-margin-bottom cokl">Category</label>
-                                            <p class="text-medium margin-one-bottom">{{selectedProduct.adminProductsResponseModels.categoryname}}</p>
+                                            <p class="text-medium margin-one-bottom">
+                                                {{selectedProduct.adminProductsResponseModels.categoryname}}</p>
                                         </div>
                                         <!-- product Brand end -->
                                         <hr class="border-light-site margin-one-top margin-one-bottom">
                                         <!-- product color Brand -->
                                         <div class="color d-block  ">
                                             <label class="font-weight-600 no-margin-bottom cokl">Size</label>
-                                            <p class="text-medium margin-one-bottom">{{selectedProduct.adminProductsResponseModels.sizesname}}</p>
+                                            <p class="text-medium margin-one-bottom">
+                                                {{selectedProduct.adminProductsResponseModels.sizesname}}</p>
                                         </div>
                                         <!-- product Brand end -->
                                     </div>
@@ -72,9 +77,11 @@
                                     <div class="quantity d-block margin-bottom-25px sm-margin-bottom-20px">
                                         <label class="d-block font-weight-600 no-margin-bottom colo text-white">Quantity:</label>
                                         <span class="  sm-text-large">
-                                            <a href="javascript:void(0)"  (click)="removeTCart(selectedProduct)" class="minus-btn op-set text-black text-white"><i
+                                            <a href="javascript:void(0)" (click)="removeTCart(selectedProduct)"
+                                               class="minus-btn op-set text-black text-white"><i
                                                     class="fas fa-minus bg-transparent"></i></a>
-                                                    <input type="text" disabled id="quantity" name="quantity" value="{{fetchQunt(selectedProduct)}}">
+                                                    <input type="text" disabled id="quantity" name="quantity"
+                                                           value="{{fetchQunt(selectedProduct)}}">
                                             <a href="javascript:void(0)" (click)="addToCartProduct(selectedProduct)"
                                                class="plus-btn op-set text-black text-white"><i
                                                     class="fas fa-plus bg-transparent"></i></a>
@@ -82,7 +89,8 @@
                                     </div>
                                 </div>
                                 <div class="d-inline-block">
-                                    <a href="javascript:void(0)" class="btn btn-small op-set" (click)="addToCartVal(selectedProduct)"> <img
+                                    <a href="javascript:void(0)" class="btn btn-small op-set"
+                                       (click)="addToCartVal(selectedProduct)"> <img
                                             src="assets/img/cart-white.png"> Add to Cart </a>
                                 </div>
                             </div>
@@ -99,10 +107,12 @@
     <section class="padding-25px-tb">
         <div class="container-fluid">
 
-            <div class="swiper-container single-item-rtl swiper-container-initialized swiper-container-horizontal" [hidden]="productsBanner.length === 0"
-                id="product-slider">
+            <div class="swiper-container single-item-rtl swiper-container-initialized swiper-container-horizontal"
+                 [hidden]="productsBanner.length === 0"
+                 id="product-slider">
                 <div class="swiper-wrapper" style="transform: translate3d(-570px, 0px, 0px); transition-duration: 0ms;">
-                    <div class="swiper-slide border-radius-4" style="width: 255px; margin-right: 30px;" *ngFor="let banner of productsBanner;">
+                    <div class="swiper-slide border-radius-4" style="width: 255px; margin-right: 30px;"
+                         *ngFor="let banner of productsBanner;">
                         <!-- product start -->
                         <div class="column padding-top-25px padding-bottom-25px">
                             <div class="product-img">
@@ -110,10 +120,14 @@
                                 <figure class="margin-bottom-10px">
                                     <a href="javascript:void(0)" class="image">
                                         <!-- product first image start -->
-                                        <img class="pic-1 img-fluid" src="{{isMobile() ? banner.idUrlMobile : banner.idUrl}}" alt="productimg16">
+                                        <img class="pic-1 img-fluid"
+                                             src="{{isMobile() ? banner.idUrlMobile : banner.idUrl}}"
+                                             alt="productimg16">
                                         <!-- product first image end -->
                                         <!-- product second image start -->
-                                        <img class="pic-2 img-fluid" src="{{isMobile() ? banner.idUrlMobile : banner.idUrl}}" alt="productimg16-16">
+                                        <img class="pic-2 img-fluid"
+                                             src="{{isMobile() ? banner.idUrlMobile : banner.idUrl}}"
+                                             alt="productimg16-16">
                                         <!-- product second image end -->
 
                                     </a>
@@ -174,19 +188,23 @@
             <!-- sortby end -->
         </div>
         <!-- border start -->
-        <div class="border-bottom-light-new padding-top-15px margin-bottom-15px  sm-display-none" style="  width: 82%;  margin-top: -33px;  margin-left: 117px;"></div>
+        <div class="border-bottom-light-new padding-top-15px margin-bottom-15px  sm-display-none"
+             style="  width: 82%;  margin-top: -33px;  margin-left: 117px;"></div>
         <!-- border end -->
         <div [hidden]="displaytype === 'frame'" id="box" class="row padding-top-15px">
 
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of productsArray">
+            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px"
+                 *ngFor="let product of productsArray">
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
                     <a routerLink="/ProductDetail/{{product.id}}">
-                        <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}" alt="blog-grid1" class="img-fluid cust-prod-image ">
+                        <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"
+                             alt="blog-grid1" class="img-fluid cust-prod-image ">
                     </a>
                     <hr>
                     <div class="padding-left-5px productname">
-                        <p class="text-left text-medium1 margin-bottom-5px">{{product.adminProductsResponseModels.name}}</p>
+                        <p class="text-left text-medium1 margin-bottom-5px">
+                            {{product.adminProductsResponseModels.name}}</p>
                         <p class="d-flex margin-bottom-5px">
                             <span class="text-left width-100-px cokl">
                                 ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
@@ -200,9 +218,11 @@
                     <div class="margin-bottom-15px">
                         <span class="quantity d-block">
                             <span class="padding-5px border-light-gray sm-text-large">
-                                    <a href="javascript:void(0)"  (click)="removeTCart(product)" class="minus-btn op-set text-black text-white"><i
-                                        class="fas fa-minus bg-transparent"></i></a>
-                                        <input type="text" disabled id="quantity" name="quantity" value="{{fetchQunt(product)}}">
+                                    <a href="javascript:void(0)" (click)="removeTCart(product)"
+                                       class="minus-btn op-set text-black text-white"><i
+                                            class="fas fa-minus bg-transparent"></i></a>
+                                        <input type="text" disabled id="quantity" name="quantity"
+                                               value="{{fetchQunt(product)}}">
                                 <a href="javascript:void(0)" (click)="addToCartProduct(product)"
                                    class="plus-btn op-set text-black text-white"><i
                                         class="fas fa-plus bg-transparent"></i></a>
@@ -210,7 +230,9 @@
                         </span>
                     </div>
                     <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                            <a href="javascript:void(0)" class="btn btn-small op-set" (click)="addToCartVal(product)"> <img
+                        <a href="javascript:void(0)"
+                           class="btn btn-small op-set border-radius-4 form-control text-center text-small2 line-height-26"
+                           (click)="AddtoCart(product)"> <img
                                 src="assets/img/cart-white.png"> Add to Cart </a>
                     </div>
                 </div>
@@ -220,16 +242,19 @@
         </div>
         <div [hidden]="displaytype === 'box'" id="frame" class="row padding-top-15px">
 
-            <div class="col-xl-4 col-lg-4 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of productsArray">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px"
+                 *ngFor="let product of productsArray">
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
                     <div class="d-inline-block">
                         <a routerLink="/ProductDetail/{{product.id}}">
-                            <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}" alt="blog-grid1" class="img-fluid d-inline-block cust-prod-image">
+                            <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"
+                                 alt="blog-grid1" class="img-fluid d-inline-block cust-prod-image">
                         </a>
                     </div>
                     <div class="padding-left-5px d-inline-block" style="vertical-align: top;">
-                        <p class="text-left text-medium1 margin-bottom-5px">{{product.adminProductsResponseModels.name}}</p>
+                        <p class="text-left text-medium1 margin-bottom-5px">
+                            {{product.adminProductsResponseModels.name}}</p>
                         <p class=" margin-bottom-5px">
                             <span class="text-left d-block cokl">
                                  ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
@@ -241,44 +266,48 @@
                                 </div>
                                 <div class="d-inline-block text-right">
                                     <span class="quantity d-block">
-
                                         <span class="padding-5px border-light-gray sm-text-large">
-                                            <a href="javascript:void(0)" (click)="MinusProductQt(product)" class="minus-btn cokl text-black"><i
+                                            <a href="javascript:void(0)" (click)="MinusProductQt(product)"
+                                               class="minus-btn cokl text-black"><i
                                                     class="fas fa-minus bg-transparent"></i></a>
-                                            <input type="text" name="name" value="1" [(ngModel)]="product.adminProductsResponseModels.prQuantity"
+                                            <input type="text" name="name" value="1"
+                                                   [(ngModel)]="product.adminProductsResponseModels.prQuantity"
                                                    class="border-left-light-gray border-right-light-gray">
-                                            <a href="javascript:void(0)" (click)="PlusProductQt(product)" class="plus-btn cokl text-black"><i
+                                            <a href="javascript:void(0)" (click)="PlusProductQt(product)"
+                                               class="plus-btn cokl text-black"><i
                                                     class="fas fa-plus bg-transparent"></i></a>
                                         </span>
+                                    </span>
+                                </div>
                             </span>
-                    </div>
-                    </span>
-                    </p>
-                    <div class=" clearfix settop-margin15  padding-bottom-15px padding-right-15px">
-                        <a href="javascript:void(0)" (click)="AddtoCart()" class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
+                        </p>
+                        <p></p>
+                        <div class=" clearfix settop-margin15  padding-bottom-15px padding-right-15px">
+                            <a href="javascript:void(0)" (click)="AddtoCart(product)"
+                               class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
                                     src="assets/img/cart-white.png" width="15px"> Add to cart</a>
+                        </div>
                     </div>
                 </div>
+                <!-- blog image end -->
             </div>
-            <!-- blog image end -->
         </div>
-    </div>
-    <!-- pagination start -->
-    <!--<div class="page-bar d-flex justify-content-start">
-            <ul class="pag-nav">
-                <li><a href="javascript:void(0)" class="sm-text-large"><i class="fas fa-long-arrow-alt-left"></i></a>
-                </li>
-                <li class="active sm-text-large"><a href="javascript:void(0)">1</a></li>
-                <li><a href="javascript:void(0)" class="sm-text-large">2</a></li>
-                <li><a href="javascript:void(0)" class="sm-text-large">3</a></li>
-                <li><a href="javascript:void(0)" class="sm-text-large">4</a></li>
-                <li><a href="javascript:void(0)" class="sm-text-large">5</a></li>
-                <li><a href="javascript:void(0)" class="sm-text-large"><i class="fas fa-long-arrow-alt-right"></i></a>
-                </li>
-            </ul>
-        </div>-->
-    <!-- pagination end -->
-    <br>
+        <!-- pagination start -->
+        <!--<div class="page-bar d-flex justify-content-start">
+                <ul class="pag-nav">
+                    <li><a href="javascript:void(0)" class="sm-text-large"><i class="fas fa-long-arrow-alt-left"></i></a>
+                    </li>
+                    <li class="active sm-text-large"><a href="javascript:void(0)">1</a></li>
+                    <li><a href="javascript:void(0)" class="sm-text-large">2</a></li>
+                    <li><a href="javascript:void(0)" class="sm-text-large">3</a></li>
+                    <li><a href="javascript:void(0)" class="sm-text-large">4</a></li>
+                    <li><a href="javascript:void(0)" class="sm-text-large">5</a></li>
+                    <li><a href="javascript:void(0)" class="sm-text-large"><i class="fas fa-long-arrow-alt-right"></i></a>
+                    </li>
+                </ul>
+            </div>-->
+        <!-- pagination end -->
+        <br>
     </div>
 </section>
 <!-- blog grid section end -->

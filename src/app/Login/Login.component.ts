@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        setTimeout(() => {
+        setInterval(() => {
             $('#myModal1').modal("show")
         }, 1000);
         this.checkSession();
@@ -36,11 +36,50 @@ export class LoginComponent implements OnInit {
         if (this.activatedRoute.snapshot.queryParams.phonenumber) {
             this.phonenumber = this.activatedRoute.snapshot.queryParams.phonenumber;
             this.sendOtp();
-        } 
+        }
     }
 
     switchModal() {
         this.otpSent = !this.otpSent;
+    }
+
+    isNumberKey(evt, nxt, prv) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        // if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        //     return false;
+        // }
+        setTimeout(() => {
+            $(`#${nxt}`).focus();
+        }, 100)
+        return true;
+    }
+
+    KeyDown(event, nxt, prv) {
+        if (event.key == 'Backspace' && prv) {
+            setTimeout(() => {
+                $('#' + prv).focus();
+            }, 100);
+            return true;
+        } else {
+            console.log('Here');
+            if (nxt === 'submit') {
+                setTimeout(() => {
+                    this.login();
+                }, 1000);
+            }
+        }
+    }
+
+    ValidatePassKey(tb) {
+        $(tb.target).val('');
+        const id = tb.target.id.split('otp')[1]
+        if (document.getElementById('otp' + (+id + 1))) {
+            document.getElementById('otp' + (+id + 1)).focus();
+        } else {
+            setTimeout(() => {
+                document.getElementById('confirm').focus();
+            }, 100)
+        }
     }
 
     login() {
@@ -50,7 +89,7 @@ export class LoginComponent implements OnInit {
         // this.loginForm.patchValue({
         //     type: 'User'
         // });
-        this.otpcode = this.otp1 + this.otp2 + this.otp3 + this.otp4;
+        this.otpcode = this.otp1 + '' + this.otp2 + this.otp3 + this.otp4;
         let loginForm = {
             phonenumber: this.phonenumber,
             password: this.otpcode,
@@ -62,6 +101,7 @@ export class LoginComponent implements OnInit {
             const response = data;
             Constant.ROOT_LOADER = false;
             if (response && response.data.token) {
+                $('.modal-backdrop').remove()
                 response.data.userid = btoa(response.data.userid);
                 response.data.userType = btoa(response.data.userType);
                 localStorage.setItem('token', response.data.token);

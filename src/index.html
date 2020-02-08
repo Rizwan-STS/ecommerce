@@ -2,34 +2,35 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Ridekaart</title>
-  <base href="/">
-  <link rel="icon" type="image/x-icon" href="assets/img/logo-title.ico">
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
-  <!--<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">-->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
-  <!--<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-  &lt;!&ndash; animation &ndash;&gt;
-  <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
-  <link rel="stylesheet" type="text/css" href="/assets/css/aos.css">
-  &lt;!&ndash; owl slider &ndash;&gt;
-  <link rel="stylesheet" type="text/css" href="/assets/css/swiper.min.css">
-  <link rel="stylesheet" type="text/css" href="/assets/css/owl.carousel.min.css">
-  <link rel="stylesheet" type="text/css" href="/assets/css/owl.theme.default.min.css">
-  &lt;!&ndash; font awesome &ndash;&gt;
-  <link rel="stylesheet" type="text/css" href="/assets/css/all.min.css">
-  <link rel="stylesheet" type="text/css" href="/assets/css/themify-icons.css">
-  &lt;!&ndash; style &ndash;&gt;
-  <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
-  &lt;!&ndash; responsive &ndash;&gt;
-  <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">-->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--<link rel="icon" type="image/x-icon" href="favicon.ico">-->
+    <meta charset="utf-8">
+    <title>Ridekaart</title>
+    <base href="/">
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-title.ico">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <!--<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    &lt;!&ndash; animation &ndash;&gt;
+    <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/aos.css">
+    &lt;!&ndash; owl slider &ndash;&gt;
+    <link rel="stylesheet" type="text/css" href="/assets/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/owl.theme.default.min.css">
+    &lt;!&ndash; font awesome &ndash;&gt;
+    <link rel="stylesheet" type="text/css" href="/assets/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/themify-icons.css">
+    &lt;!&ndash; style &ndash;&gt;
+    <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+    &lt;!&ndash; responsive &ndash;&gt;
+    <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="icon" type="image/x-icon" href="favicon.ico">-->
 </head>
 
 <body>
-  <app-root></app-root>
+<a class="scroll" id="scroll"><span><i class="ti-arrow-up"></i></span></a>
+<app-root></app-root>
 </body>
 <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
@@ -37,8 +38,9 @@
 <script src="/assets/js/jquery-3.3.1.min.js"></script>
 <!-- instagramFeed -->
 <script src="/assets/js/jquery.instagramFeed.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
 <!-- popper js -->
 <script src="/assets/js/popper.min.js"></script>
@@ -56,6 +58,19 @@
 <script src="/assets/js/owl.carousel.min.js"></script>
 <!-- product-zoom -->
 <script src="/assets/js/jquery.zoom.js"></script>
+<script>
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 200) {
+            $('#scroll').fadeIn();
+        } else {
+            $('#scroll').fadeOut();
+        }
+    });
+    $('#scroll').on('click',function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+</script>
 <!-- custom -->
 <!--<script src="/assets/js/custom.js"></script>-->
 </html>

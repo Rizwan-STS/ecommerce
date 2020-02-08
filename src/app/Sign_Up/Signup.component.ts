@@ -21,9 +21,13 @@ export class SignUpComponent implements OnInit {
     }
 
     ngOnInit() {
-        setTimeout(() => {
+        setInterval(() => {
             $('#myModal1').modal("show") 
         }, 1000)
+    }
+
+    login(){
+        this.router.navigate(['Login']);
     }
 
     switchModal() {

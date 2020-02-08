@@ -6,7 +6,7 @@
             <div class="col-xl-12 col-lg-12 text-center col-md-12">
                 <div class=" box-rounder padding-nine-top">
                     <span>
-                        <img class="animated zoomIn" src="assets/img/box.png">
+                        <img class="animated zoomIn" style="padding: 0px !important;" src="assets/img/box.png">
                     </span>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="forgot-box">
 
                         <!-- input email or user start -->
-                        <div class="email-user">
+                        <div class="email-user" style="padding: 0px !important;">
                             <input id="bx0" type="number" maxlength="1" style="border: 1px solid #fd9652;" [(ngModel)]="nums[0]" required (keypress)="isNumberKey($event, 'bx1', '')" (keydown)="KeyDown($event, 'bx1', '')">
                             <input id="bx1" type="number" maxlength="1" style="border: 1px solid #fd9652;" [(ngModel)]="nums[1]" required (keypress)="isNumberKey($event, 'bx2', 'bx1')" (keydown)="KeyDown($event, 'bx2', 'bx1')">
                             <input id="bx2" type="number" maxlength="1" style="border: 1px solid #fd9652;" [(ngModel)]="nums[2]" required (keypress)="isNumberKey($event, 'bx3', 'bx2')" (keydown)="KeyDown($event, 'bx3', 'bx2')">

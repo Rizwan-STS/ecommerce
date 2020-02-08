@@ -10,22 +10,29 @@
                     <div class="row">
                         <a class="rounder animated zoomIn" data-dismiss="modal"> <img src="assets/img/close-btn.png">
                         </a>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 center-col text-center" style="margin: 0px !important;padding: 0px !important;">
+                            <div class="forgot-pwd">
 
-                            <div class="padding-nineteen-top padding-nineteen-bottom padding-right-15px padding-left-15px">
-                                <h5>Hi There!</h5>
+                                <div class="padding-nineteen-top padding-nineteen-bottom">
+                                    <h5>Hi There!</h5>
 
-                                <!-- pop-up news-letter start -->
-                                <p class="padding-eight-top margin-one-half-bottom">Register</p>
-                                <div class="clearfix">
-                                    <div class="input-mail">
-                                        <input type="text" [(ngModel)]="name" placeholder="Enter Name" class=" inputbox-heigt  no-border color-them-1"><br/>
-                                        <input type="number" [(ngModel)]="phonenumber" placeholder="Enter Phone Number" class=" inputbox-heigt  no-border color-them-1">
-                                    </div>
+                                    <!-- pop-up news-letter start -->
+                                    <p class="padding-eight-top margin-one-half-bottom">Register</p>
+                                    <div class="clearfix"></div>
                                     <br>
-                                    <button class="padding-two btn btn-button form-control confirm-c" (click)="Signup()">Confirm</button>
+                                    <div class="forgot-box" style="    padding: 20px !important;">
+                                        <div class="input-mail">
+                                            <input type="text" [(ngModel)]="name" placeholder="Enter Name" class=" inputbox-height  no-border color-them-1"><br/>
+                                            <br>
+                                            <input type="number" [(ngModel)]="phonenumber" placeholder="Enter Phone Number" class=" inputbox-height  no-border color-them-1">
+                                        </div>
+                                        <br>
+                                        <button class="padding-two btn btn-button form-control confirm-c" (click)="Signup()">Confirm</button>
+                                        <br/>
+                                        <p style="font-size: 13px;background-color: #FFF5EE;color: #333;"><a (click)="login()" class="">Have Account? Login</a></p>
+                                    </div>
+                                    <!-- pop-up news-letter end -->
                                 </div>
-                                <!-- pop-up news-letter end -->
                             </div>
                         </div>
 
