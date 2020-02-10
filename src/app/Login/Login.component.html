@@ -28,13 +28,13 @@
                                     <div class="clearfix"></div>
                                     <div class="forgot-box">
                                         <div class="email-user" style="padding: 0px;">
-                                            <input id="bx0" type="number" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp1" required (keypress)="isNumberKey($event, 'bx1', '')"
+                                            <input id="bx0" type="text" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp1" required (keypress)="isNumberKey($event, 'bx1', '')"
                                                 (keydown)="KeyDown($event, 'bx1', '')">
-                                            <input id="bx1" type="number" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp2" required (keypress)="isNumberKey($event, 'bx2', 'bx1')"
+                                            <input id="bx1" type="text" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp2" required (keypress)="isNumberKey($event, 'bx2', 'bx1')"
                                                 (keydown)="KeyDown($event, 'bx2', 'bx1')">
-                                            <input id="bx2" type="number" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp3" required (keypress)="isNumberKey($event, 'bx3', 'bx2')"
+                                            <input id="bx2" type="text" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp3" required (keypress)="isNumberKey($event, 'bx3', 'bx2')"
                                                 (keydown)="KeyDown($event, 'bx3', 'bx2')">
-                                            <input id="bx3" type="number" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp4" required (keypress)="isNumberKey($event, 'submit', 'bx3')"
+                                            <input id="bx3" type="text" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp4" required (keypress)="isNumberKey($event, 'submit', 'bx3')"
                                                 (keydown)="KeyDown($event, 'submit', 'bx3')">
                                         </div>
                                         <br/>
