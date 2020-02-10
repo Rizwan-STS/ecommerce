@@ -56,6 +56,7 @@ export class MyCartPaymentComponent implements OnInit {
       localStorage.setItem('checkoutClicked', "true");
       localStorage.removeItem('checkoutClicked');
       this.allProducts = this.embryoService.localStorageCartProducts;
+      console.log(this.allProducts );
       this.tipamount = parseFloat(localStorage.getItem('tipamount'));
       this.promoCodeEnt = localStorage.getItem('promocode');
       if (!isNullOrUndefined(this.promoCodeEnt)) {
@@ -153,19 +154,16 @@ export class MyCartPaymentComponent implements OnInit {
     }
 
     public removeProduct(value: any) {
-      // const message = 'Are you sure you want to delete this product?';
-      // this.embryoService.confirmationPopup(message).subscribe(res => {
-      //   this.popupResponse = res;
-      // },
-      //   err => console.log(err),
-      //   () => this.getPopupResponse(this.popupResponse, value)
-      // );
+      this.getPopupResponse(this.popupResponse, value)
     }
 
     public getPopupResponse(response, value) {
-      if (response) {
         this.embryoService.removeLocalCartProduct(value);
-      }
+    }
+
+    public clearAll() {
+      localStorage.removeItem("cart_item");
+      this.allProducts = [];
     }
 
     checkQuantity(prod) {

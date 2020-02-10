@@ -16,8 +16,8 @@
 <div class="web-tool" [hidden]="!webTool">
     <!-- cart-side-icon start -->
     <div class="cart-side-icon">
-        <a href="javascript:void(0)" routerLink="/MyCart"><i
-                class="ti-shopping-cart-full"></i><span>Checkout 1 item</span></a>
+        <a href="javascript:void(0)"><i
+                class="ti-shopping-cart-full"></i><span routerLink="/MyCartPayment">Checkout {{allProducts.length}} item</span></a>
     </div>
     <!-- cart-side-icon end -->
 </div>

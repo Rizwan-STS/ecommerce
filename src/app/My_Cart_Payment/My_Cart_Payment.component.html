@@ -30,7 +30,7 @@
                             <p class="font-weight-600 text-medium2">My Cart <span class="cokl">  </span></p>
                         </div>
                         <div class="col-xl-6 col-6  col-xs-6 col-sm-6 text-right">
-                            <p>Clean <img src="assets/img/shape.png"></p>
+                            <p (click)="clearAll()">Clean <img src="assets/img/shape.png" ></p>
                         </div>
 
 
@@ -50,7 +50,7 @@
                                     {{product?.adminProductsResponseModels?.name}} </p>
                                 <p class="font-weight-600 text-medium2  no-margin-bottom cokl"> ₹ {{
                                     calculateProductSinglePrice(product, quantity.value)}} </p>
-                                <p class="font-weight-600 text-medium2  "><img src="assets/img/star.png"> 4.7 </p>
+                                <p class="font-weight-600 text-medium2  "><img src="assets/img/star.png"> {{product.rating}} </p>
                             </div>
                             <div fxFlex.xs="10" fxFlex.sm="10" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10">
                                 <div class="cart-item-price">
@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                                 <div class="d-inline-block">
-                                    <p><img src="assets/img/delete.png"></p>
+                                    <p><img src="assets/img/delete.png" (click)="removeProduct(product)"></p>
                                 </div>
                             </div>
                         </div>
@@ -206,7 +206,7 @@
                 <div class="col-xl-12 col-lg-12 text-center col-md-12">
                     <div class=" box-rounder padding-nine-top">
                             <span>
-                                <img class="animated zoomIn" src="./assets/img/Cart.png">
+                                <img class="animated zoomIn" src="./assets/img/cart.png">
                             </span>
                     </div>
                 </div>
