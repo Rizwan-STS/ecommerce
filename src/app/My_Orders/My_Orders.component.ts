@@ -97,7 +97,7 @@ export class MyOrdersComponent implements OnInit {
     }, (error) => {
       Constant.ROOT_LOADER = false;
       // this.errorMessage = error.error.message;
-          this.toastr.success('Error!', error.error.message);
+      this.toastr.success('Error!', error.error.message);
       window.scrollTo(0, 0);
     });
 

@@ -3,17 +3,18 @@
     <div class="container">
         <div class="clearfix">
             <!-- start -->
-            <div class="row margin-one-top" *ngFor="let data of usersList.data; let ind = index;">
-                <div class=" border-radius-3 col-xl-12 col-lg-12 col-md-12">
-                    <div class="clearfix">
-                        <h5 class=" text-extra-medium">{{data.createdDate.split('-')[2].split(' ')[0]}} </h5>
-                    </div>
-                    <div class="">
-                        <!-- question start -->
-                        <div class="bg-white  padding-two  ">
-                            <!-- question title start -->
-                            <div class="faqs">
-                                <a class="text-black-ni" data-toggle="collapse" href="#collapse{{ind}}">
+            <ng-container *ngIf="usersList">
+                <div class="row margin-one-top" *ngFor="let data of usersList.data; let ind = index;">
+                    <div class=" border-radius-3 col-xl-12 col-lg-12 col-md-12">
+                        <div class="clearfix">
+                            <h5 class=" text-extra-medium">{{data.createdDate.split('-')[2].split(' ')[0]}} </h5>
+                        </div>
+                        <div class="">
+                            <!-- question start -->
+                            <div class="bg-white  padding-two  ">
+                                <!-- question title start -->
+                                <div class="faqs">
+                                    <a class="text-black-ni" data-toggle="collapse" href="#collapse{{ind}}">
                                     <span class="text-extra-medium text-black-ni order-line-width"></span>
                                             <span class="datesets">
                                                 <span class="date">{{data.createdDate.split('-')[0]}} </span>
@@ -39,39 +40,40 @@
 
                                         <i class="mr-fix color-them-1 cokl fas fa-plus b  padding-10px"></i>
                                 </a>
-                            </div>
-                            <!-- question title end -->
-                            <!-- question description start -->
-                            <div id="collapse{{ind}}" class="collapse   padding-three-top ">
-                                <div class="row bottompadding" *ngFor="let prodct of data.product">
-                                    <ng-container *ngIf="prodct.type!='Tip'">
-                                        <div class="col-md-3 col-sm-3 col-xs-3" fxFlex.xs="25" fxFlex.sm="25" fxFlex.md="25" fxFlex.lg="25" fxFlex.xl="25">
-                                            <img src="{{prodct.mainImage}}" class="imagestyle" width="{{imageWidth}}" height="{{imageHeight}}" />
-                                        </div>
-                                        <div class="col-md-9 col-sm-9 col-xs-9" fxFlex.xs="75" fxFlex.sm="75" fxFlex.md="25" fxFlex.lg="75" fxFlex.xl="75">
-                                            <h4 style="text-align:left;">{{prodct.productName}}</h4>
-                                            <div class="row" style="text-align:left;">
-                                                <div class="col-md-6 col-sm-12 col-xs-12">
-                                                    <p>Price : Rs. {{prodct.mainPrice | number : '1.2-2'}}</p>
-                                                    <p>Product Type : {{prodct.productType}}</p>
-                                                    <!-- <p>Commission : {{prodct.totalCommission | number : '1.2-2'}}</p> -->
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                                    <p>Quantity: {{prodct.quantity}}</p>
-                                                    <!-- <p>Type: {{prodct.type}}</p> -->
+                                </div>
+                                <!-- question title end -->
+                                <!-- question description start -->
+                                <div id="collapse{{ind}}" class="collapse   padding-three-top ">
+                                    <div class="row bottompadding" *ngFor="let prodct of data.product">
+                                        <ng-container *ngIf="prodct.type!='Tip'">
+                                            <div class="col-md-3 col-sm-3 col-xs-3" fxFlex.xs="25" fxFlex.sm="25" fxFlex.md="25" fxFlex.lg="25" fxFlex.xl="25">
+                                                <img src="{{prodct.mainImage}}" class="imagestyle" width="{{imageWidth}}" height="{{imageHeight}}" />
+                                            </div>
+                                            <div class="col-md-9 col-sm-9 col-xs-9" fxFlex.xs="75" fxFlex.sm="75" fxFlex.md="25" fxFlex.lg="75" fxFlex.xl="75">
+                                                <h4 style="text-align:left;">{{prodct.productName}}</h4>
+                                                <div class="row" style="text-align:left;">
+                                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                                        <p>Price : Rs. {{prodct.mainPrice | number : '1.2-2'}}</p>
+                                                        <p>Product Type : {{prodct.productType}}</p>
+                                                        <!-- <p>Commission : {{prodct.totalCommission | number : '1.2-2'}}</p> -->
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <p>Quantity: {{prodct.quantity}}</p>
+                                                        <!-- <p>Type: {{prodct.type}}</p> -->
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </ng-container>
-                                    <!--<div class="col-md-3"></div>-->
+                                        </ng-container>
+                                        <!--<div class="col-md-3"></div>-->
+                                    </div>
                                 </div>
+                                <!-- question description end -->
                             </div>
-                            <!-- question description end -->
+                            <!-- question end -->
                         </div>
-                        <!-- question end -->
                     </div>
                 </div>
-            </div>
+            </ng-container>
             <!-- end -->
             <div class="popup  animated modal zoomIn" id="myModal1" role="dialog">
                 <div class="modal-dialog ">
@@ -95,7 +97,7 @@
                                                     <option  *ngFor="let rate of rates" [value]="rate">{{rate}}<option>
                                                 </select>
                                                 <br/>
-                                                <textarea rows="1"  type="text" [(ngModel)]="comments" placeholder="Comments*"></textarea>
+                                                <textarea rows="1" type="text" [(ngModel)]="comments" placeholder="Comments*"></textarea>
                                             </div>
                                             <br>
                                             <button class="padding-two btn btn-button form-control confirm-c" (click)="onSaveRating()">Rate</button>

@@ -40,6 +40,7 @@ export class MyCartPaymentComponent implements OnInit {
   screenWidth;
   boxNum = '';
   isCheckout = false;
+  promocodes = [];
 
   constructor(public embryoService: EmbryoService,
     private cartService: CartService,
@@ -86,6 +87,7 @@ export class MyCartPaymentComponent implements OnInit {
           this.allProducts = this.embryoService.localStorageCartProducts;
         }
       });
+      this.getPromocodes();
     }
 
     error(errormessage) {
@@ -97,6 +99,13 @@ export class MyCartPaymentComponent implements OnInit {
       this.router.navigate(['/home']);
     }
 
+    private getPromocodes() {
+      this.promocodes = [];
+      this.cartService.getPromocodes(localStorage.getItem('boxNumber')).subscribe((data: any) => {
+        this.promocodes = data.data;
+      });
+    }
+  
     public getProducts(isFromCheckout) {
       let isUpdated = false;
       if (!isNullOrUndefined(this.boxNum)) {
