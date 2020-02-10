@@ -74,6 +74,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.allProducts = this.embryoService.localStorageCartProducts;
     console.log(this.allProducts[0]);
+    setInterval(() => {
+      this.allProducts = this.embryoService.localStorageCartProducts;
+    }, 1000);
   }
 
   hoverMouse() {
@@ -86,10 +89,13 @@ export class HeaderComponent implements OnInit {
 
   public addToCartProduct(value: any) {
     this.embryoService.addToCart(value);
+ 
   }
 
   public removeTCart(value: any) {
     this.embryoService.removeToCart(value);
+    this.allProducts = this.embryoService.localStorageCartProducts;
+    console.log(this.allProducts[0]);
   }
 
   logoutUser() {

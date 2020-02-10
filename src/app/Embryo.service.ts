@@ -21,7 +21,7 @@ export class EmbryoService {
   /**** Get currency code:- https://en.wikipedia.org/wiki/ISO_4217 *****/
   currency: string = 'INR';
   language: string = 'english';
- 
+
   shipping: number = 12.95;
   tax: number = 27.95;
 
@@ -39,8 +39,8 @@ export class EmbryoService {
     // private toastyConfig: ToastyConfig
   ) {
 
-      // this.toastyConfig.position = "top-right";
-      // this.toastyConfig.theme = "material";
+    // this.toastyConfig.position = "top-right";
+    // this.toastyConfig.theme = "material";
     this.calculateLocalWishlistProdCounts();
     this.calculateLocalCartProdCounts();
   }
@@ -56,9 +56,6 @@ export class EmbryoService {
   public reviewPopup(singleProductDetails, reviews) {
   }
 
-  public confirmationPopup(message: string) {
-   
-  }
 
   public getProducts() {
     return this.products;
@@ -163,7 +160,7 @@ export class EmbryoService {
     }
 
     localStorage.setItem("cart_item", JSON.stringify(products));
-    
+
     setTimeout(() => {
       this.calculateLocalCartProdCounts();
     }, 500);
@@ -196,7 +193,7 @@ export class EmbryoService {
           el.adminProductsResponseModels.selectedquantity = 1
         }
         products[index].adminProductsResponseModels['selectedquantity'] = el.adminProductsResponseModels.selectedquantity - 1;
-        if(products[index].adminProductsResponseModels['selectedquantity'] == 0){
+        if (products[index].adminProductsResponseModels['selectedquantity'] == 0) {
           products.splice(index, 1);
         }
         return true;
@@ -219,7 +216,7 @@ export class EmbryoService {
     // this.toastyService.wait(toastOption);
     setTimeout(() => {
       localStorage.setItem("cart_item", JSON.stringify(products));
-      this.productRemoved = true; 
+      this.productRemoved = true;
       this.calculateLocalCartProdCounts();
     }, 500);
   }
