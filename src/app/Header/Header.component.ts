@@ -74,7 +74,7 @@ export class HeaderComponent implements OnInit {
     console.log(this.allProducts[0]);
     setInterval(() => {
       this.allProducts = this.embryoService.localStorageCartProducts;
-      console.log('this.allProducts ', this.allProducts)
+      // console.log('this.allProducts ', this.allProducts)
     }, 1000);
   }
 
@@ -94,7 +94,6 @@ export class HeaderComponent implements OnInit {
   public removeTCart(value: any) {
     this.embryoService.removeToCart(value);
     this.allProducts = this.embryoService.localStorageCartProducts;
-    console.log(this.allProducts[0]);
   }
 
   logoutUser() {
