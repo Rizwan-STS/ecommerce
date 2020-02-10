@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AppService} from 'src/app/app.service';
 import {ActivatedRoute, Router} from "@angular/router";
 import { EmbryoService } from 'src/app/Embryo.service';
@@ -9,7 +9,7 @@ declare var $: any;
     templateUrl: './Product_Detail.component.html',
     styleUrls: ['./Product_Detail.component.scss']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, AfterViewInit {
     productDetails = null;
     productYoMayLikeDetails= [];
     selectedProduct = null;
@@ -24,7 +24,9 @@ export class ProductDetailComponent implements OnInit {
         this.route.data.subscribe((data) => {
             this.productDetails = data.ProductDetails[0].data;
             this.productYoMayLikeDetails = data.ProductDetails[1].data.adminBoxProductsResponseModels;
-            debugger
+            setTimeout(() => {
+                $("html, body").animate({ scrollTop: 0 }, 600);
+            }, 250);
             this.selectImage(this.productDetails.adminProductsResponseModels.productsImagesResponseModel[0]);
         });
     }
@@ -95,6 +97,12 @@ export class ProductDetailComponent implements OnInit {
     AddtoCart(p) {
         this.selectedProduct = p;
         $('#myModal1').modal("show")
+    }
+
+    ngAfterViewInit(): void {
+        setTimeout(() => {
+            $("html, body").animate({ scrollTop: 0 }, 600);
+        }, 250);
     }
 
 }
