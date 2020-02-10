@@ -40,6 +40,10 @@ export class MyCartPaymentComponent implements OnInit {
   screenWidth;
   boxNum = '';
   isCheckout = false;
+  navigations = {
+      navigationUrl : '/home',
+      navigationName : 'Home',
+  }
 
   constructor(public embryoService: EmbryoService,
     private cartService: CartService,

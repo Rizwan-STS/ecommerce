@@ -25,7 +25,11 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     promocodes = null;
     boxNum = null;
     productsBanner = [];
-
+    navigations = {
+        navigationUrl : '/BoxNumberPage',
+        navigationName : 'Box number',
+    }
+    allProducts= [];
     successMessage;
     errorMessage = '';
     isMobile() {
@@ -98,10 +102,12 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
 
     public addToCartProduct(value: any) {
         this.embryoService.addToCart(value);
+        this.allProducts = this.embryoService.localStorageCartProducts;
     }
 
     public removeTCart(value: any) {
         this.embryoService.removeToCart(value);
+        this.allProducts = this.embryoService.localStorageCartProducts;
     }
 
     getProducts() {
@@ -222,6 +228,7 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
         }
         this.getProducts();
         this.getBanner(localStorage.getItem('boxNumber'));
+        this.allProducts = this.embryoService.localStorageCartProducts;
     }
 
     ngAfterViewInit(): void {
@@ -238,6 +245,7 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
 
     AddtoCart(p) {
         this.selectedProduct = p;
+        this.allProducts = this.embryoService.localStorageCartProducts;
         $('#myModal1').modal("show")
     }
 

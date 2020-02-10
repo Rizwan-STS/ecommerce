@@ -21,6 +21,10 @@ export class ProfileComponent implements OnInit {
   gender;
   successMessage;
   errorMessage = '';
+    navigations = {
+        navigationUrl : '/home',
+        navigationName : 'Home',
+    }
   constructor(private appService: AppService,
     public datepipe: DatePipe,
     public userProfileService: UserProfileService, private toastr: NotificationService) { }

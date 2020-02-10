@@ -14,6 +14,13 @@ export class HeaderComponent implements OnInit {
   webTool: boolean;
   addShowCart = false
   allProducts: any = [];
+  @Input()
+  products: any;
+  @Input()
+  navigations = {
+    navigationUrl : '',
+    navigationName : '',
+  }
   headerLinks = [
       {
         name: 'My Profile',
