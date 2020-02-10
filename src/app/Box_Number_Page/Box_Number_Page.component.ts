@@ -43,11 +43,14 @@ export class BoxNumberPageComponent implements OnInit {
             }, 100);
             return true;
         } else {
-            console.log('Here');
             if (nxt === 'submit') {
                 setTimeout(() => {
                     this.submitBoxNUmber();
                 }, 1000);
+            } else {
+                setTimeout(() => {
+                    $('#' + nxt).focus();
+                }, 100);
             }
         }
     }
@@ -60,7 +63,7 @@ export class BoxNumberPageComponent implements OnInit {
         this.router.navigateByUrl('/Login');
         //   });
       }
-    
+
     submitBoxNUmber() {
         const boxNumber = this.nums[0] + '' + this.nums[1] + this.nums[2] + this.nums[3];
         // if (boxNumber.length === 4) {

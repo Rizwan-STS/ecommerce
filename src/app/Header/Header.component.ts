@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { EmbryoService } from 'src/app/Embryo.service';
+declare var $: any;
 
 @Component({
   selector: 'app-Header',
@@ -126,6 +127,10 @@ export class HeaderComponent implements OnInit {
     } else {
       return 0;
     }
+  }
+
+  toggelId() {
+    $('#navbarSupportedContent1').slideToggle()
   }
 
   public calculateProductSinglePrice(product: any, value: any) {

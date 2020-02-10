@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        setInterval(() => {
+        setTimeout(() => {
             $('#myModal1').modal("show")
         }, 1000);
         this.checkSession();
@@ -59,17 +59,21 @@ export class LoginComponent implements OnInit {
     }
 
     KeyDown(event, nxt, prv) {
+        $(event.target).val('');
         if (event.key == 'Backspace' && prv) {
             setTimeout(() => {
                 $('#' + prv).focus();
             }, 100);
             return true;
         } else {
-            console.log('Here');
             if (nxt === 'submit') {
                 setTimeout(() => {
                     this.login();
                 }, 1000);
+            } else {
+                setTimeout(() => {
+                    $('#' + nxt).focus();
+                }, 100);
             }
         }
     }
@@ -132,7 +136,7 @@ export class LoginComponent implements OnInit {
             Constant.ROOT_LOADER = false;
             this.toastr.success('Error!', error.error.message);
             this.errorMessage = error.error.message;
-            this.successMessage = '';   
+            this.successMessage = '';
             // this.loginForm.get('password').setValue('');
         });
     }
