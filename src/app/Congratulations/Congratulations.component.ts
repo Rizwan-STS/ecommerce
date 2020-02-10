@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-Congratulations',
@@ -8,9 +9,12 @@ import { AppService } from 'src/app/app.service';
 })
 export class CongratulationsComponent implements OnInit {
 
-  constructor(private appService: AppService) { }
+  constructor(private router: Router,private appService: AppService) { }
 
   ngOnInit() {
   }
 
+  myOrders() {
+    this.router.navigate(['MyOrders'])
+  }
 }

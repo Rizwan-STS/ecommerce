@@ -14,7 +14,7 @@
                             <div class="bg-white  padding-two  ">
                                 <!-- question title start -->
                                 <div class="faqs">
-                                    <a class="text-black-ni" data-toggle="collapse" href="#collapse{{ind}}">
+                                    <a class="text-black-ni" (click)="toggleModal('collapse'+ ind)" data-toggle="collapse" href="javascript:void(0)">
                                     <span class="text-extra-medium text-black-ni order-line-width"></span>
                                             <span class="datesets">
                                                 <span class="date">{{data.createdDate.split('-')[0]}} </span>
@@ -88,7 +88,14 @@
 
                                     <div class="padding-nineteen-top padding-nineteen-bottom padding-right-15px padding-left-15px">
                                         <h5>Rate this order!</h5>
-
+                                        <div class="alert alert-danger alert-dismissable" *ngIf="errorMessage">
+                                            {{errorMessage}}
+                                            <a class="close" (click)="errorMessage=null;">&times;</a>
+                                        </div>
+                                        <div class="alert alert-success alert-dismissable" *ngIf="successMessage">
+                                            {{successMessage}}
+                                            <a class="close" (click)="successMessage=null;">&times;</a>
+                                        </div>
                                         <!-- pop-up news-letter start -->
                                         <p class="padding-eight-top margin-one-half-bottom">Rating</p>
                                         <div class="clearfix">

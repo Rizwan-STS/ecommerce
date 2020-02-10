@@ -56,7 +56,9 @@ export class MyCartPaymentComponent implements OnInit {
 
     ngOnInit() {
       setInterval(() => {
-        this.HandLing()
+        this.HandLing();
+
+        this.cdRef.detectChanges();
       }, 1000);
       localStorage.setItem('checkoutClicked', "true");
       localStorage.removeItem('checkoutClicked');
@@ -715,23 +717,23 @@ export class MyCartPaymentComponent implements OnInit {
             Constant.ROOT_LOADER = false;
             localStorage.removeItem('response');
             localStorage.removeItem('cart_item');
-            $.confirm({
-              title: 'Success',
-              content: 'Your order has been placed successfully. The driver will handover your order when it is safe to do so.<br/><br/> For support contact 9742046886.',
-              type: 'green',
-              typeAnimated: true,
-              buttons: {
-                thankYou: {
-                  text: 'Thank You!',
-                  btnClass: 'btn-green',
-                  action: function () {
-                  }
-                }/*,
-              close: function () {
-              }*/
-              }
-            });
-            this.router.navigate(['/orders']);
+            // $.confirm({
+            //   title: 'Success',
+            //   content: 'Your order has been placed successfully. The driver will handover your order when it is safe to do so.<br/><br/> For support contact 9742046886.',
+            //   type: 'green',
+            //   typeAnimated: true,
+            //   buttons: {
+            //     thankYou: {
+            //       text: 'Thank You!',
+            //       btnClass: 'btn-green',
+            //       action: function () {
+            //       }
+            //     }/*,
+            //   close: function () {
+            //   }*/
+            //   }
+            // });
+            this.router.navigate(['/Congratulations']);
           }, (error) => {
             Constant.ROOT_LOADER = false;
             this.error(error.error.message);

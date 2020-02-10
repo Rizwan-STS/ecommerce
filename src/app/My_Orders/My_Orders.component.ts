@@ -37,9 +37,11 @@ export class MyOrdersComponent implements OnInit {
   ratingVal;
   comments;
   mainorderid;
+  successMessage;
+  errorMessage;
   navigations = {
-      navigationUrl : '/home',
-      navigationName : 'Home',
+    navigationUrl: '/home',
+    navigationName: 'Home',
   }
   constructor(private router: Router,
     private customerOrderService: CustomerOrderService, private appService: AppService
@@ -92,15 +94,21 @@ export class MyOrdersComponent implements OnInit {
     console.log('ratingForm is ', ratingForm);
     console.log('mainorderid is ', this.mainorderid);
     this.customerOrderService.saveRating(ratingForm, this.mainorderid).subscribe((data: any) => {
-      // this.successMessage = 'Thanks for rating our service';
+      this.successMessage = 'Thanks for rating our service';
+      this.errorMessage = '';
+      $('#myModal1').modal("hide")
       const response = data;
+      this.ratingVal = '';
+      this.comments = '';
+      this.listService();
       Constant.ROOT_LOADER = false;
       // this.ratingForm.reset();
       // this.snackBar.open(this.successMessage, '', Constant.SNACKBAR_DURATION);
       // this.closeDialog();
     }, (error) => {
       Constant.ROOT_LOADER = false;
-      // this.errorMessage = error.error.message;
+      this.successMessage = '';
+      this.errorMessage = error.error.message;
       this.toastr.success('Error!', error.error.message);
       window.scrollTo(0, 0);
     });
@@ -143,6 +151,10 @@ export class MyOrdersComponent implements OnInit {
       return false;
     }
   }
+  
+  toggleModal(id) {
+    $("#" + id).slideToggle()
+  }
 
   private listService() {
     Constant.ROOT_LOADER = true;
@@ -151,6 +163,7 @@ export class MyOrdersComponent implements OnInit {
         Constant.ROOT_LOADER = false;
       }, 500);
       this.usersList = data;
+      this.successMessage='';
       debugger;
       for (let i = 0; i < this.usersList.data.length; i++) {
         this.customerOrderService.orderById(this.usersList.data[i].id).subscribe((response: any) => {

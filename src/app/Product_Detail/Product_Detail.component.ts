@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AppService} from 'src/app/app.service';
 import {ActivatedRoute, Router} from "@angular/router";
+import { EmbryoService } from 'src/app/Embryo.service';
 declare var $: any;
 
 @Component({
@@ -16,7 +17,7 @@ export class ProductDetailComponent implements OnInit {
         navigationUrl : '/home',
         navigationName : 'Home',
     }
-    constructor(private appService: AppService, private route: ActivatedRoute) {
+    constructor(private appService: AppService, private route: ActivatedRoute, private embryoService: EmbryoService) {
     }
 
     ngOnInit() {
@@ -26,6 +27,41 @@ export class ProductDetailComponent implements OnInit {
             debugger
             this.selectImage(this.productDetails.adminProductsResponseModels.productsImagesResponseModel[0]);
         });
+    }
+
+    public addToCartVal(value) {
+        debugger
+        this.embryoService.addToCart(value);
+        // this.AddtoCart(value);
+    }
+
+    public addToCartProduct(value: any) {
+        this.embryoService.addToCart(value);
+    }
+
+    public removeTCart(value: any) {
+        this.embryoService.removeToCart(value);
+    }
+
+    public fetchQunt(data: any) {
+        if (data) {
+            let products: any;
+            products = JSON.parse(localStorage.getItem('cart_item')) || [];
+            let qnt = 0;
+            for (let i = 0; i < products.length; i++) {
+                if (products[i].id === data.id) {
+                    /*qnt = qnt + 1;*/
+                    qnt = products[i].adminProductsResponseModels.selectedquantity;
+                }
+            }
+            if (qnt > 0) {
+                return qnt;
+            } else {
+                return 0;
+            }
+        } else {
+            return 0;
+        }
     }
 
     AddProductQt(product) {

@@ -72,17 +72,17 @@
                                     <div class="quantity d-block margin-bottom-25px sm-margin-bottom-20px">
                                         <label class="d-block font-weight-600 no-margin-bottom colo text-white">Quantity:</label>
                                         <span class="  sm-text-large">
-                                            <a href="javascript:void(0)" (click)="MinusProductQt(selectedProduct)" class="minus-btn op-set text-black text-white"><i
+                                            <a href="javascript:void(0)"  (click)="removeTCart(selectedProduct)" class="minus-btn op-set text-black text-white"><i
                                                     class="fas fa-minus bg-transparent"></i></a>
-                                            <input type="text" name="name" style="border:none!important" value="1" class="text-white border-none" [(ngModel)]="selectedProduct.adminProductsResponseModels.prQuantity">
-                                            <a href="javascript:void(0)" (click)="AddProductQt(selectedProduct)"
+                                            <input type="text" name="name" style="border:none!important" value="1" class="text-white border-none" value="{{fetchQunt(selectedProduct)}}">
+                                            <a href="javascript:void(0)" (click)="addToCartProduct(selectedProduct)"
                                                class="plus-btn op-set text-black text-white"><i
                                                     class="fas fa-plus bg-transparent"></i></a>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="d-inline-block">
-                                    <a href="javascript:void(0)" class="btn btn-small op-set"> <img
+                                    <a href="javascript:void(0)" class="btn btn-small op-set" (click)="addToCartVal(selectedProduct)"> <img
                                             src="assets/img/cart-white.png"> Add to Cart </a>
                                 </div>
                             </div>

@@ -62,9 +62,12 @@ export class ProfileComponent implements OnInit {
     // if (this.myProfileForm.invalid || this.myProfileForm.status !== 'VALID') {
     //   return;
     // }
+    let dateString = this.dob 
+    let newDate = new Date(dateString);
+    console.log(newDate);
     let myProfileForm = {
       name: this.name,
-      dob: this.dob,
+      dob: newDate,
       email: this.email,
       gender: this.gender
     }
@@ -80,14 +83,14 @@ export class ProfileComponent implements OnInit {
       Constant.ROOT_LOADER = false;
       if (response && response.data) {
         this.users = response.data;
-
+        this.getDetails();
         // this.saveBannerImage();
       }
     }, (error) => {
       Constant.ROOT_LOADER = false;
-      this.toastr.success('Error!', error.error.message);
+      // this.toastr.success('Error!', error.error.message);
       this.successMessage = '';
-        this.errorMessage = error.error.message;
+        this.errorMessage = 'Please enter correct date format';
       // this.errorMessage = error.error.message;
     });
   }
