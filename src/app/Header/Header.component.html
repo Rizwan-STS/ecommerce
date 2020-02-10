@@ -18,7 +18,7 @@
     <div class="cart-side-icon">
         <a href="javascript:void(0)" routerLink="/MyCartPayment">
             <i class="ti-shopping-cart-full"></i>
-            <span>Checkout {{products ? products.length : 0}} item</span>
+            <span>Checkout {{allProducts ? allProducts.length : 0}} item</span>
         </a>
     </div>
     <!-- cart-side-icon end -->
@@ -143,9 +143,9 @@
                         <div class="cart-drop-down">
                             <div class="item-limit">
                                 <!-- cart item1 start -->
-                                <div class="row padding-15px-tb" *ngIf="products">
+                                <div class="row padding-15px-tb" *ngIf="allProducts">
 
-                                    <ng-container  *ngFor="let product of products; let i = index">
+                                    <ng-container  *ngFor="let product of allProducts; let i = index">
                                         <div class="col-xl-4 col-lg-4 col-md-4 col-4 padding-left-15px padding-right-0px"
                                              *ngIf="i==0">
                                             <div class="padding-left-0px">
@@ -206,7 +206,7 @@
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-6">
                                     <!-- cart view-cart button start -->
                                     <div class="continue-shop padding-left-15px text-left">
-                                        <button href="#" class="btn btn-small" (click)="viewCart()">Viewcart</button>
+                                        <button href="#" class="btn btn-small" (click)="viewCart()">View All</button>
                                     </div>
                                     <!-- cart view-cart button end -->
                                 </div>

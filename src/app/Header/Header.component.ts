@@ -15,8 +15,6 @@ export class HeaderComponent implements OnInit {
   addShowCart = false
   allProducts: any = [];
   @Input()
-  products: any;
-  @Input()
   navigations = {
     navigationUrl : '',
     navigationName : '',
@@ -76,6 +74,7 @@ export class HeaderComponent implements OnInit {
     console.log(this.allProducts[0]);
     setInterval(() => {
       this.allProducts = this.embryoService.localStorageCartProducts;
+      console.log('this.allProducts ', this.allProducts)
     }, 1000);
   }
 
@@ -89,7 +88,7 @@ export class HeaderComponent implements OnInit {
 
   public addToCartProduct(value: any) {
     this.embryoService.addToCart(value);
- 
+
   }
 
   public removeTCart(value: any) {
