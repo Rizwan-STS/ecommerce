@@ -202,7 +202,7 @@
                     </a>
                     <hr>
                     <div class="padding-left-5px productname">
-                        <p class="text-medium1 margin-bottom-5px" [ngClass]="{'text-left' : !isMobile(), 'text-center': isMobile()}">
+                        <p class="text-medium1 margin-bottom-5px" [ngClass]="{'text-left' : !isMobile(), 'text-center': isMobile()}" routerLink="/ProductDetail/{{product.id}}">
                             {{product.adminProductsResponseModels.name}}</p>
                         <p class="d-flex margin-bottom-5px">
                                 <span class=" cokl"  [ngClass]="{'text-left width-100-px' : !isMobile(), 'text-center': isMobile()}" [style.width.%]="isMobile() ? 50 : auto">
@@ -250,7 +250,7 @@
                         </a>
                     </div>
                     <div class="padding-left-5px d-inline-block" style="vertical-align: top;max-width: 192px;">
-                        <p class="text-left text-medium1 margin-bottom-5px">
+                        <p class="text-left text-medium1 margin-bottom-5px" routerLink="/ProductDetail/{{product.id}}">
                             {{product.adminProductsResponseModels.name}}</p>
                         <p class=" margin-bottom-5px">
                             <span class="text-left d-block cokl">
