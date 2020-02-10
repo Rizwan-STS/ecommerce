@@ -75,7 +75,7 @@
                 </div>
             </ng-container>
             <!-- end -->
-            <div class="popup  animated modal zoomIn" id="myModal1" role="dialog">
+            <div class="popup  animated modal zoomIn" id="myModal1" role="dialog" *ngIf="mainorderid">
                 <div class="modal-dialog ">
                     <!-- pop-up modal content start -->
                     <div class="modal-content">
@@ -104,7 +104,7 @@
                                                     <option  *ngFor="let rate of rates" [value]="rate">{{rate}}<option>
                                                 </select>
                                                 <br/>
-                                                <textarea rows="1" type="text" [(ngModel)]="comments" placeholder="Comments*"></textarea>
+                                                <textarea rows="1" type="text" [(ngModel)]="comments" placeholder="Comments"></textarea>
                                             </div>
                                             <br>
                                             <button class="padding-two btn btn-button form-control confirm-c" (click)="onSaveRating()">Rate</button>

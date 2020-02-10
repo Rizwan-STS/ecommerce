@@ -58,7 +58,6 @@ export class MyCartPaymentComponent implements OnInit {
       setInterval(() => {
         this.HandLing();
 
-        this.cdRef.detectChanges();
       }, 1000);
       localStorage.setItem('checkoutClicked', "true");
       localStorage.removeItem('checkoutClicked');
