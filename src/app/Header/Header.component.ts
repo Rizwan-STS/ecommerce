@@ -14,6 +14,11 @@ export class HeaderComponent implements OnInit {
   webTool: boolean;
   addShowCart = false
   allProducts: any = [];
+  @Input()
+  navigations = {
+    navigationUrl : '',
+    navigationName : '',
+  }
   headerLinks = [
       {
         name: 'My Profile',
@@ -69,6 +74,7 @@ export class HeaderComponent implements OnInit {
     console.log(this.allProducts[0]);
     setInterval(() => {
       this.allProducts = this.embryoService.localStorageCartProducts;
+      // console.log('this.allProducts ', this.allProducts)
     }, 1000);
   }
 
@@ -82,13 +88,12 @@ export class HeaderComponent implements OnInit {
 
   public addToCartProduct(value: any) {
     this.embryoService.addToCart(value);
- 
+
   }
 
   public removeTCart(value: any) {
     this.embryoService.removeToCart(value);
     this.allProducts = this.embryoService.localStorageCartProducts;
-    console.log(this.allProducts[0]);
   }
 
   logoutUser() {

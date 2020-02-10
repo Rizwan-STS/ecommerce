@@ -12,7 +12,10 @@ export class ProductDetailComponent implements OnInit {
     productDetails = null;
     productYoMayLikeDetails= [];
     selectedProduct = null;
-
+    navigations = {
+        navigationUrl : '/home',
+        navigationName : 'Home',
+    }
     constructor(private appService: AppService, private route: ActivatedRoute) {
     }
 

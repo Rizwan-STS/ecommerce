@@ -41,6 +41,10 @@ export class MyCartPaymentComponent implements OnInit {
   boxNum = '';
   isCheckout = false;
   promocodes = [];
+  navigations = {
+      navigationUrl : '/home',
+      navigationName : 'Home',
+  }
 
   constructor(public embryoService: EmbryoService,
     private cartService: CartService,

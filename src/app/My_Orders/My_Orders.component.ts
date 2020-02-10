@@ -37,6 +37,10 @@ export class MyOrdersComponent implements OnInit {
   ratingVal;
   comments;
   mainorderid;
+  navigations = {
+      navigationUrl : '/home',
+      navigationName : 'Home',
+  }
   constructor(private router: Router,
     private customerOrderService: CustomerOrderService, private appService: AppService
     , private toastr: NotificationService) { }
