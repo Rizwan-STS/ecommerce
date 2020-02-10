@@ -3,6 +3,7 @@ import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { Constant } from '../../Constants';
 import { CustomerOrderService } from './customer.order.service';
+import { NotificationService } from 'wsuite-notification';
 
 declare var $: any;
 @Component({
@@ -37,7 +38,8 @@ export class MyOrdersComponent implements OnInit {
   comments;
   mainorderid;
   constructor(private router: Router,
-    private customerOrderService: CustomerOrderService, private appService: AppService) { }
+    private customerOrderService: CustomerOrderService, private appService: AppService
+    , private toastr: NotificationService) { }
 
   ngOnInit() {
     this.imageWidth = '150px';
@@ -95,6 +97,7 @@ export class MyOrdersComponent implements OnInit {
     }, (error) => {
       Constant.ROOT_LOADER = false;
       // this.errorMessage = error.error.message;
+          this.toastr.success('Error!', error.error.message);
       window.scrollTo(0, 0);
     });
 

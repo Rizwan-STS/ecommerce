@@ -3,6 +3,7 @@ import { AppService } from 'src/app/app.service';
 import { Router } from "@angular/router";
 import { CartService } from "../cart.service";
 import { BoxService } from "../Listing_Products/box.service";
+import { NotificationService } from 'wsuite-notification';
 
 declare var $: any;
 
@@ -15,7 +16,10 @@ declare var $: any;
 export class BoxNumberPageComponent implements OnInit {
     nums = new Array(4);
 
-    constructor(private router: Router, private boxService: BoxService) {
+    successMessage;
+    errorMessage = '';
+    constructor(private router: Router, private boxService: BoxService
+        , private toastr: NotificationService) {
     }
 
     ngOnInit() {
@@ -48,6 +52,15 @@ export class BoxNumberPageComponent implements OnInit {
         }
     }
 
+    logoutUser() {
+        console.log('called');
+        //   this.loginService.logoutUser().subscribe((data: any) => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('login_data');
+        this.router.navigateByUrl('/Login');
+        //   });
+      }
+    
     submitBoxNUmber() {
         const boxNumber = this.nums[0] + '' + this.nums[1] + this.nums[2] + this.nums[3];
         // if (boxNumber.length === 4) {
@@ -59,6 +72,9 @@ export class BoxNumberPageComponent implements OnInit {
         }, (err) => {
             debugger
             // alert(err.error.message);
+                this.toastr.success('Error!', err.error.message);
+                this.successMessage = '';
+                this.errorMessage = err.error.message;
         });
         // }
     }

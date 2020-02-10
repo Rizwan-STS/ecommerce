@@ -5,6 +5,7 @@ import { BoxService } from "./box.service";
 import { CartService } from "../cart.service";
 import { EmbryoService } from 'src/app/Embryo.service';
 import {ActivatedRoute, Router} from "@angular/router";
+import { NotificationService } from 'wsuite-notification';
 
 declare var Swiper: any;
 declare var $: any;
@@ -25,6 +26,8 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     boxNum = null;
     productsBanner = [];
 
+    successMessage;
+    errorMessage = '';
     isMobile() {
         const devices = [/Android/i, /BlackBerry/i, /iPhone|iPad|iPod/i, /Opera Mini/i, /IEMobile/i, /WPDesktop/i];
         let flag = false;
@@ -37,7 +40,8 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
         // if ()
     }
 
-    constructor(public embryoService: EmbryoService, private appService: AppService,private route: Router, private boxService: BoxService, private cartService: CartService, private activatedRoute: ActivatedRoute) {
+    constructor(public embryoService: EmbryoService
+        , private toastr: NotificationService, private appService: AppService,private route: Router, private boxService: BoxService, private cartService: CartService, private activatedRoute: ActivatedRoute) {
         for (let i = 1; i <= 12; i++) {
             this.products.push({
                 image: 'assets/img/img-' + i + '.png',
@@ -173,6 +177,9 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
                 localStorage.setItem('tip_amount', "0");
                 localStorage.setItem('cart_item', "[]");
                 // this.errorMessage = error.error.message;
+                this.toastr.success('Error!', error.error.message);
+                this.successMessage = '';
+                this.errorMessage = error.error.message;
                 // this.successMessage = null;
                 window.scrollTo(0, 0)
             });

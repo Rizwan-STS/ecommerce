@@ -3,6 +3,7 @@ import { AppService } from 'src/app/app.service';
 import { Constant } from '../../Constants';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { NotificationService } from 'wsuite-notification';
 
 declare var $: any;
 
@@ -21,7 +22,10 @@ export class LoginComponent implements OnInit {
     otp3;
     otp4;
     otpcode;
-    constructor(private appService: AppService, private loginService: LoginService, private router: Router, private activatedRoute: ActivatedRoute) {
+    successMessage;
+    errorMessage = '';
+    constructor(private appService: AppService, private loginService: LoginService, private router: Router, private activatedRoute: ActivatedRoute
+        , private toastr: NotificationService) {
     }
 
     ngOnInit() {
@@ -97,8 +101,11 @@ export class LoginComponent implements OnInit {
         }
         Constant.ROOT_LOADER = true;
         this.loginService.login(loginForm).subscribe((data: any) => {
-            // this.successMessage = data.message;
+            this.successMessage = data.message;
+            this.errorMessage = '';
+            this.toastr.success('Success!', data.message);
             const response = data;
+            $('#myModal1').modal("hide");
             Constant.ROOT_LOADER = false;
             if (response && response.data.token) {
                 $('.modal-backdrop').remove()
@@ -111,21 +118,27 @@ export class LoginComponent implements OnInit {
             }
             if (this.activatedRoute.snapshot.queryParams.callback) {
                 if (this.activatedRoute.snapshot.queryParams.callback === 'cart') {
+                    $('#myModal1').modal("hide");
                     this.router.navigate(['/cart']);
                 } else {
+                    $('#myModal1').modal("hide");
                     this.router.navigate(['/home']);
                 }
             } else {
+                $('#myModal1').modal("hide");
                 this.router.navigate(['/home']);
             }
         }, (error) => {
             Constant.ROOT_LOADER = false;
-            // this.errorMessage = error.error.message;
+            this.toastr.success('Error!', error.error.message);
+            this.errorMessage = error.error.message;
+            this.successMessage = '';   
             // this.loginForm.get('password').setValue('');
         });
     }
 
-    register(){
+    register() {
+        $('#myModal1').modal("hide");
         this.router.navigate(['Register']);
     }
 
@@ -154,12 +167,16 @@ export class LoginComponent implements OnInit {
         };
         this.loginService.loginOTP(datObj).subscribe((data: any) => {
             this.switchModal();
-            //   this.successMessage = data.message;
+              this.successMessage = data.message;
+              this.errorMessage = '';
+            this.toastr.success('Success!', data.message);
             const response = data;
             Constant.ROOT_LOADER = false;
         }, (error) => {
             Constant.ROOT_LOADER = false;
-            //   this.errorMessage = error.error.message;
+            this.toastr.success('Error!', error.error.message);
+            this.successMessage = '';
+              this.errorMessage = error.error.message;
         });
     }
 }

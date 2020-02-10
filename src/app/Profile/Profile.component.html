@@ -7,6 +7,14 @@
             <div class="bg-white minh620 border-radius-3 col-xl-8 col-lg-8 col-md-8">
                 <h5 class="padding-eight-top text-extra-medium"> My Profile </h5>
                 <br>
+                <div class="alert alert-danger alert-dismissable" *ngIf="errorMessage">
+                    {{errorMessage}}
+                    <a class="close" (click)="errorMessage=null;">&times;</a>
+                </div>
+                <div class="alert alert-success alert-dismissable" *ngIf="successMessage">
+                    {{successMessage}}
+                    <a class="close" (click)="successMessage=null;">&times;</a>
+                </div>
                 <div class="row">
                     <div class="col-xl-6" style="margin-bottom: 10px !important;">
                         <label>Name</label>
@@ -14,7 +22,7 @@
                     </div>
                     <div class="col-xl-6" style="margin-bottom: 10px !important;">
                         <label>Gender</label>
-                        <select class="color-them-1 arrodown-n no-border form-control" [(ngModel)]="gender" >
+                        <select class="color-them-1 arrodown-n no-border form-control" [(ngModel)]="gender">
                             <option *ngFor="let gender of genders" [value]="gender">{{gender}}<option>
                         </select>
                         <img class="arrowdown" src="assets/img/arrow-down.png">
@@ -24,12 +32,12 @@
                 <div class="row">
                     <div class="col-xl-6" style="margin-bottom: 10px !important;">
                         <label>DOB</label>
-                        <input class="color-them-1    no-border form-control" type="text" [(ngModel)]="dob" >
+                        <input class="color-them-1    no-border form-control" type="text" [(ngModel)]="dob">
                         <img class="calenderset" src="assets/img/calendar.png">
                     </div>
                     <div class="col-xl-6" style="margin-bottom: 10px !important;">
                         <label>Email</label>
-                        <input class="color-them-1 no-border form-control" type="text" [(ngModel)]="email" >
+                        <input class="color-them-1 no-border form-control" type="text" [(ngModel)]="email">
                     </div>
                 </div>
                 <div class="row">

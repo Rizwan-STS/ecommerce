@@ -37,6 +37,9 @@ import { HttpConfigInterceptor } from "./httpconfig.interceptor";
 import { LoaderComponent } from "./Loader/loader.component";
 // import { ToastyService } from 'ng2-toasty';
 import { EmbryoService } from './Embryo.service';
+import { WsuiteNotificationModule } from 'wsuite-notification';
+import { NotificationService } from 'wsuite-notification';
+
 
 @NgModule({
   declarations: [
@@ -72,11 +75,13 @@ import { EmbryoService } from './Embryo.service';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    WsuiteNotificationModule.forRoot()
   ],
   providers: [
     LoaderService,
     EmbryoService,
+    NotificationService,
     // ToastyService,
     {
       provide: HTTP_INTERCEPTORS,

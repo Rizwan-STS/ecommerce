@@ -7,6 +7,7 @@ import { BoxService } from '../Listing_Products/box.service';
 import { isNullOrUndefined } from 'util';
 import { interval } from 'rxjs';
 import { EmbryoService } from '../Embryo.service';
+import { NotificationService } from 'wsuite-notification';
 
 declare var $: any;
 declare var google: any;
@@ -44,7 +45,8 @@ export class MyCartPaymentComponent implements OnInit {
     private cartService: CartService,
     public boxService: BoxService,
     private router: Router,private appService: AppService,
-    private cdRef: ChangeDetectorRef) { }
+    private cdRef: ChangeDetectorRef
+    , private toastr: NotificationService) { }
 
 
     ngOnInit() {
@@ -86,8 +88,7 @@ export class MyCartPaymentComponent implements OnInit {
     }
 
     error(errormessage) {
-      if (confirm(errormessage)) {
-      }
+      // this.toastr.success('Error!', errormessage);
     }
 
     BackButton() {
@@ -822,6 +823,7 @@ export class MyCartPaymentComponent implements OnInit {
           Constant.ROOT_LOADER = false;
           localStorage.removeItem('promocode');
           this.errorMessage = error.error.message;
+          this.toastr.success('Error!', error.error.message);
           this.successMessage = null;
         });
       }

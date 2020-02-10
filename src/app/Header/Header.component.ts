@@ -35,16 +35,16 @@ export class HeaderComponent implements OnInit {
         routerLink: '/AboutUs',
           // image: 'assets/img/info-pro.png'
       },
-      {
-        name: 'Terms & Condition',
-        routerLink: '/TermsAndCondition',
-          // image: 'assets/img/file-text-pro.png'
-      },
-      {
-        name: 'Privacy Policy',
-        routerLink: '/PrivacyPolicy',
-          // image: 'assets/img/info-pro.png'
-      },
+      // {
+      //   name: 'Terms & Condition',
+      //   routerLink: '/TermsAndCondition',
+      //     // image: 'assets/img/file-text-pro.png'
+      // },
+      // {
+      //   name: 'Privacy Policy',
+      //   routerLink: '/PrivacyPolicy',
+      //     // image: 'assets/img/info-pro.png'
+      // },
       {
         name: 'FAQ',
         routerLink: '/FAQ',
@@ -53,6 +53,11 @@ export class HeaderComponent implements OnInit {
       {
         name: 'Contact Us',
         routerLink: '/ContactUs',
+          // image: 'assets/img/user-pro.png'
+      },
+      {
+        name: 'Logout',
+        click: 'logoutUser',
           // image: 'assets/img/user-pro.png'
       }
   ];
@@ -78,6 +83,15 @@ export class HeaderComponent implements OnInit {
 
   public removeTCart(value: any) {
     this.embryoService.removeToCart(value);
+  }
+
+  logoutUser() {
+    console.log('called');
+    //   this.loginService.logoutUser().subscribe((data: any) => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('login_data');
+    this.router.navigateByUrl('/Login');
+    //   });
   }
 
   public fetchQunt(data: any) {

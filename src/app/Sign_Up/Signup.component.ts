@@ -3,6 +3,7 @@ import { AppService } from 'src/app/app.service';
 import { Constant } from '../../Constants';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SignUpService } from './Signup.service';
+import { NotificationService } from 'wsuite-notification';
 
 declare var $: any;
 
@@ -17,7 +18,10 @@ export class SignUpComponent implements OnInit {
     otpSent = false;
     phonenumber;
     name;
-    constructor(private appService: AppService, private signupService: SignUpService, private router: Router, private activatedRoute: ActivatedRoute) {
+    successMessage;
+    errorMessage = '';
+    constructor(private appService: AppService, private signupService: SignUpService, private router: Router, private activatedRoute: ActivatedRoute
+        ,private toastr: NotificationService) {
     }
 
     ngOnInit() {
@@ -46,6 +50,10 @@ export class SignUpComponent implements OnInit {
         Constant.ROOT_LOADER = true;
         this.signupService.signup(signupForm).subscribe((data: any) => {
             //   this.successMessage = data.message;
+            this.toastr.success('Success!', data.message);
+            
+            this.successMessage = data.message;
+            this.errorMessage = '';
             const response = data;
             Constant.ROOT_LOADER = false;
             //   this.signupForm.reset();
@@ -53,7 +61,10 @@ export class SignUpComponent implements OnInit {
             this.router.navigate(['/Login', { 'phonenumber': this.phonenumber }]);
         }, (error) => {
             Constant.ROOT_LOADER = false;
-            //   this.errorMessage = error.error.message;
+            this.toastr.success('Error!', error.error.message);
+
+            this.successMessage = '';
+              this.errorMessage = error.error.message;
         });
     }
 

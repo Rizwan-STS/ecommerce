@@ -12,11 +12,9 @@
                             <img src="assets/img/close-btn.png">
                         </a>
                         <div class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center">
-                            <div class="padding-nine-top padding-nine-bottom padding-right-15px padding-left-15px width-100-d"
-                                 *ngIf="selectedProduct">
+                            <div class="padding-nine-top padding-nine-bottom padding-right-15px padding-left-15px width-100-d" *ngIf="selectedProduct">
                                 <div class="clearfix text-center border-light-site padding-25px  margin-bottom-10px">
-                                    <img class="cust-prod-image"
-                                         src="{{(selectedProduct && selectedProduct && selectedProduct.adminProductsResponseModels.productsImagesResponseModel && selectedProduct.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  selectedProduct.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"
+                                    <img class="cust-prod-image" src="{{(selectedProduct && selectedProduct && selectedProduct.adminProductsResponseModels.productsImagesResponseModel && selectedProduct.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  selectedProduct.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"
                                     />
                                 </div>
                                 <h5 class="text-large"> {{selectedProduct.adminProductsResponseModels.name}} </h5>
@@ -89,8 +87,7 @@
                                     </div>
                                 </div>
                                 <div class="d-inline-block">
-                                    <a href="javascript:void(0)" class="btn btn-small op-set"
-                                       (click)="addToCartVal(selectedProduct)"> <img
+                                    <a href="javascript:void(0)" class="btn btn-small op-set" (click)="addToCartVal(selectedProduct)"> <img
                                             src="assets/img/cart-white.png"> Add to Cart </a>
                                 </div>
                             </div>
@@ -107,12 +104,10 @@
     <section class="padding-25px-tb">
         <div class="container-fluid">
 
-            <div class="swiper-container single-item-rtl swiper-container-initialized swiper-container-horizontal"
-                 [hidden]="productsBanner.length === 0"
-                 id="product-slider">
+            <div class="swiper-container single-item-rtl swiper-container-initialized swiper-container-horizontal" [hidden]="productsBanner.length === 0"
+                id="product-slider">
                 <div class="swiper-wrapper" style="transform: translate3d(-570px, 0px, 0px); transition-duration: 0ms;">
-                    <div class="swiper-slide border-radius-4" style="width: 255px; margin-right: 30px;"
-                         *ngFor="let banner of productsBanner;">
+                    <div class="swiper-slide border-radius-4" style="width: 255px; margin-right: 30px;" *ngFor="let banner of productsBanner;">
                         <!-- product start -->
                         <div class="column padding-top-25px padding-bottom-25px">
                             <div class="product-img">
@@ -120,14 +115,10 @@
                                 <figure class="margin-bottom-10px">
                                     <a href="javascript:void(0)" class="image">
                                         <!-- product first image start -->
-                                        <img class="pic-1 img-fluid"
-                                             src="{{isMobile() ? banner.idUrlMobile : banner.idUrl}}"
-                                             alt="productimg16">
+                                        <img class="pic-1 img-fluid" src="{{isMobile() ? banner.idUrlMobile : banner.idUrl}}" alt="productimg16">
                                         <!-- product first image end -->
                                         <!-- product second image start -->
-                                        <img class="pic-2 img-fluid"
-                                             src="{{isMobile() ? banner.idUrlMobile : banner.idUrl}}"
-                                             alt="productimg16-16">
+                                        <img class="pic-2 img-fluid" src="{{isMobile() ? banner.idUrlMobile : banner.idUrl}}" alt="productimg16-16">
                                         <!-- product second image end -->
 
                                     </a>
@@ -152,6 +143,16 @@
 
     <div class="container">
         <div class="row">
+            <br/>
+            <div class="alert alert-danger alert-dismissable" *ngIf="errorMessage">
+                {{errorMessage}}
+                <a class="close" (click)="errorMessage=null;">&times;</a>
+            </div>
+            <div class="alert alert-success alert-dismissable" *ngIf="successMessage">
+                {{successMessage}}
+                <a class="close" (click)="successMessage=null;">&times;</a>
+            </div>
+            <br/>
             <!-- grid & list button start -->
             <div class="col-xl-8 col-lg-8 col-md-6 col-12 d-flex align-items-center view-mode sm-margin-bottom-15px">
                 <!-- sortby title start -->
@@ -188,13 +189,11 @@
             <!-- sortby end -->
         </div>
         <!-- border start -->
-        <div class="border-bottom-light-new padding-top-15px margin-bottom-15px  sm-display-none"
-             style="  width: 82%;  margin-top: -33px;  margin-left: 117px;"></div>
+        <div class="border-bottom-light-new padding-top-15px margin-bottom-15px  sm-display-none" style="  width: 82%;  margin-top: -33px;  margin-left: 117px;"></div>
         <!-- border end -->
         <div [hidden]="displaytype === 'frame'" id="box" class="row padding-top-15px">
 
-            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px"
-                 *ngFor="let product of productsArray">
+            <div class="col-xl-2 col-lg-2 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of productsArray">
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
                     <a routerLink="/ProductDetail/{{product.id}}">
@@ -230,9 +229,8 @@
                         </span>
                     </div>
                     <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px">
-                        <a href="javascript:void(0)"
-                           class="btn btn-small op-set border-radius-4 form-control text-center text-small2 line-height-26"
-                           (click)="AddtoCart(product)"> <img
+                        <a href="javascript:void(0)" class="btn btn-small op-set border-radius-4 form-control text-center text-small2 line-height-26"
+                            (click)="AddtoCart(product)"> <img
                                 src="assets/img/cart-white.png"> Add to Cart </a>
                     </div>
                 </div>
@@ -242,8 +240,7 @@
         </div>
         <div [hidden]="displaytype === 'box'" id="frame" class="row padding-top-15px">
 
-            <div class="col-xl-4 col-lg-4 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px"
-                 *ngFor="let product of productsArray">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of productsArray">
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
                     <div class="d-inline-block">
@@ -277,23 +274,22 @@
                                                class="plus-btn cokl text-black"><i
                                                     class="fas fa-plus bg-transparent"></i></a>
                                         </span>
-                                    </span>
-                                </div>
                             </span>
-                        </p>
-                        <p></p>
-                        <div class=" clearfix settop-margin15  padding-bottom-15px padding-right-15px">
-                            <a href="javascript:void(0)" (click)="AddtoCart(product)"
-                               class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
+                    </div>
+                    </span>
+                    </p>
+                    <p></p>
+                    <div class=" clearfix settop-margin15  padding-bottom-15px padding-right-15px">
+                        <a href="javascript:void(0)" (click)="AddtoCart(product)" class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
                                     src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                        </div>
                     </div>
                 </div>
-                <!-- blog image end -->
             </div>
+            <!-- blog image end -->
         </div>
-        <!-- pagination start -->
-        <!--<div class="page-bar d-flex justify-content-start">
+    </div>
+    <!-- pagination start -->
+    <!--<div class="page-bar d-flex justify-content-start">
                 <ul class="pag-nav">
                     <li><a href="javascript:void(0)" class="sm-text-large"><i class="fas fa-long-arrow-alt-left"></i></a>
                     </li>
@@ -306,8 +302,8 @@
                     </li>
                 </ul>
             </div>-->
-        <!-- pagination end -->
-        <br>
+    <!-- pagination end -->
+    <br>
     </div>
 </section>
 <!-- blog grid section end -->

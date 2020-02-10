@@ -7,6 +7,15 @@
             <div class="bg-white minh620 border-radius-3 col-xl-8 col-lg-8 col-md-8">
                 <h5 class="padding-eight-top text-extra-medium">Contact Us</h5>
                 <br>
+                <div class="alert alert-danger alert-dismissable" *ngIf="errorMessage">
+                    {{errorMessage}}
+                    <a class="close" (click)="errorMessage=null;">&times;</a>
+                </div>
+                <div class="alert alert-success alert-dismissable" *ngIf="successMessage">
+                    {{successMessage}}
+                    <a class="close" (click)="successMessage=null;">&times;</a>
+                </div>
+                <br/>
                 <div class="row">
                     <div class="col-xl-6">
                         <label>Email</label>

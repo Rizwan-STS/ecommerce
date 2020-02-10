@@ -15,7 +15,14 @@
 
                                 <div class="padding-nineteen-top padding-nineteen-bottom">
                                     <h5>Hi There!</h5>
-
+                                    <div class="alert alert-danger alert-dismissable" *ngIf="errorMessage">
+                                        {{errorMessage}}
+                                        <a class="close" (click)="errorMessage=null;">&times;</a>
+                                    </div>
+                                    <div class="alert alert-success alert-dismissable" *ngIf="successMessage">
+                                        {{successMessage}}
+                                        <a class="close" (click)="successMessage=null;">&times;</a>
+                                    </div>
                                     <!-- pop-up news-letter start -->
                                     <p class="padding-eight-top margin-one-half-bottom">OTP Code</p>
                                     <div class="clearfix"></div>
@@ -37,11 +44,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="forgot-pwd" style="padding: 20px !important;"  *ngIf="!otpSent">
+                        <div class="forgot-pwd" style="padding: 20px !important;" *ngIf="!otpSent">
 
                             <div class="padding-nineteen-top padding-nineteen-bottom padding-right-15px padding-left-15px ">
                                 <h5>Hi There!</h5>
-
+                                <div class="alert alert-danger alert-dismissable" *ngIf="errorMessage">
+                                    {{errorMessage}}
+                                    <a class="close" (click)="errorMessage=null;">&times;</a>
+                                </div>
+                                <div class="alert alert-success alert-dismissable" *ngIf="successMessage">
+                                    {{successMessage}}
+                                    <a class="close" (click)="successMessage=null;">&times;</a>
+                                </div>
                                 <!-- pop-up news-letter start -->
                                 <p class="padding-eight-top margin-one-half-bottom">Phone Number</p>
                                 <div class="clearfix"></div><br/>
