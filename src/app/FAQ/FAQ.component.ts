@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
+declare var $: any;
 
 @Component({
   selector: 'app-FAQ',
@@ -12,5 +13,7 @@ export class FAQComponent implements OnInit {
 
   ngOnInit() {
   }
-
+    toggleModal(id) {
+        $("#" + id).slideToggle()
+    }
 }
