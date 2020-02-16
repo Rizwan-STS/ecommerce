@@ -49,7 +49,11 @@ export class LoginComponent implements OnInit {
         });
         console.log('this.activatedRoute.snapshot.queryParams.phonenumber is ', this.activatedRoute.snapshot.queryParamMap.get('phonenumber'));
         if (this.activatedRoute.snapshot.queryParams.phonenumber) {
-            this.phonenumber = this.activatedRoute.snapshot.queryParams.phonenumber;
+            if (this.activatedRoute.snapshot.queryParams.phonenumber.trim().length > 10) {
+                this.phonenumber = '+' + this.activatedRoute.snapshot.queryParams.phonenumber.trim();
+            } else {
+                this.phonenumber = this.activatedRoute.snapshot.queryParams.phonenumber.trim();
+            }
             this.sendOtp();
         }
     }

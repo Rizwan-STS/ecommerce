@@ -26,7 +26,7 @@ export class SignUpComponent implements OnInit {
 
     ngOnInit() {
         setInterval(() => {
-            $('#myModal1').modal("show") 
+            $('#myModal1').modal("show")
         }, 1000)
     }
 
@@ -51,14 +51,14 @@ export class SignUpComponent implements OnInit {
         this.signupService.signup(signupForm).subscribe((data: any) => {
             //   this.successMessage = data.message;
             this.toastr.success('Success!', data.message);
-            
+
             this.successMessage = data.message;
             this.errorMessage = '';
             const response = data;
             Constant.ROOT_LOADER = false;
             //   this.signupForm.reset();
             //   this.snackBar.open(this.successMessage, '', Constant.SNACKBAR_DURATION);
-            this.router.navigate(['/Login', { 'phonenumber': this.phonenumber }]);
+            this.router.navigate(['/Login'], {queryParams: { 'phonenumber': this.phonenumber }});
         }, (error) => {
             Constant.ROOT_LOADER = false;
             this.toastr.success('Error!', error.error.message);
@@ -68,4 +68,4 @@ export class SignUpComponent implements OnInit {
         });
     }
 
-} 
+}
