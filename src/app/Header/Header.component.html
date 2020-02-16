@@ -137,6 +137,11 @@
                     <div class="navbar-cus show-cart">
                         <a routerLink="/MyCartPayment">
                             <img src="assets/img/cartset.png">
+                            <span style="position: absolute;margin-top: -20px;margin-left: -10px;" *ngIf="allProducts && allProducts.length > 0">
+                                <span style="background-color: red;color: white;border-radius: 20px;padding-right: 5px;padding-left: 5px;font-size: 12px;">
+                                    {{allProducts ? allProducts.length : 0}}
+                                </span>
+                            </span>
                         </a>
 
                         <!-- start dropdown -->

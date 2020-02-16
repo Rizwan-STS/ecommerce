@@ -71,7 +71,7 @@
                     <div class="row " *ngIf="selectedProduct">
                         <div class="col-xl-12 ">
                             <div class="site-bg padding-top-15px padding-bottom-15px padding-left-15px padding-right-15px ">
-                                <div class="d-inline-block" style="width:40%" [ngClass]="{'zero-opacity': (fetchQunt(selectedProduct) === 0), 'padding-bottom-30px' : (fetchQunt(selectedProduct) !== 0)}">
+                                <div class="d-inline-block" style="width:100%;text-align: center;" [ngClass]="{'zero-opacity': (fetchQunt(selectedProduct) === 0), 'padding-bottom-px' : (fetchQunt(selectedProduct) !== 0)}">
                                     <div class="quantity d-block margin-bottom-25px sm-margin-bottom-20px">
                                         <label class="d-block font-weight-600 no-margin-bottom colo text-white">Quantity:</label>
                                         <span class="  sm-text-large">
@@ -86,7 +86,7 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="d-inline-block" [ngClass]="{'zero-opacity': !(fetchQunt(selectedProduct) === 0)}">
+                                <div class="d-inline-block" style="width:100%;text-align: center;" [ngClass]="{'zero-opacity': !(fetchQunt(selectedProduct) === 0)}">
                                     <a href="javascript:void(0)" class="btn btn-small op-set" (click)="addToCartVal(selectedProduct)"> <img
                                             src="assets/img/cart-white.png"> Add to Cart </a>
                                 </div>
