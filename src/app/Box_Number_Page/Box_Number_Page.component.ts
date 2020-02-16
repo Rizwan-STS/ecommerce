@@ -15,7 +15,17 @@ declare var $: any;
 })
 export class BoxNumberPageComponent implements OnInit {
     nums = new Array(4);
-
+    isMobile() {
+        const devices = [/Android/i, /BlackBerry/i, /iPhone|iPad|iPod/i, /Opera Mini/i, /IEMobile/i, /WPDesktop/i];
+        let flag = false;
+        for (const dev of devices) {
+            if (navigator.userAgent.match(dev)) {
+                flag = true;
+            }
+        }
+        return flag;
+        // if ()
+    }
     successMessage;
     errorMessage = '';
     constructor(private router: Router, private boxService: BoxService

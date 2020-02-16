@@ -70,6 +70,8 @@
         $("html, body").animate({ scrollTop: 0 }, 600);
         return false;
     });
+    window.addEventListener('online', () => alert('You are back to online'));
+    window.addEventListener('offline', () => alert('You are offline'));
 </script>
 <!-- custom -->
 <!--<script src="/assets/js/custom.js"></script>-->

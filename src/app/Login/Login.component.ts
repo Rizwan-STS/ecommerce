@@ -24,6 +24,17 @@ export class LoginComponent implements OnInit {
     otpcode;
     successMessage;
     errorMessage = '';
+    isMobile() {
+        const devices = [/Android/i, /BlackBerry/i, /iPhone|iPad|iPod/i, /Opera Mini/i, /IEMobile/i, /WPDesktop/i];
+        let flag = false;
+        for (const dev of devices) {
+            if (navigator.userAgent.match(dev)) {
+                flag = true;
+            }
+        }
+        return flag;
+        // if ()
+    }
     constructor(private appService: AppService, private loginService: LoginService, private router: Router, private activatedRoute: ActivatedRoute
         , private toastr: NotificationService) {
     }
@@ -178,6 +189,10 @@ export class LoginComponent implements OnInit {
             Constant.ROOT_LOADER = false;
         }, (error) => {
             Constant.ROOT_LOADER = false;
+            this.otp1 = '';
+            this.otp2 = '';
+            this.otp3 = '';
+            this.otp4 = '';
             this.toastr.success('Error!', error.error.message);
             this.successMessage = '';
               this.errorMessage = error.error.message;

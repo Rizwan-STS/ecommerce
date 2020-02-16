@@ -195,6 +195,11 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
 
     public addToCartVal(value) {
         debugger
+        if (!value.addquantity) {
+            value.addquantity = 1;
+        } else {
+            value.addquantity += 1;
+        }
         this.embryoService.addToCart(value);
         // this.AddtoCart(value);
     }
@@ -247,6 +252,10 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
         this.selectedProduct = p;
         this.allProducts = this.embryoService.localStorageCartProducts;
         $('#myModal1').modal("show")
+    }
+
+    HideModal() {
+        $('#myModal1').modal("hide")
     }
 
     InitSlider() {

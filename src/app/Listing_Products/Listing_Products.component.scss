@@ -3,6 +3,24 @@
   width: 98px;
   object-fit: cover;
 }
+
 .productname {
   height: 70px;
+}
+
+.zero-opacity {
+  opacity: 0;
+  display: none !important;
+}
+
+.one-opacity {
+  opacity: 1;
+}
+
+.padding-bottom-30px {
+  padding-bottom: 30px;
+}
+
+.filled {
+  background-color: #ffb078 !important;
 }

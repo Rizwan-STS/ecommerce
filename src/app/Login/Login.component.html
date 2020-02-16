@@ -10,7 +10,7 @@
                     <div class="row">
                         <!-- <a class="rounder animated zoomIn" data-dismiss="modal"> <img src="assets/img/close-btn.png">
                         </a> -->
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-12 center-col text-center" style="margin: 0px !important;padding: 0px !important;">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-12 center-col text-center" style="margin: 0px !important;" [ngClass]="{'padding-0px' : (isMobile() || !otpSent)}">
                             <div class="forgot-pwd" *ngIf="otpSent">
 
                                 <div class="padding-nineteen-top padding-nineteen-bottom">
@@ -28,15 +28,16 @@
                                     <div class="clearfix"></div>
                                     <div class="forgot-box">
                                         <div class="email-user" style="padding: 0px;">
-                                            <input id="bx0" type="text" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp1" required (keypress)="isNumberKey($event, 'bx1', '')"
+                                            <input id="bx0" [type]="isMobile() ? 'tel' : 'text'" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp1" required (keypress)="isNumberKey($event, 'bx1', '')"
                                                 (keydown)="KeyDown($event, 'bx1', '')">
-                                            <input id="bx1" type="text" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp2" required (keypress)="isNumberKey($event, 'bx2', 'bx1')"
+                                            <input id="bx1" [type]="isMobile() ? 'tel' : 'text'" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp2" required (keypress)="isNumberKey($event, 'bx2', 'bx1')"
                                                 (keydown)="KeyDown($event, 'bx2', 'bx1')">
-                                            <input id="bx2" type="text" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp3" required (keypress)="isNumberKey($event, 'bx3', 'bx2')"
+                                            <input id="bx2" [type]="isMobile() ? 'tel' : 'text'" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp3" required (keypress)="isNumberKey($event, 'bx3', 'bx2')"
                                                 (keydown)="KeyDown($event, 'bx3', 'bx2')">
-                                            <input id="bx3" type="text" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp4" required (keypress)="isNumberKey($event, 'submit', 'bx3')"
+                                            <input id="bx3" [type]="isMobile() ? 'tel' : 'text'" style="border: 1px solid #fd9652;" maxlength="1" name="mail" [(ngModel)]="otp4" required (keypress)="isNumberKey($event, 'submit', 'bx3')"
                                                 (keydown)="KeyDown($event, 'submit', 'bx3')">
                                         </div>
+                                        <p style="font-size: 13px;background-color: #FFF5EE;color: #333;" class=" text-center"><a (click)="sendOtp()" class="accent-color">Resend OTP</a></p>
                                         <br/>
                                         <button class="padding-two btn btn-button form-control confirm-c" id="confirm" (click)="login()">Confirm</button>
                                         <!-- pop-up news-letter end -->
