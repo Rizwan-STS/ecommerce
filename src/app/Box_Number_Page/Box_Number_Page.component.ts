@@ -83,8 +83,11 @@ export class BoxNumberPageComponent implements OnInit {
             localStorage.setItem('boxValue', JSON.stringify(data));
             this.router.navigate(['/home']);
         }, (err) => {
-            debugger
             // alert(err.error.message);
+                this.nums[0] = '';
+                this.nums[1] = '';
+                this.nums[2] = '';
+                this.nums[3] = '';
                 this.toastr.success('Error!', err.error.message);
                 this.successMessage = '';
                 this.errorMessage = err.error.message;

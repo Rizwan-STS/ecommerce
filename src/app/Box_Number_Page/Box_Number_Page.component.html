@@ -22,7 +22,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6 col-12 center-col text-center">
                 <div class="forgot-pwd">
                     <br/>
-                    <div class="alert alert-danger alert-dismissable" *ngIf="errorMessage">
+                    <div class="alert alert-danger alert-dismissable" *ngIf="errorMessage" [hidden]="errorMessage && errorMessage === 'No box found for given box number'">
                         {{errorMessage}}
                         <a class="close" (click)="errorMessage=null;">&times;</a>
                     </div>
@@ -48,6 +48,7 @@
                                 (keydown)="KeyDown($event, 'bx3', 'bx2')">
                             <input id="bx3" pattern="[0-9]*" [type]="isMobile() ? 'tel' : 'text'" maxlength="1" style="border: 1px solid #fd9652;" [(ngModel)]="nums[3]" required (keypress)="isNumberKey($event, 'submit', 'bx3')"
                                 (keydown)="KeyDown($event, 'submit', 'bx3')">
+                            <div style="text-align: center;color: #ff2d58;" *ngIf="errorMessage && errorMessage === 'No box found for given box number'">Box no. entered does not exist</div>
                         </div>
                         <!-- input email or user end -->
                         <!-- get password start -->
