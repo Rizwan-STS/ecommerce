@@ -1460,10 +1460,10 @@ h6{font-size:18px; line-height:23px;}
 
 /* web tool css start */
 .web-tool{position:fixed; bottom:10%; right:0; z-index:2; -webkit-transition:all 0.3s ease-in-out 0s; -moz-transition:all 0.3s ease-in-out 0s; transition:all 0.3s ease-in-out 0s;}
-.web-tool .cart-side-icon{position:relative; right:-137px; margin-bottom:6px; display:flex;
+.web-tool .cart-side-icon{position:relative; right:60px; margin-bottom:6px; display:flex;
     -webkit-transition:all 0.3s ease-in-out 0s; -moz-transition:all 0.3s ease-in-out 0s; transition:all 0.3s ease-in-out 0s;}
-.web-tool .cart-side-icon:hover{right:0px; -webkit-transition:all 0.3s ease-in-out 0s; -moz-transition:all 0.3s ease-in-out 0s; transition:all 0.3s ease-in-out 0s;}
-.web-tool .cart-side-icon a{background-color:#e2524a; padding:10px 15px; color:#fff; display:flex;}
+/*.web-tool .cart-side-icon:hover{right:0px; -webkit-transition:all 0.3s ease-in-out 0s; -moz-transition:all 0.3s ease-in-out 0s; transition:all 0.3s ease-in-out 0s;}*/
+.web-tool .cart-side-icon a{background-color:#fd9651; padding:10px 15px; color:#fff; display:flex;}
 .web-tool .cart-side-icon a:hover{color:#fff!important;}
 .web-tool .cart-side-icon a i{font-size:24px;}
 .web-tool .cart-side-icon a span{margin-left:15px;}
