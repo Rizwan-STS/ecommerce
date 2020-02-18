@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppService } from 'src/app/app.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Constant } from '../../Constants';
 import { CartService } from '../cart.service';
 import { BoxService } from '../Listing_Products/box.service';
@@ -50,11 +50,18 @@ export class MyCartPaymentComponent implements OnInit {
     private cartService: CartService,
     public boxService: BoxService,
     private router: Router,private appService: AppService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef, private activatedRoute: ActivatedRoute
     , private toastr: NotificationService) { }
 
 
     ngOnInit() {
+      if (this.activatedRoute.snapshot.queryParams.callback) {
+        if (this.activatedRoute.snapshot.queryParams.callback === 'login') {
+          setTimeout(() => {
+          this.checkout();
+          }, 2000);
+        }
+      }
       setInterval(() => {
         this.HandLing();
 

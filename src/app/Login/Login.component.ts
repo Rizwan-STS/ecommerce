@@ -138,7 +138,7 @@ export class LoginComponent implements OnInit {
             if (this.activatedRoute.snapshot.queryParams.callback) {
                 if (this.activatedRoute.snapshot.queryParams.callback === 'cart') {
                     $('#myModal1').modal("hide");
-                    this.router.navigate(['/cart']);
+                    this.router.navigate(['/cart'], { queryParams: { callback: 'login' }});
                 } else {
                     $('#myModal1').modal("hide");
                     this.router.navigate(['/home']);

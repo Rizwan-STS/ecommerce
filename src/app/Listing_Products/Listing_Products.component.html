@@ -8,11 +8,12 @@
                 <!-- pop-up modal body start -->
                 <div class="modal-body bg-white">
                     <div class="row">
-                        <a class="rounder-1 animated zoomIn" data-dismiss="modal">
-                            <img src="assets/img/close-btn.png">
-                        </a>
+                       
                         <div class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center">
                             <div class="padding-nine-top padding-nine-bottom padding-right-15px padding-left-15px width-100-d" *ngIf="selectedProduct">
+                                    <a style="float:right;margin-top: 10px;" data-dismiss="modal">
+                                            <img src="assets/img/close-btn.png">
+                                        </a>
                                 <div class="clearfix text-center border-light-site padding-25px  margin-bottom-10px" routerLink="/ProductDetail/{{selectedProduct.id}}" (click)="HideModal()">
                                     <img class="cust-prod-image" src="{{(selectedProduct && selectedProduct && selectedProduct.adminProductsResponseModels.productsImagesResponseModel && selectedProduct.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  selectedProduct.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"
                                     />

@@ -38,8 +38,8 @@ export class ProfileComponent implements OnInit {
       // this.successMessage = data.message;
       this.toastr.success('Success!', data.message);
       // data.message = 'Profile updated successfully!'
-      this.successMessage = data.message;
-      this.errorMessage = '';
+      // this.successMessage = data.message;
+      // this.errorMessage = '';
       const response = data;
       Constant.ROOT_LOADER = false;
       if (response && response.data) {

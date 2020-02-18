@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 export class MyCartComponent implements OnInit {
 
   constructor(private appService: AppService, private router: Router) {
-    this.router.navigate(['/MyCartPayment']);
+    this.router.navigate(['/MyCartPayment'], { queryParams: { callback: 'login' }});
   }
 
   ngOnInit() {

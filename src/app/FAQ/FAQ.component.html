@@ -8,29 +8,25 @@
                 <h5 class="padding-eight-top text-extra-medium">FAQ</h5>
 
 
-                <div class="clearfix margin-four-top">
+                <div class="clearfix margin-four-top" *ngIf="faqData?.faqs && (faqData.faqs).length>0">
 
 
 
                     <!-- question start -->
-                    <div class="bg-white  ">
+                    <div class="bg-white  "  *ngFor="let faq of faqData.faqs; let ind = index;">
                         <!-- question title start -->
                         <div class="faqs">
-                            <a class="text-black-ni" data-toggle="collapse" href="#collapse8" (click)="toggleModal('collapse8')">
+                            <a class="text-black-ni" data-toggle="collapse" (click)="toggleModal('collapse'+ ind)" href="#collapse{{ind}}" >
 
-                                <span class="text-extra-medium text-black-ni faq-line-width ">What is Lorem
-                                    Ipsum?</span>
+                                <span class="text-extra-medium text-black-ni faq-line-width " [innerHTML]="faq?.ques"></span>
 
                                 <i class="color-them-1 cokl fas fa-plus b  padding-10px"></i>
                             </a>
                         </div>
                         <!-- question title end -->
                         <!-- question description start -->
-                        <div id="collapse8" class="collapse show padding-three-top ">
-                            <p class="text-small  show no-margin-bottom sm-text-large">Lorem Ipsum is simply dummy text
-                                of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-                                dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                                scrambled it to make a type specimen book.</p>
+                        <div id="collapse{{ind}}" class="collapse padding-three-top ">
+                            <p class="text-small  show no-margin-bottom sm-text-large" [innerHTML]="faq?.ans"></p>
                         </div>
                         <!-- question description end -->
                         <hr class="border-set" />
