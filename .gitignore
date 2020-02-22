@@ -1,0 +1,6 @@
+.idea
+dist
+dist.zip
+node_modules
+package-lock.json
+src/assets/js/bootstrap-datepicker.min.js
