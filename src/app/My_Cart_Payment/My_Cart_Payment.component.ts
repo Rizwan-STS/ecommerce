@@ -957,7 +957,7 @@ export class MyCartPaymentComponent implements OnInit {
       'phonenumber': this.mobilenumber
     };
     this.loginService.loginOTP(datObj).subscribe((data: any) => {
-      this.successMessage = data.message;
+      this.successMessage = 'OTP Sent';
       this.errorMessage = '';
       this.showscreen = 2;
       this.toastr.success('Success!', data.message);
