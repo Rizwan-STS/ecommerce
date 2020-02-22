@@ -21,6 +21,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
     navigationName : '',
   }
   isLogin = false;
+  isMobile() {
+      const devices = [/Android/i, /BlackBerry/i, /iPhone|iPad|iPod/i, /Opera Mini/i, /IEMobile/i, /WPDesktop/i];
+      let flag = false;
+      for (const dev of devices) {
+          if (navigator.userAgent.match(dev)) {
+              flag = true;
+          }
+      }
+      return flag;
+      // if ()
+  }
   headerLinks = [
       {
         name: 'My Profile',
