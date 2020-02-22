@@ -10,6 +10,10 @@ export class LoginService {
     return this.httpClient.post(Constants.BASE_API_URL + '/auth/login', data);
   }
 
+  getDetail(data) {
+    return this.httpClient.post(Constants.BASE_API_URL + '/auth/getname', data);
+  }
+
   login(data) {
     return this.httpClient.post(Constants.BASE_API_URL + '/auth/loginpost', data);
   }

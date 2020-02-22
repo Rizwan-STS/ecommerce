@@ -21,6 +21,7 @@ declare var Razorpay: any;
 })
 export class MyCartPaymentComponent implements OnInit {
 
+  showPromoCode = 0;
   products: any;
   allProducts: any = [];
   productsArray: any;
@@ -40,11 +41,13 @@ export class MyCartPaymentComponent implements OnInit {
   screenWidth;
   boxNum = '';
   isCheckout = false;
-  promocodes = [];
+  promocodes;
   navigations = {
       navigationUrl : '/home',
       navigationName : 'Home',
   }
+  entireData;
+
   isMobile() {
       const devices = [/Android/i, /BlackBerry/i, /iPhone|iPad|iPod/i, /Opera Mini/i, /IEMobile/i, /WPDesktop/i];
       let flag = false;
@@ -121,10 +124,14 @@ export class MyCartPaymentComponent implements OnInit {
       this.router.navigate(['/home']);
     }
 
-    private getPromocodes() {
+    showPromoCodeVal(val){
+      this.showPromoCode = val;
+    }
+    getPromocodes() {
       this.promocodes = [];
       this.cartService.getPromocodes(localStorage.getItem('boxNumber')).subscribe((data: any) => {
         this.promocodes = data.data;
+        console.log('Promocdode is ',this.promocodes)
       });
     }
 
@@ -137,6 +144,7 @@ export class MyCartPaymentComponent implements OnInit {
             Constant.ROOT_LOADER = false;
           }, 500);
           if (data != null && data.data != null) {
+            this.entireData = data.data;
             localStorage.removeItem('response');
             this.productsArray = data.data.adminProductsResponseModels;
             localStorage.setItem('maxFreeQuant', data.data.maxFree);
@@ -830,11 +838,19 @@ export class MyCartPaymentComponent implements OnInit {
 
     }
 
-    changePromoVal(val) {
-      console.log(val);
-      this.promoCodeEnt = val.target.value;
+    selectPromo(){
+      this.promoCodeEnt = this.promocodes.name;
     }
 
+    changePromoVal() {
+      this.promoCodeEnt = this.promocodes.name;
+    }
+
+    removePromoCode(){
+      localStorage.removeItem('promocode');
+      this.promoCodeEnt = '';
+      this.showPromoCode = 0;
+    }
     checkPromoCode() {
       const boxNumber = localStorage.getItem('boxNumber');
       if (this.promoCodeEnt === '') {
@@ -847,6 +863,7 @@ export class MyCartPaymentComponent implements OnInit {
           localStorage.setItem('promocode', this.promoCodeEnt);
           this.promoDiscount = data.message.discountValue;
           this.promoType = data.message.type;
+          this.showPromoCode = 2;
           Constant.ROOT_LOADER = false;
         }, (error) => {
           Constant.ROOT_LOADER = false;
