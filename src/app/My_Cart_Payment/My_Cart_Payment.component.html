@@ -36,11 +36,12 @@
                     </div>
                     <ng-container *ngIf="isMobile()">
                         <div class="row padding-top-25px padding-bottom-25px  border-bottom-s" *ngFor="let product of allProducts">
-                            <div class="col-xl-3 col-xs-3 col-sm-3 col-3">
-                                <ng-container *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
-                                    <ng-container *ngIf="images.isDefault">
-                                        <img style="width: 100px; height: auto; float: left" [src]="images.idUrl" alt="cart image">
-                                    </ng-container>
+                        <div class="col-xl-3 col-xs-3 col-sm-3 col-3">
+                            <ng-container
+                                    *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
+                                <ng-container *ngIf="images.isDefault">
+                                    <img style="width: 80px; height: 80px; float: left" [src]="images.idUrl"
+                                         alt="cart image">
                                 </ng-container>
                             </div>
                             <div class="col-xl-9 col-xs-9 col-sm-9 col-9">
