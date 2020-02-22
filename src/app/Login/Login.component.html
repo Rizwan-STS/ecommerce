@@ -14,7 +14,7 @@
                             <div class="forgot-pwd" *ngIf="otpSent">
 
                                 <div class="padding-nineteen-top padding-nineteen-bottom">
-                                    <h5>Hi There!</h5>
+                                    <h5>Hi <span *ngIf="name">{{name.name}}</span>!</h5>
                                     <div class="alert alert-danger alert-dismissable" *ngIf="errorMessage">
                                         {{errorMessage}}
                                         <a class="close" (click)="errorMessage=null;">&times;</a>

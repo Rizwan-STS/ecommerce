@@ -827,12 +827,17 @@ export class MyCartPaymentComponent implements OnInit {
 
     }
 
+    selectPromo(){
+      this.promoCodeEnt = this.promocodes.name;
+    }
+
     changePromoVal() {
       this.promoCodeEnt = this.promocodes.name;
     }
 
     removePromoCode(){
       localStorage.removeItem('promocode');
+      this.promoCodeEnt = '';
       this.showPromoCode = 0; 
     }
     checkPromoCode() {

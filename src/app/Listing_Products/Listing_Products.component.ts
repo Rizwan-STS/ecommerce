@@ -25,6 +25,10 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     promocodes = null;
     boxNum = null;
     productsBanner = [];
+    promoCodeEnt;
+    successMessagePromo;
+    promoDiscount;
+    promoType;
     navigations = {
         navigationUrl : '/BoxNumberPage',
         navigationName : 'Box number',
@@ -75,6 +79,27 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
             product.adminProductsResponseModels.prQuantity = qty;
         } else {
             product.adminProductsResponseModels.prQuantity = 0
+        }
+    }
+
+    checkPromoCode() {
+        let boxNumber = localStorage.getItem('boxNumber');
+        if (!isNullOrUndefined(boxNumber) || boxNumber != '') {
+            this.cartService.addPromoCode(this.promocodes.name, boxNumber).subscribe((data: any) => {
+                this.successMessagePromo = 'Promo offer applied';
+                this.errorMessage = null;
+                this.promoCodeEnt = data.message.promocodename;
+                localStorage.setItem('promocode', this.promoCodeEnt);
+                this.promoDiscount = data.message.discountValue;
+                this.promoType = data.message.type;
+                // "Selected Promocode Applied"
+                
+            }, (error) => {
+                localStorage.removeItem('promocode');
+                this.errorMessage = error.error.message;
+                this.successMessagePromo = null;
+                window.scrollTo(0, 0)
+            });
         }
     }
 
@@ -228,6 +253,7 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
+        this.promoCodeEnt = localStorage.getItem('promocode');
         if (!localStorage.getItem('boxNumber')) {
             this.route.navigate(['/BoxNumberPage'])
         }

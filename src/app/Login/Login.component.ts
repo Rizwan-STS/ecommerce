@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     otp2;
     otp3;
     otp4;
+    name;
     otpcode;
     successMessage;
     errorMessage = '';
@@ -187,9 +188,13 @@ export class LoginComponent implements OnInit {
         this.loginService.loginOTP(datObj).subscribe((data: any) => {
             this.switchModal();
               this.successMessage = data.message;
+              this.loginService.getDetail(datObj).subscribe((newDataV: any) => {
+                const response = newDataV;
+            }, (error) => {
+            });
               this.errorMessage = '';
             this.toastr.success('Success!', data.message);
-            const response = data;
+            this.name = data.data;
             Constant.ROOT_LOADER = false;
         }, (error) => {
             Constant.ROOT_LOADER = false;

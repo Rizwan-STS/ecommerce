@@ -8,13 +8,14 @@
                 <!-- pop-up modal body start -->
                 <div class="modal-body bg-white">
                     <div class="row">
-                       
+
                         <div class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center">
                             <div class="padding-nine-top padding-nine-bottom padding-right-15px padding-left-15px width-100-d" *ngIf="selectedProduct">
-                                    <a style="float:right;margin-top: 10px;" data-dismiss="modal">
+                                <a style="float:right;margin-top: 10px;" data-dismiss="modal">
                                             <img src="assets/img/close-btn.png">
                                         </a>
-                                <div class="clearfix text-center border-light-site padding-25px  margin-bottom-10px" routerLink="/ProductDetail/{{selectedProduct.id}}" (click)="HideModal()">
+                                <div class="clearfix text-center border-light-site padding-25px  margin-bottom-10px" routerLink="/ProductDetail/{{selectedProduct.id}}"
+                                    (click)="HideModal()">
                                     <img class="cust-prod-image" src="{{(selectedProduct && selectedProduct && selectedProduct.adminProductsResponseModels.productsImagesResponseModel && selectedProduct.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  selectedProduct.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"
                                     />
                                 </div>
@@ -143,6 +144,25 @@
     <!-- end slider -->
 
     <div class="container">
+        <ng-container *ngIf="promocodes != null">
+            <div class="row">
+                <div style="background-color: #ffb078;width: 100%;margin: auto;max-width: 500px;">
+                    <div class="cart-product-info">
+                        <h5 style="color: #fff;margin-top:7px;float: left;max-width: 70% !important;font-size: small;"> &nbsp;
+                            <ng-container *ngIf="promocodes.type == 'Direct'">
+                                {{promocodes.amount}} Rs Discount
+                            </ng-container>
+                            <ng-container *ngIf="promocodes.type != 'Direct'">
+                                {{promocodes.amount}}% Discount
+                            </ng-container>
+                            on Promo 
+                        </h5>
+                        <button class="btn op-set border-radius-4 form-control text-center line-height-26" *ngIf="promoCodeEnt == null || promoCodeEnt != promocodes.name" (click)="checkPromoCode();" style="margin-bottom:7px;margin-top:7px;color: #fff;background-color:green;float:  right;width: 30% !important; max-width: 100px; margin-right: 5px">Apply</button> &nbsp;
+                        <label *ngIf="promoCodeEnt != null || promoCodeEnt == promocodes.name" style="margin-top:7px;color: white;margin-top:0px;font-size: 16px;background: green;padding:3px; float:  right;max-width: 30% !important; border-radius: 5px;padding: 10px; margin-right: 5px;margin-bottom:7px;margin-top:7px;">Applied</label>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
         <div class="row">
             <br/>
             <div class="alert alert-danger alert-dismissable" *ngIf="errorMessage">
@@ -206,10 +226,10 @@
                         <p class="text-medium1 margin-bottom-5px" [ngClass]="{'text-left' : !isMobile(), 'text-center': isMobile()}" (click)="AddtoCart(product)">
                             {{product.adminProductsResponseModels.name}}</p>
                         <p class="d-flex margin-bottom-5px">
-                                <span class=" cokl"  [ngClass]="{'text-left width-100-px' : !isMobile(), 'text-center': isMobile()}" [style.width.%]="isMobile() ? 50 : auto">
+                            <span class=" cokl" [ngClass]="{'text-left width-100-px' : !isMobile(), 'text-center': isMobile()}" [style.width.%]="isMobile() ? 50 : auto">
                                 ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
                             </span>
-                            <span class=""  [ngClass]="{'text-right' : !isMobile(), 'text-center': isMobile()}"  [style.width.%]="isMobile() ? 50 : auto">
+                            <span class="" [ngClass]="{'text-right' : !isMobile(), 'text-center': isMobile()}" [style.width.%]="isMobile() ? 50 : auto">
                                 <img src="assets/img/star.png"> {{product.adminProductsResponseModels?.rating ? product.adminProductsResponseModels?.rating : 0}}
                             </span>
                         </p>
@@ -260,7 +280,7 @@
                             <span class="d-block text-left ">
 
                                 <div class="d-inline-block text-left width-100-px">
-                                    <img src="assets/img/star.png"> {{product.adminProductsResponseModels?.rating}}
+                                    <img src="assets/img/star.png">  {{product.adminProductsResponseModels?.rating ? product.adminProductsResponseModels?.rating : 0}}
                                 </div>
                                 <div class="d-inline-block text-right" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-30px' : (fetchQunt(product) !== 0)}">
                                     <span class="quantity d-block">

@@ -122,7 +122,7 @@
                                 <div class="d-inline-block">
                                     <img class="color-them-1 imgover" src="assets/img/tag.png">
                                 </div>
-                                <div class="d-inline-block" style="cursor: grab;" (click)="showPromoCodeVal(1)">
+                                <div class="d-inline-block" style="cursor: grab;width: 100%;" (click)="showPromoCodeVal(1)">
                                     <h6 class="text-small padding-left-5px padding-right-4px">No Promo Code Applied</h6>
                                     <p class="text-extra-small padding-left-10px no-margin-bottom">1 Promo Code Available
                                     </p>
@@ -133,7 +133,7 @@
                             </div>
 
                             <div class=" padding-bottom-0px margin-top-15px" *ngIf="showPromoCode === 1">
-                                <a class="" (click)="showPromoCodeVal(0)" style="cursor: grab;"> <i class="fas  icon-right fa-chevron-left"></i>  Cancel</a><br/>
+                                <a class="" (click)="showPromoCodeVal(0)" style="cursor: grab;width: 100%;"> <i class="fas  icon-right fa-chevron-left"></i>  Cancel</a><br/>
                                 <h3 class="text-small font-weight-600">Available Promo Codes </h3>
 
                                 <!-- Start pormo code-->
@@ -152,7 +152,7 @@
                                             <li>
                                                 <input type="radio" id="f-option" name="selector">
                                                 <label for="f-option"></label>
-
+                                                <!-- (click)="selectPromo()" -->
                                                 <div class="check" for="f-option"></div>
                                             </li>
                                         </ul>
@@ -169,13 +169,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex set-clip" *ngIf="showPromoCode === 2" style="background-color: #91dc91;padding: 15px;">
-                                <!-- <div class="d-inline-block">
+                            <div class="d-flex set-clip" *ngIf="showPromoCode === 2">
+                                <div class="d-inline-block">
                                     <img class="color-them-1 imgover" src="assets/img/tag.png">
-                                </div> -->
-                                <div class="d-inline-block" style="cursor: grab;" (click)="showPromoCodeVal(1)">
-                                    <h6 class="text-small padding-right-4px" *ngIf="promocodes.type === 'Direct'">{{promocodes.amount}} R Discount applieds</h6>
-                                    <h6 class="text-small padding-right-4px" *ngIf="promocodes.type === 'Percent'">{{promocodes.amount}} % Discount applied</h6> &nbsp;
+                                </div>
+                                <div class="d-inline-block" style="cursor: grab;width: 100%" (click)="showPromoCodeVal(1)">
+                                    <div class="d-inline-block" style="cursor: grab;margin-right: 5px;" (click)="showPromoCodeVal(1)">
+                                        <h6 class="text-small padding-left-5px padding-right-4px">Promo Code Applied</h6>
+                                        <p class="text-extra-small padding-left-10px no-margin-bottom" *ngIf="promocodes.type === 'Direct'"> {{promocodes.amount}} Rs Discount applied  &nbsp;
+                                        </p>
+                                        <p class="text-extra-small padding-left-10px no-margin-bottom" *ngIf="promocodes.type !== 'Direct'">{{promocodes.amount}} % Discount applied &nbsp;
+                                            </p>
+                                    </div>
                                     <div style="float: right">
                                         <img _ngcontent-ooo-c2="" src="assets/img/delete.png" style="float: right" (click)="removePromoCode()">
                                     </div>
