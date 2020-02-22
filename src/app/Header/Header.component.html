@@ -72,15 +72,17 @@
                             <ul class="nav navbar-nav topnav site-bg-dup">
                                 <!-- header-nav home start -->
                                 <li class="nav-home" *ngFor="let headerLink of headerLinks">
-                                    <a routerLink="{{headerLink.routerLink}}">
-                                        <!-- <img src="assets/img/user-pro.png" > -->
-                                        {{headerLink.name}}
-                                    </a>
-
-                                </li>
-
-                                <li class="nav-contact" *ngIf="isLogin">
-                                    <a (click)="logoutUser()" class="">Logout</a>
+                                    <ng-container *ngIf="headerLink.routerLink === 'logoutUser'">
+                                        <a (click)="logoutUser()">
+                                            {{headerLink.name}}
+                                        </a>
+                                    </ng-container>
+                                    <ng-container *ngIf="headerLink.routerLink !== 'logoutUser'">
+                                        <a routerLink="{{headerLink.routerLink}}">
+                                            <!-- <img src="assets/img/user-pro.png" > -->
+                                            {{headerLink.name}}
+                                        </a>
+                                    </ng-container>
                                 </li>
                                 <!-- header-nav contact end -->
                             </ul>
