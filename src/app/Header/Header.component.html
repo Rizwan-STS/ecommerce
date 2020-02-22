@@ -72,12 +72,12 @@
                             <ul class="nav navbar-nav topnav site-bg-dup">
                                 <!-- header-nav home start -->
                                 <li class="nav-home" *ngFor="let headerLink of headerLinks">
-                                    <ng-container *ngIf="headerLink.routerLink === 'logoutUser'">
+                                    <ng-container *ngIf="headerLink.click === 'logoutUser'">
                                         <a (click)="logoutUser()">
                                             {{headerLink.name}}
                                         </a>
                                     </ng-container>
-                                    <ng-container *ngIf="headerLink.routerLink !== 'logoutUser'">
+                                    <ng-container *ngIf="headerLink.click !== 'logoutUser'">
                                         <a routerLink="{{headerLink.routerLink}}">
                                             <!-- <img src="assets/img/user-pro.png" > -->
                                             {{headerLink.name}}
