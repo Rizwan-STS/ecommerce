@@ -18,8 +18,7 @@
 <!-- product-detail section start -->
 <section class="breadcrumb-padding color-them-1" *ngIf="(allProducts && allProducts.length>0); else elseBlock">
     <div class="container">
-        <div class="row product-service-without-sticky product-detail-list product-quickview-section"
-             *ngIf="(allProducts && allProducts.length>0);">
+        <div class="row product-service-without-sticky product-detail-list product-quickview-section" *ngIf="(allProducts && allProducts.length>0);">
 
             <div class="col-xl-9 ">
 
@@ -30,7 +29,7 @@
                             <p class="font-weight-600 text-medium2">My Cart <span class="cokl">  </span></p>
                         </div>
                         <div class="col-xl-6 col-6  col-xs-6 col-sm-6 text-right">
-                            <p (click)="clearAll()">Clean <img src="assets/img/shape.png" ></p>
+                            <p (click)="clearAll()">Clean <img src="assets/img/shape.png"></p>
                         </div>
 
 
@@ -45,11 +44,10 @@
                                 </ng-container>
                             </ng-container>-->
                             <div class="vertical-algintop ">
-                                 <!--style="margin-left: 110px">-->
+                                <!--style="margin-left: 110px">-->
                                 <p class="font-weight-600 text-medium2 no-margin-bottom">
                                     {{product?.adminProductsResponseModels?.name}} </p>
-                                <p class="font-weight-600 text-medium2  no-margin-bottom cokl"> ₹ {{
-                                    calculateProductSinglePrice(product, quantity.value)}} </p>
+                                <p class="font-weight-600 text-medium2  no-margin-bottom cokl"> ₹ {{ calculateProductSinglePrice(product, quantity.value)}} </p>
                                 <p class="font-weight-600 text-medium2  "><img src="assets/img/star.png"> {{product.rating}} </p>
                             </div>
                             <div fxFlex.xs="10" fxFlex.sm="10" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10">
@@ -80,15 +78,10 @@
                                     <div class="quantity sm-border-lr-light-gray sm-border-bottom-light-gray">
                                         <div class="plus-minus sm-padding-top-15px sm-padding-bottom-15px">
                                             <div class="padding-5px  d-inline-block">
-                                                <a href="javaScript:void(0)"
-                                                   class="minus-btn text-black color-them-1 padding-5px cokl"
-                                                   (click)="removeTCart(product)"><i
+                                                <a href="javaScript:void(0)" class="minus-btn text-black color-them-1 padding-5px cokl" (click)="removeTCart(product)"><i
                                                         class="fas fa-minus"></i></a>
-                                                <input type="text" name="name" #quantity (blur)="checkQuantity(product)"
-                                                       value="{{fetchQunt(product)}}" class="">
-                                                <a href="javaScript:void(0)"
-                                                   class="plus-btn text-black color-them-1 padding-5px cokl"
-                                                   (click)="addToCartProduct(product)"><i
+                                                <input type="text" name="name" #quantity (blur)="checkQuantity(product)" value="{{fetchQunt(product)}}" class="">
+                                                <a href="javaScript:void(0)" class="plus-btn text-black color-them-1 padding-5px cokl" (click)="addToCartProduct(product)"><i
                                                         class="fas fa-plus"></i></a>
                                             </div>
                                         </div>
@@ -112,37 +105,89 @@
                         <h3 class="padding-top-25px padding-left-15px    product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
                             ADD A TIP FOR YOUR DRIVER </h3>
 
-                        <p class=" padding-left-15px  padding-right-15px text-small text-justify"> Your driver,
-                            (driver_name) is from a small town in Mandya. He dreams of owning a home one day </p>
+                        <p class=" padding-left-15px  padding-right-15px text-small text-justify" *ngIf="entireData"> {{entireData.driverdescription}} </p>
 
 
                         <div class="clearfix text-center position-relative">
                             <div class="search-bar collapse show" id="search">
-                                <input class="text-black border-radius-4" type="text" id="tip_amount" style="padding-left: 40px;"
-                                       [(ngModel)]="tipamount" (blur)="tipPrice($event);"
-                                       placeholder="Tip amount"/>
+                                <input class="text-black border-radius-4" type="text" id="tip_amount" style="padding-left: 40px;" [(ngModel)]="tipamount"
+                                    (blur)="tipPrice($event);" placeholder="Tip amount" />
                                 <img style=" position: absolute; left: 30px; top: 10px; " src="assets/img/ic.png">
                             </div>
                         </div>
 
                         <div class="padding-15px">
                             <hr>
-                            <div class="d-flex set-clip">
+                            <div class="d-flex set-clip" *ngIf="showPromoCode === 0">
                                 <div class="d-inline-block">
                                     <img class="color-them-1 imgover" src="assets/img/tag.png">
                                 </div>
-                                <div class="d-inline-block">
+                                <div class="d-inline-block" style="cursor: grab;" (click)="showPromoCodeVal(1)">
                                     <h6 class="text-small padding-left-5px padding-right-4px">No Promo Code Applied</h6>
-                                    <p class="text-extra-small padding-left-10px no-margin-bottom">{{promocodes.length}} Promo Code
-                                        Available
+                                    <p class="text-extra-small padding-left-10px no-margin-bottom">1 Promo Code Available
                                     </p>
                                 </div>
                                 <div class="d-inline-block">
                                     <img class="color-them-1 imgover" src="assets/img/arrow-right.png">
                                 </div>
                             </div>
+
+                            <div class=" padding-bottom-0px margin-top-15px" *ngIf="showPromoCode === 1">
+                                <a class="" (click)="showPromoCodeVal(0)" style="cursor: grab;"> <i class="fas  icon-right fa-chevron-left"></i>  Cancel</a><br/>
+                                <h3 class="text-small font-weight-600">Available Promo Codes </h3>
+
+                                <!-- Start pormo code-->
+                                <div class="d-flex set-clip border-light-siter padding-10px margin-top-15px" (click)="changePromoVal()">
+
+                                    <div class="d-inline-block width-100">
+                                        <h6 class="text-small padding-left-5px padding-right-4px">
+                                            <span class="cokl font-weight-600" *ngIf="promocodes.type === 'Direct'"> {{promocodes.amount}} Rs</span>
+                                            <span class="cokl font-weight-600" *ngIf="promocodes.type === 'Percent'"> {{promocodes.amount}} %</span>
+                                            <span class="font-weight-600 text-small"> Off</span>
+                                        </h6>
+                                        <p class="text-extra-small padding-left-10px no-margin-bottom">Expires on {{promocodes.validTill}}</p>
+                                    </div>
+                                    <div class="d-inline-block line-height-40 radios">
+                                        <ul>
+                                            <li>
+                                                <input type="radio" id="f-option" name="selector">
+                                                <label for="f-option"></label>
+
+                                                <div class="check" for="f-option"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <!-- End promo code -->
+
+                                <div class="row   margin-top-15px">
+
+                                    <div class="col-xl-12 col-12 col-xs-12 col-sm-12 text-right">
+                                        <a href="Javascript:void(0);" class="btn btn-small form-control border-radius-4" (click)="checkPromoCode()"> <img src="assets/img/tagdd.png"> Apply Promo Code </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex set-clip" *ngIf="showPromoCode === 2" style="background-color: #91dc91;padding: 15px;">
+                                <!-- <div class="d-inline-block">
+                                    <img class="color-them-1 imgover" src="assets/img/tag.png">
+                                </div> -->
+                                <div class="d-inline-block" style="cursor: grab;" (click)="showPromoCodeVal(1)">
+                                    <h6 class="text-small padding-right-4px" *ngIf="promocodes.type === 'Direct'">{{promocodes.amount}} R Discount applieds</h6>
+                                    <h6 class="text-small padding-right-4px" *ngIf="promocodes.type === 'Percent'">{{promocodes.amount}} % Discount applied</h6> &nbsp;
+                                    <div style="float: right">
+                                        <img _ngcontent-ooo-c2="" src="assets/img/delete.png" style="float: right" (click)="removePromoCode()">
+                                    </div>
+                                    <!-- <p class="text-extra-small padding-left-10px no-margin-bottom">1 Promo Code Available </p> -->
+
+                                </div>
+                                <!-- <div class="d-inline-block">
+                                    <img class="color-them-1 imgover" src="assets/img/arrow-right.png">
+                                </div> -->
+                            </div>
                             <hr>
-                                <!-- <h3 class="text-silver2 product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
+                            <!-- <h3 class="text-silver2 product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
                                     Mobile Number </h3>
                                 <div class="clearfix text-center position-relative">
                                     <div class="search-bar collapse show" id="search">
@@ -205,7 +250,7 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 text-center col-md-12">
                     <div class=" box-rounder padding-nine-top">
-                            <span>
+                        <span>
                                 <img class="animated zoomIn" src="./assets/img/cart.png">
                             </span>
                     </div>
@@ -221,8 +266,7 @@
                     <div class="forgot-pwd">
                         <!-- title start -->
                         <div class="margin-bottom-15px">
-                            <h3 class="font-weight-600 text-extra-large md-title-mdall"> Your Shopping Cart is
-                                Empty </h3>
+                            <h3 class="font-weight-600 text-extra-large md-title-mdall"> Your Shopping Cart is Empty </h3>
 
                         </div>
                         <!-- title end -->
