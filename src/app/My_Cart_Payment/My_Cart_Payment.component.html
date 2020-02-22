@@ -35,72 +35,123 @@
 
 
                     </div>
-                    <div class="row   padding-top-25px border-bottom-s" *ngFor="let product of allProducts">
-                        <div class="col-xl-6 col-xs-6 col-sm-6 col-6">
-                            <!--<ng-container
+                    <ng-container *ngIf="isMobile()" >
+                        <div class="row padding-top-25px padding-bottom-25px  border-bottom-s" *ngFor="let product of allProducts">
+                        <div class="col-xl-3 col-xs-3 col-sm-3 col-3">
+                            <ng-container
                                     *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
                                 <ng-container *ngIf="images.isDefault">
-                                    <img style="width: 100px; height: auto; float: left" [src]="images.idUrl"
+                                    <img style="width: 80px; height: 80px; float: left" [src]="images.idUrl"
                                          alt="cart image">
                                 </ng-container>
-                            </ng-container>-->
-                            <div class="vertical-algintop ">
-                                 <!--style="margin-left: 110px">-->
-                                <p class="font-weight-600 text-medium2 no-margin-bottom">
-                                    {{product?.adminProductsResponseModels?.name}} </p>
-                                <p class="font-weight-600 text-medium2  no-margin-bottom cokl"> ₹ {{
-                                    calculateProductSinglePrice(product, quantity.value)}} </p>
-                                <p class="font-weight-600 text-medium2  "><img src="assets/img/star.png"> {{product.rating}} </p>
-                            </div>
-                            <div fxFlex.xs="10" fxFlex.sm="10" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10">
-                                <div class="cart-item-price">
-                                    <!-- <h4>₹ {{ calculateProductSinglePrice(product, quantity.value)}}
-                                </h4> -->
+                            </ng-container>
+                        </div>
+                        <div class="col-xl-9 col-xs-9 col-sm-9 col-9">
+                            <div class="row">
+                                <div class="col-xl-12 col-xs-12 col-sm-12 col-12">
+                                    <div class="vertical-algintop ">
+                                         <!--style="margin-left: 110px">-->
+                                        <p class="font-weight-600 text-medium2 no-margin-bottom">
+                                            {{product?.adminProductsResponseModels?.name}}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- <div fxFlex.xs="30" fxFlex.sm="30" fxFlex.md="30" fxFlex.lg="30" fxFlex.xl="30">
-                            <div class="cart-item-price">
-
-                                <label *ngIf="product.maxFree >= fetchQunt(product)">Sample ({{fetchQunt(product)}} Quantity) <span style="float: right !important">₹ {{0 }} </span>  </label><br/>
-                                <label *ngIf="product.maxFree < fetchQunt(product)"> Sample ({{product.maxFree}} Quantity) <span style="float: right !important">₹  {{0 }} </span>   </label><br/>
-                                <label *ngIf="product.maxFree < fetchQunt(product)"> Price (₹ {{ calculatBuyQuant(product, quantity.value) }} Quantity)
-                                    <span style="float: right !important">₹ {{ calculatBuyPrice(product, quantity.value)}}</span>
-                                </label><br/>
-                                <label *ngIf="product.maxFree < fetchQunt(product) && product.adminProductsResponseModels.buyQuant != 0 &&(product.adminProductsResponseModels.buyQuant+product.maxFree)< fetchQunt(product)">
-                                    Discounted ({{ calculatFreeQuant(product, quantity.value) }} Quantity)
-                                    <span style="float: right !important">₹ {{((product.adminProductsResponseModels.mainprice * (100 - product.adminProductsResponseModels.discountPercent) / 100) *  calculatFreeQuant(product, quantity.value)) }}</span>
-                                </label>
-
+                            <div class="row">
+                                <div class="col-xl-12 col-xs-12 col-sm-12 col-12">
+                                    <div class="vertical-algintop ">
+                                         <!--style="margin-left: 110px">-->
+                                        <p class="font-weight-600 text-medium2  no-margin-bottom cokl">
+                                            ₹ {{calculateProductSinglePrice(product, quantity.value)}}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                        </div> -->
-                        <div class="col-xl-6 col-xs-6 col-sm-6 col-6 text-right">
-                            <div class="d-block text-right">
-                                <div class="d-inline-block padding-right-15px">
-                                    <div class="quantity sm-border-lr-light-gray sm-border-bottom-light-gray">
-                                        <div class="plus-minus sm-padding-top-15px sm-padding-bottom-15px">
-                                            <div class="padding-5px  d-inline-block">
-                                                <a href="javaScript:void(0)"
-                                                   class="minus-btn text-black color-them-1 padding-5px cokl"
-                                                   (click)="removeTCart(product)"><i
-                                                        class="fas fa-minus"></i></a>
-                                                <input type="text" name="name" #quantity (blur)="checkQuantity(product)"
-                                                       value="{{fetchQunt(product)}}" class="">
-                                                <a href="javaScript:void(0)"
-                                                   class="plus-btn text-black color-them-1 padding-5px cokl"
-                                                   (click)="addToCartProduct(product)"><i
-                                                        class="fas fa-plus"></i></a>
+                            <div class="row">
+                                <div class="col-xl-4 col-xs-4 col-sm-4 col-4">
+                                    <div class="vertical-algintop ">
+                                        <p class="font-weight-600 text-medium2  "><img src="assets/img/star.png"> {{product.rating}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-8 col-xs-8 col-sm-8 col-8">
+                                    <div class="d-block text-right">
+                                        <div class="d-inline-block padding-right-15px">
+                                            <!--<div class="quantity sm-border-lr-light-gray sm-border-bottom-light-gray">-->
+                                            <div class="quantity">
+                                                <div class="plus-minus sm-padding-top-15px sm-padding-bottom-15px">
+                                                    <div class="padding-5px  d-inline-block">
+                                                        <a href="javaScript:void(0)"
+                                                           class="minus-btn text-black color-them-1 padding-5px cokl"
+                                                           (click)="removeTCart(product)"><i
+                                                                class="fas fa-minus"></i></a>
+                                                        <input type="text" name="name" #quantity (blur)="checkQuantity(product)"
+                                                               value="{{fetchQunt(product)}}" class="">
+                                                        <a href="javaScript:void(0)"
+                                                           class="plus-btn text-black color-them-1 padding-5px cokl"
+                                                           (click)="addToCartProduct(product)"><i
+                                                                class="fas fa-plus"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
+                                        </div>
+                                        <div class="d-inline-block">
+                                            <p><img src="assets/img/delete.png" (click)="removeProduct(product)"></p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-inline-block">
-                                    <p><img src="assets/img/delete.png" (click)="removeProduct(product)"></p>
+                            </div>
+                        </div>
+                        <!--<div class="col-xl-6 col-xs-6 col-sm-6 col-6 text-right">
+
+                        </div>-->
+                    </div>
+                    </ng-container>
+                    <ng-container *ngIf="!isMobile()" >
+                        <div class="row padding-top-25px padding-bottom-25px border-bottom-s" *ngFor="let product of allProducts">
+                            <div class="col-xl-6 col-xs-6 col-sm-6 col-6">
+                                <div class="row">
+                                    <div class="col-xl-4 col-xs-4 col-sm-4 col-4">
+                                        <ng-container *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
+                                            <ng-container *ngIf="images.isDefault">
+                                                <img style="width: 100px; height: auto; float: left" [src]="images.idUrl"
+                                                     alt="cart image">
+                                            </ng-container>
+                                        </ng-container>
+                                    </div>
+                                    <div class="col-xl-8 col-xs-8 col-sm-8 col-8">
+                                       <div class="vertical-algintop ">
+                                            <!--style="margin-left: 110px">-->
+                                            <p class="font-weight-600 text-medium2 no-margin-bottom">
+                                                {{product?.adminProductsResponseModels?.name}} </p>
+                                            <p class="font-weight-600 text-medium2  no-margin-bottom cokl"> ₹ {{ calculateProductSinglePrice(product, quantity.value)}} </p>
+                                            <p class="font-weight-600 text-medium2  "><img src="assets/img/star.png"> {{product.rating}} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-xs-6 col-sm-6 col-6 text-right">
+                                <div class="d-block text-right">
+                                    <div class="d-inline-block padding-right-15px">
+                                        <!--<div class="quantity sm-border-lr-light-gray sm-border-bottom-light-gray">-->
+                                        <div class="quantity">
+                                            <div class="plus-minus sm-padding-top-15px sm-padding-bottom-15px">
+                                                <div class="padding-5px  d-inline-block">
+                                                    <a href="javaScript:void(0)" class="minus-btn text-black color-them-1 padding-5px cokl" (click)="removeTCart(product)"><i
+                                                            class="fas fa-minus"></i></a>
+                                                    <input type="text" name="name" #quantity (blur)="checkQuantity(product)" value="{{fetchQunt(product)}}" class="">
+                                                    <a href="javaScript:void(0)" class="plus-btn text-black color-them-1 padding-5px cokl" (click)="addToCartProduct(product)"><i
+                                                            class="fas fa-plus"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-inline-block">
+                                        <p><img src="assets/img/delete.png" (click)="removeProduct(product)"></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
+                    </ng-container>
 
                 </div>
 

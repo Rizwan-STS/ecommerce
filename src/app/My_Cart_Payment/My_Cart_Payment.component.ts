@@ -45,7 +45,17 @@ export class MyCartPaymentComponent implements OnInit {
       navigationUrl : '/home',
       navigationName : 'Home',
   }
-
+  isMobile() {
+      const devices = [/Android/i, /BlackBerry/i, /iPhone|iPad|iPod/i, /Opera Mini/i, /IEMobile/i, /WPDesktop/i];
+      let flag = false;
+      for (const dev of devices) {
+          if (navigator.userAgent.match(dev)) {
+              flag = true;
+          }
+      }
+      return flag;
+      // if ()
+  }
   constructor(public embryoService: EmbryoService,
     private cartService: CartService,
     public boxService: BoxService,
@@ -117,7 +127,7 @@ export class MyCartPaymentComponent implements OnInit {
         this.promocodes = data.data;
       });
     }
-  
+
     public getProducts(isFromCheckout) {
       let isUpdated = false;
       if (!isNullOrUndefined(this.boxNum)) {
