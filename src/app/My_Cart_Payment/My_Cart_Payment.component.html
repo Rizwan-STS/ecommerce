@@ -255,19 +255,19 @@
                                 <div class="search-bar collapse show" id="search" *ngIf="showscreen === 1">
                                     <h3 class="text-silver2 product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
                                         Mobile Number </h3>
-                                    <input type="text" [(ngModel)]="mobilenumber" placeholder="Mobile Number" class="text-black form-control" autocomplete="off">
+                                    <input type="number" [(ngModel)]="mobilenumber" placeholder="Mobile Number" class="text-black form-control" autocomplete="off">
 
                                 </div>
                                 <div class="search-bar collapse show" id="search" *ngIf="showscreen === 2">
                                     <h3 class="text-silver2 product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
                                         OTP Code </h3>
-                                    <input type="text" [(ngModel)]="otp" placeholder="OTP Code" class="text-black form-control" autocomplete="off">
+                                    <input type="number" [(ngModel)]="otp" placeholder="OTP Code" class="text-black form-control" autocomplete="off">
                                 </div>
                                 <div class="search-bar collapse show" id="search" *ngIf="showscreen === 3">
                                     <h3 class="text-silver2 product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
                                         Register With Us </h3>
                                     <input type="text" [(ngModel)]="usname" placeholder="Name" class="text-black form-control" autocomplete="off">
-                                    <input type="text" [(ngModel)]="mobilenumber" placeholder="Mobile Number" class="text-black form-control" autocomplete="off">
+                                    <input type="number" [(ngModel)]="mobilenumber" placeholder="Mobile Number" class="text-black form-control" autocomplete="off">
                                 </div>
                                 <br/><a href="Javascript:void(0);" class="btn btn-small form-control border-radius-4" (click)="performAuth()"> Submit </a>
                                 <br/><br/>
