@@ -190,11 +190,11 @@ export class LoginComponent implements OnInit {
               this.successMessage = data.message;
               this.loginService.getDetail(datObj).subscribe((newDataV: any) => {
                 const response = newDataV;
+                this.name = newDataV.data;
             }, (error) => {
             });
               this.errorMessage = '';
             this.toastr.success('Success!', data.message);
-            this.name = data.data;
             Constant.ROOT_LOADER = false;
         }, (error) => {
             Constant.ROOT_LOADER = false;
@@ -207,4 +207,5 @@ export class LoginComponent implements OnInit {
               this.errorMessage = error.error.message;
         });
     }
+
 }

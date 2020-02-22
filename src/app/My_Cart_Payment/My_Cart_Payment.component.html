@@ -18,8 +18,7 @@
 <!-- product-detail section start -->
 <section class="breadcrumb-padding color-them-1" *ngIf="(allProducts && allProducts.length>0); else elseBlock">
     <div class="container">
-        <div class="row product-service-without-sticky product-detail-list product-quickview-section"
-             *ngIf="(allProducts && allProducts.length>0);">
+        <div class="row product-service-without-sticky product-detail-list product-quickview-section" *ngIf="(allProducts && allProducts.length>0);">
 
             <div class="col-xl-9 ">
 
@@ -27,99 +26,91 @@
 
                     <div class="row  padding-top-25px border-bottom-s">
                         <div class="col-xl-6 col-6 col-xs-6 col-sm-6 text-left">
-                            <p class="font-weight-600 text-medium2">My Cart <span class="cokl">  </span></p>
+                            <p class="font-weight-600 text-medium2">My Cart <span class="cokl" *ngIf="allProducts"> {{allProducts.length}}  </span></p>
                         </div>
                         <div class="col-xl-6 col-6  col-xs-6 col-sm-6 text-right">
-                            <p (click)="clearAll()">Clean <img src="assets/img/shape.png" ></p>
+                            <p (click)="clearAll()">Clean <img src="assets/img/shape.png"></p>
                         </div>
 
 
                     </div>
-                    <ng-container *ngIf="isMobile()" >
+                    <ng-container *ngIf="isMobile()">
                         <div class="row padding-top-25px padding-bottom-25px  border-bottom-s" *ngFor="let product of allProducts">
-                        <div class="col-xl-3 col-xs-3 col-sm-3 col-3">
-                            <ng-container
-                                    *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
-                                <ng-container *ngIf="images.isDefault">
-                                    <img style="width: 100px; height: auto; float: left" [src]="images.idUrl"
-                                         alt="cart image">
+                            <div class="col-xl-3 col-xs-3 col-sm-3 col-3">
+                                <ng-container *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
+                                    <ng-container *ngIf="images.isDefault">
+                                        <img style="width: 100px; height: auto; float: left" [src]="images.idUrl" alt="cart image">
+                                    </ng-container>
                                 </ng-container>
-                            </ng-container>
-                        </div>
-                        <div class="col-xl-9 col-xs-9 col-sm-9 col-9">
-                            <div class="row">
-                                <div class="col-xl-12 col-xs-12 col-sm-12 col-12">
-                                    <div class="vertical-algintop ">
-                                         <!--style="margin-left: 110px">-->
-                                        <p class="font-weight-600 text-medium2 no-margin-bottom">
-                                            {{product?.adminProductsResponseModels?.name}}
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-xl-12 col-xs-12 col-sm-12 col-12">
-                                    <div class="vertical-algintop ">
-                                         <!--style="margin-left: 110px">-->
-                                        <p class="font-weight-600 text-medium2  no-margin-bottom cokl">
-                                            ₹ {{calculateProductSinglePrice(product, quantity.value)}}
-                                        </p>
+                            <div class="col-xl-9 col-xs-9 col-sm-9 col-9">
+                                <div class="row">
+                                    <div class="col-xl-12 col-xs-12 col-sm-12 col-12">
+                                        <div class="vertical-algintop ">
+                                            <!--style="margin-left: 110px">-->
+                                            <p class="font-weight-600 text-medium2 no-margin-bottom">
+                                                {{product?.adminProductsResponseModels?.name}}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-4 col-xs-4 col-sm-4 col-4">
-                                    <div class="vertical-algintop ">
-                                        <p class="font-weight-600 text-medium2  "><img src="assets/img/star.png"> {{product.rating}} </p>
+                                <div class="row">
+                                    <div class="col-xl-12 col-xs-12 col-sm-12 col-12">
+                                        <div class="vertical-algintop ">
+                                            <!--style="margin-left: 110px">-->
+                                            <p class="font-weight-600 text-medium2  no-margin-bottom cokl">
+                                                ₹ {{calculateProductSinglePrice(product, quantity.value)}}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-8 col-xs-8 col-sm-8 col-8">
-                                    <div class="d-block text-right">
-                                        <div class="d-inline-block padding-right-15px">
-                                            <!--<div class="quantity sm-border-lr-light-gray sm-border-bottom-light-gray">-->
-                                            <div class="quantity">
-                                                <div class="plus-minus sm-padding-top-15px sm-padding-bottom-15px">
-                                                    <div class="padding-5px  d-inline-block">
-                                                        <a href="javaScript:void(0)"
-                                                           class="minus-btn text-black color-them-1 padding-5px cokl"
-                                                           (click)="removeTCart(product)"><i
+                                <div class="row">
+                                    <div class="col-xl-4 col-xs-4 col-sm-4 col-4">
+                                        <div class="vertical-algintop ">
+                                            <p class="font-weight-600 text-medium2  "><img src="assets/img/star.png"> {{product.rating}} </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8 col-xs-8 col-sm-8 col-8">
+                                        <div class="d-block text-right">
+                                            <div class="d-inline-block padding-right-15px">
+                                                <!--<div class="quantity sm-border-lr-light-gray sm-border-bottom-light-gray">-->
+                                                <div class="quantity">
+                                                    <div class="plus-minus sm-padding-top-15px sm-padding-bottom-15px">
+                                                        <div class="padding-5px  d-inline-block">
+                                                            <a href="javaScript:void(0)" class="minus-btn text-black color-them-1 padding-5px cokl" (click)="removeTCart(product)"><i
                                                                 class="fas fa-minus"></i></a>
-                                                        <input type="text" name="name" #quantity (blur)="checkQuantity(product)"
-                                                               value="{{fetchQunt(product)}}" class="">
-                                                        <a href="javaScript:void(0)"
-                                                           class="plus-btn text-black color-them-1 padding-5px cokl"
-                                                           (click)="addToCartProduct(product)"><i
+                                                            <input type="text" name="name" #quantity (blur)="checkQuantity(product)" value="{{fetchQunt(product)}}" class="">
+                                                            <a href="javaScript:void(0)" class="plus-btn text-black color-them-1 padding-5px cokl" (click)="addToCartProduct(product)"><i
                                                                 class="fas fa-plus"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="d-inline-block">
-                                            <p><img src="assets/img/delete.png" (click)="removeProduct(product)"></p>
+                                            <div class="d-inline-block">
+                                                <p><img src="assets/img/delete.png" (click)="removeProduct(product)"></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--<div class="col-xl-6 col-xs-6 col-sm-6 col-6 text-right">
+                            <!--<div class="col-xl-6 col-xs-6 col-sm-6 col-6 text-right">
 
                         </div>-->
-                    </div>
+                        </div>
                     </ng-container>
-                    <ng-container *ngIf="!isMobile()" >
+                    <ng-container *ngIf="!isMobile()">
                         <div class="row padding-top-25px padding-bottom-25px border-bottom-s" *ngFor="let product of allProducts">
                             <div class="col-xl-6 col-xs-6 col-sm-6 col-6">
                                 <div class="row">
                                     <div class="col-xl-4 col-xs-4 col-sm-4 col-4">
                                         <ng-container *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
                                             <ng-container *ngIf="images.isDefault">
-                                                <img style="width: 100px; height: auto; float: left" [src]="images.idUrl"
-                                                     alt="cart image">
+                                                <img style="width: 100px; height: auto; float: left" [src]="images.idUrl" alt="cart image">
                                             </ng-container>
                                         </ng-container>
                                     </div>
                                     <div class="col-xl-8 col-xs-8 col-sm-8 col-8">
-                                       <div class="vertical-algintop ">
+                                        <div class="vertical-algintop ">
                                             <!--style="margin-left: 110px">-->
                                             <p class="font-weight-600 text-medium2 no-margin-bottom">
                                                 {{product?.adminProductsResponseModels?.name}} </p>
@@ -234,10 +225,10 @@
                                 <div class="d-inline-block" style="cursor: grab;width: 100%" (click)="showPromoCodeVal(1)">
                                     <div class="d-inline-block" style="cursor: grab;margin-right: 5px;" (click)="showPromoCodeVal(1)">
                                         <h6 class="text-small padding-left-5px padding-right-4px">Promo Code Applied</h6>
-                                        <p class="text-extra-small padding-left-10px no-margin-bottom" *ngIf="promocodes.type === 'Direct'"> {{promocodes.amount}} Rs Discount applied  &nbsp;
+                                        <p class="text-extra-small padding-left-10px no-margin-bottom" *ngIf="promocodes.type === 'Direct'"> {{promocodes.amount}} Rs Discount applied &nbsp;
                                         </p>
                                         <p class="text-extra-small padding-left-10px no-margin-bottom" *ngIf="promocodes.type !== 'Direct'">{{promocodes.amount}} % Discount applied &nbsp;
-                                            </p>
+                                        </p>
                                     </div>
                                     <div style="float: right">
                                         <img _ngcontent-ooo-c2="" src="assets/img/delete.png" style="float: right" (click)="removePromoCode()">
@@ -250,13 +241,48 @@
                                 </div> -->
                             </div>
                             <hr>
-                            <!-- <h3 class="text-silver2 product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
-                                    Mobile Number </h3>
-                                <div class="clearfix text-center position-relative">
-                                    <div class="search-bar collapse show" id="search">
-                                        <input type="text" class="text-black form-control" autocomplete="off">
-                                    </div>
-                                </div> -->
+                            <div class="alert alert-danger alert-dismissable" *ngIf="errorMessage">
+                                {{errorMessage}}
+                                <a class="close" (click)="errorMessage=null;">&times;</a>
+                            </div>
+                            <div class="alert alert-success alert-dismissable" *ngIf="successMessage">
+                                {{successMessage}}
+                                <a class="close" (click)="successMessage=null;">&times;</a>
+                            </div>
+
+                            <div class="clearfix text-center position-relative" *ngIf="showscreen !== 5">
+                                <div class="search-bar collapse show" id="search" *ngIf="showscreen === 1">
+                                    <h3 class="text-silver2 product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
+                                        Mobile Number </h3>
+                                    <input type="text" [(ngModel)]="mobilenumber" placeholder="Mobile Number" class="text-black form-control" autocomplete="off">
+
+                                </div>
+                                <div class="search-bar collapse show" id="search" *ngIf="showscreen === 2">
+                                    <h3 class="text-silver2 product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
+                                        OTP Code </h3>
+                                    <input type="text" [(ngModel)]="otp" placeholder="OTP Code" class="text-black form-control" autocomplete="off">
+                                </div>
+                                <div class="search-bar collapse show" id="search" *ngIf="showscreen === 3">
+                                    <h3 class="text-silver2 product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
+                                        Register With Us </h3>
+                                    <input type="text" [(ngModel)]="usname" placeholder="Name" class="text-black form-control" autocomplete="off">
+                                    <input type="text" [(ngModel)]="mobilenumber" placeholder="Mobile Number" class="text-black form-control" autocomplete="off">
+                                </div>
+                                <br/><a href="Javascript:void(0);" class="btn btn-small form-control border-radius-4" (click)="performAuth()"> Submit </a>
+                                <br/><br/>
+                                <a href="javascript:void(0)">
+                                    <h1 (click)="registerWithUs()" *ngIf="showscreen === 1" class="text-silver2 product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
+                                        Register with us! </h1>
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <h1 (click)="sendOtp()" *ngIf="showscreen === 2" class="text-silver2 product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
+                                        Resend OTP </h1>
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <h1 (click)="loginW()" *ngIf="showscreen === 3" class="text-silver2 product-title line-height-15 d-block font-weight-600 text-medium2 md-title-mdall margin-bottom-20px sm-margin-bottom-15px">
+                                        Have Account, Login </h1>
+                                </a>
+                            </div>
                             <hr>
                             <div class="row ">
                                 <div class="col-xl-6 text-left">
