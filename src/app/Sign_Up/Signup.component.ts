@@ -58,7 +58,10 @@ export class SignUpComponent implements OnInit {
             Constant.ROOT_LOADER = false;
             //   this.signupForm.reset();
             //   this.snackBar.open(this.successMessage, '', Constant.SNACKBAR_DURATION);
-            this.router.navigate(['/Login'], {queryParams: { 'phonenumber': this.phonenumber }});
+            // this.router.navigate(['/Login'], {queryParams: { 'phonenumber': this.phonenumber }});
+            setTimeout(() => {
+                window.location.href = window.location.origin + '/Login?phonenumber=' + this.phonenumber;
+            }, 500);
         }, (error) => {
             Constant.ROOT_LOADER = false;
             this.toastr.success('Error!', error.error.message);
