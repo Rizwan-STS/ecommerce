@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, OnDestroy} from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { EmbryoService } from 'src/app/Embryo.service';
@@ -9,7 +9,7 @@ declare var $: any;
   templateUrl: './Header.component.html',
   styleUrls: ['./Header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   @Input()
   webTool: boolean;
@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
     navigationUrl : '',
     navigationName : '',
   }
+  isLogin = false;
   headerLinks = [
       {
         name: 'My Profile',
@@ -67,16 +68,34 @@ export class HeaderComponent implements OnInit {
           // image: 'assets/img/user-pro.png'
       }
   ];
+  intervals = null;
 
   constructor(public embryoService: EmbryoService,private router: Router,private appService: AppService) { }
 
   ngOnInit() {
     this.allProducts = this.embryoService.localStorageCartProducts;
     console.log(this.allProducts[0]);
-    setInterval(() => {
-      this.allProducts = this.embryoService.localStorageCartProducts;
+    this.isLogin = !!localStorage.getItem('token');
+    if (!this.isLogin) {
+      this.headerLinks = [
+          {
+            name: 'Login',
+            routerLink: '/Login',
+          },
+          {
+            name: 'Register',
+            routerLink: '/Register',
+          },
+      ]
+    }
+    this.intervals = setInterval(() => {
+      this.allProducts = JSON.parse(localStorage.getItem("cart_item")) || [];
       // console.log('this.allProducts ', this.allProducts)
     }, 1000);
+  }
+
+  ngOnDestroy() {
+        clearInterval(this.intervals);
   }
 
   hoverMouse() {

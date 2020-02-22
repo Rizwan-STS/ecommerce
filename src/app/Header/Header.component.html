@@ -66,65 +66,15 @@
                         <div class="collapse navbar-collapsebg-white" id="navbarSupportedContent1">
                             <ul class="nav navbar-nav topnav site-bg-dup">
                                 <!-- header-nav home start -->
-                                <li class="nav-home">
-                                    <a routerLink="/Profile">
+                                <li class="nav-home" *ngFor="let headerLink of headerLinks">
+                                    <a routerLink="{{headerLink.routerLink}}">
                                         <!-- <img src="assets/img/user-pro.png" > -->
-                                        My Profile
+                                        {{headerLink.name}}
                                     </a>
 
                                 </li>
-                                <!-- header-nav home end -->
-                                <!-- header-nav category start -->
-                                <li class="nav-category" id="show">
-                                    <a routerLink="/MyOrders">
-                                        <!-- <img src="assets/img/box-nav-pro.png"> -->
-                                        Orders
-                                    </a>
 
-                                </li>
-                                <!-- header-nav category end -->
-                                <!-- header-nav blog start -->
-                                <li class="nav-blog">
-                                    <a class="drop-blog" routerLink="/MyCartPayment">
-                                        <!-- <img src="assets/img/cart-white-pro.png"> -->
-                                        My Cart
-                                    </a>
-                                </li>
-                                <!-- header-nav blog end -->
-                                <!-- header-nav product start -->
-                                <li class="nav-product">
-                                    <a routerLink="/AboutUs">
-                                        <!-- <img src="assets/img/info-pro.png"> -->
-                                        About
-                                    </a>
-
-                                </li>
-                                <!-- header-nav product end -->
-                                <!-- header-nav page start -->
-                                <!-- <li class="nav-page">
-                                    <a routerLink="/TermsAndCondition">
-                                        Terms & Condition </a>
-
-                                </li>
-                                <li class="nav-store">
-                                    <a routerLink="/PrivacyPolicy" class="">
-                                        Privacy Policy
-                                    </a>
-                                </li> -->
-                                <!-- header-nav store end -->
-                                <!-- header-nav contact start -->
-                                <li class="nav-contact">
-                                    <a routerLink="/FAQ" class="">
-                                        <!-- <img src="assets/img/infod-pro.png"> -->
-                                        FAQ
-                                    </a>
-                                </li>
-                                <!-- header-nav contact end -->
-                                <!-- header-nav contact start -->
-                                <li class="nav-contact">
-                                    <a routerLink="/ContactUs" class="">Contact Us</a>
-                                </li>
-                                <li class="nav-contact">
+                                <li class="nav-contact" *ngIf="isLogin">
                                     <a (click)="logoutUser()" class="">Logout</a>
                                 </li>
                                 <!-- header-nav contact end -->
@@ -210,7 +160,7 @@
 
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-6">
                                     <!-- cart view-cart button start -->
-                                    <div class="continue-shop padding-left-15px text-left">
+                                    <div class="continue-shop padding-left-15px text-left" [style.padding-right]="allProducts.length === 0 ? '15px' :''">
                                         <button href="#" class="btn btn-small" (click)="viewCart()">View All</button>
                                     </div>
                                     <!-- cart view-cart button end -->
