@@ -133,7 +133,9 @@ export class MyCartPaymentComponent implements OnInit {
   }
 
   showPromoCodeVal(val) {
-    this.showPromoCode = val;
+    if(this.promocodes && this.promocodes.amount){
+      this.showPromoCode = val;
+    }
   }
   getPromocodes() {
     this.promocodes = [];

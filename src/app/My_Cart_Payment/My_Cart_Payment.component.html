@@ -79,7 +79,7 @@
                                                         <div class="padding-5px  d-inline-block">
                                                             <a href="javaScript:void(0)" class="minus-btn text-black color-them-1 padding-5px cokl" (click)="removeTCart(product)"><i
                                                                 class="fas fa-minus"></i></a>
-                                                            <input type="text" name="name" #quantity (blur)="checkQuantity(product)" value="{{fetchQunt(product)}}" class="">
+                                                            <input type="text" name="namedasdasds" #quantity (blur)="checkQuantity(product)" value="{{fetchQunt(product)}}" class="">
                                                             <a href="javaScript:void(0)" class="plus-btn text-black color-them-1 padding-5px cokl" (click)="addToCartProduct(product)"><i
                                                                 class="fas fa-plus"></i></a>
                                                         </div>
@@ -129,7 +129,7 @@
                                                 <div class="padding-5px  d-inline-block">
                                                     <a href="javaScript:void(0)" class="minus-btn text-black color-them-1 padding-5px cokl" (click)="removeTCart(product)"><i
                                                             class="fas fa-minus"></i></a>
-                                                    <input type="text" name="name" #quantity (blur)="checkQuantity(product)" value="{{fetchQunt(product)}}" class="">
+                                                    <input type="text" name="namefsafsa" #quantity (blur)="checkQuantity(product)" value="{{fetchQunt(product)}}" class="">
                                                     <a href="javaScript:void(0)" class="plus-btn text-black color-them-1 padding-5px cokl" (click)="addToCartProduct(product)"><i
                                                             class="fas fa-plus"></i></a>
                                                 </div>
@@ -173,7 +173,7 @@
                                 </div>
                                 <div class="d-inline-block" style="cursor: grab;width: 100%;" (click)="showPromoCodeVal(1)">
                                     <h6 class="text-small padding-left-5px padding-right-4px">No Promo Code Applied</h6>
-                                    <p class="text-extra-small padding-left-10px no-margin-bottom">1 Promo Code Available
+                                    <p class="text-extra-small padding-left-10px no-margin-bottom"> <span *ngIf="!(promocodes && promocodes.amount)">0</span> <span *ngIf="promocodes && promocodes.amount">1</span> Promo Code Available
                                     </p>
                                 </div>
                                 <div class="d-inline-block">
