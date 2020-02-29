@@ -157,7 +157,8 @@
                             </ng-container>
                             on Promo
                         </h5>
-                        <button class="btn op-set border-radius-4 form-control text-center line-height-26" *ngIf="promoCodeEnt == null || promoCodeEnt != promocodes.name" (click)="checkPromoCode();" style="margin-bottom:7px;margin-top:7px;color: #fff;background-color:green;float:  right;width: 30% !important; max-width: 100px; margin-right: 5px">Apply</button> &nbsp;
+                        <button class="btn op-set border-radius-4 form-control text-center line-height-26" *ngIf="promoCodeEnt == null || promoCodeEnt != promocodes.name"
+                            (click)="checkPromoCode();" style="margin-bottom:7px;margin-top:7px;color: #fff;background-color:green;float:  right;width: 30% !important; max-width: 100px; margin-right: 5px">Apply</button>                        &nbsp;
                         <label *ngIf="promoCodeEnt != null || promoCodeEnt == promocodes.name" style="margin-top:7px;color: white;margin-top:0px;font-size: 16px;background: green;padding:3px; float:  right;max-width: 30% !important; border-radius: 5px;padding: 10px; margin-right: 5px;margin-bottom:7px;margin-top:7px;">Applied</label>
                     </div>
                 </div>
@@ -223,7 +224,8 @@
                     </a>
                     <hr>
                     <div class="padding-left-5px productname">
-                        <p class="text-medium1 margin-bottom-5px min-height-50px " [ngClass]="{'text-left' : !isMobile(), 'text-center': isMobile()}" (click)="AddtoCart(product)">
+                        <p class="text-medium1 margin-bottom-5px min-height-50px " [ngClass]="{'text-left' : !isMobile(), 'text-center': isMobile()}"
+                            (click)="AddtoCart(product)">
                             {{product.adminProductsResponseModels.name}}</p>
                         <p class="d-flex margin-bottom-5px">
                             <span class=" cokl" [ngClass]="{'text-left width-100-px' : !isMobile(), 'text-center': isMobile()}" [style.width.%]="isMobile() ? 50 : auto">
@@ -235,6 +237,12 @@
                         </p>
                     </div>
                     <hr>
+                    <div class="margin-bottom-15px" style="background-color: red;padding: 5px; color: #fff" *ngIf="product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '' ">
+                        Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}%
+                        off
+                    </div>
+                    <div class="d-inline-block text-right" style="background-color: red;padding: 5px; color: #fff" *ngIf="product?.productType == 'Sample'">
+                        {{product.maxFree}} Free Product</div>
                     <div class="margin-bottom-15px">
                         <span class="quantity d-block" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-30px' : (fetchQunt(product) !== 0)}">
                             <span class="padding-5px border-light-gray sm-text-large">
@@ -276,12 +284,19 @@
                         <p class=" margin-bottom-5px">
                             <span class="text-left d-block cokl">
                                  ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
+                                 <div class="d-inline-block text-right" style="background-color: red;padding: 5px; color: #fff" *ngIf="product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '' ">
+                                    Buy {{product?.adminProductsResponseModels?.buyQuant}} 
+                                    Get {{product?.adminProductsResponseModels?.discountQuant}} 
+                                    @ {{product?.adminProductsResponseModels?.discountPercent}}% off</div>
+                                    <div class="d-inline-block text-right" style="background-color: red;padding: 5px; color: #fff"  *ngIf="product?.productType == 'Sample'">
+                                        {{product.maxFree}} Free Product</div>
                             </span>
                             <span class="d-block text-left ">
 
                                 <div class="d-inline-block text-left width-100-px">
                                     <img src="assets/img/star.png">  {{product.adminProductsResponseModels?.rating ? product.adminProductsResponseModels?.rating : 0}}
                                 </div>
+                               
                                 <div class="d-inline-block text-right" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-30px' : (fetchQunt(product) !== 0)}">
                                     <span class="quantity d-block">
                                         <span class="padding-5px border-light-gray sm-text-large">
