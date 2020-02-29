@@ -21,6 +21,17 @@
   opacity: 1;
 }
 
+  /* Top left text */
+  .top-left {
+    position: absolute;
+    top: 8px;
+    word-break: break-all;
+    width: 100%;
+    left:0;
+    color:#fff;
+    text-align: center;
+  }
+
 .padding-bottom-30px {
   padding-bottom: 30px;
 }

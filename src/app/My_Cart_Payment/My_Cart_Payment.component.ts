@@ -933,6 +933,7 @@ export class MyCartPaymentComponent implements OnInit {
         localStorage.setItem('login_data', JSON.stringify(response.data));
         sessionStorage.setItem('token', response.data.token);
         sessionStorage.setItem('login_data', JSON.stringify(response.data));
+        this.checkout();
         this.showscreen = 5;
       }
     }, (error) => {
