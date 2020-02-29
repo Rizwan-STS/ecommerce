@@ -30,7 +30,7 @@
 
 <body>
 <a class="scroll" id="scroll"><span><i class="ti-arrow-up"></i></span></a>
-<a class="scroll" id="scroll1" style="bottom: 20px;display: block;"><span><i class="ti-arrow-down"></i></span></a>
+<a class="scroll" id="scroll1" style="bottom: 5px;display: block;"><span><i class="ti-arrow-down"></i></span></a>
 <app-root></app-root>
 </body>
 <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
@@ -62,11 +62,13 @@
 <script>
     $(window).scroll(function(){
         if ($(this).scrollTop() > 200) {
+            $('#scroll1').css('bottom', '5px');
             $('#scroll').fadeIn();
         } else {
+            $('#scroll1').css('bottom', '');
             $('#scroll').fadeOut();
         }
-        if (window.scrollY > window.innerHeight) {
+        if (window.scrollY >= window.innerHeight) {
             $('#scroll1').fadeOut();
         } else {
             $('#scroll1').fadeIn();
