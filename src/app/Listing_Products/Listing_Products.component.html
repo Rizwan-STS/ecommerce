@@ -237,14 +237,14 @@
                         </p>
                     </div>
                     <hr>
-                    <div class="margin-bottom-15px" style="background-color: red;padding: 5px; color: #fff" *ngIf="product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '' ">
+                    <div class="top-left" style="background-color: red;padding: 5px; color: #fff" *ngIf="product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '' ">
                         Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}%
                         off
                     </div>
                     <div class="d-inline-block text-right" style="background-color: red;padding: 5px; color: #fff" *ngIf="product?.productType == 'Sample'">
                         {{product.maxFree}} Free Product</div>
                     <div class="margin-bottom-15px">
-                        <span class="quantity d-block" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-30px' : (fetchQunt(product) !== 0)}">
+                        <span class="quantity d-block" style="padding-top: 10px;" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-20px' : (fetchQunt(product) !== 0)}">
                             <span class="padding-5px border-light-gray sm-text-large">
                                     <a href="javascript:void(0)" (click)="removeTCart(product)"
                                        class="minus-btn op-set text-black text-white"><i
@@ -297,7 +297,7 @@
                                     <img src="assets/img/star.png">  {{product.adminProductsResponseModels?.rating ? product.adminProductsResponseModels?.rating : 0}}
                                 </div>
                                
-                                <div class="d-inline-block text-right" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-30px' : (fetchQunt(product) !== 0)}">
+                                <div class="d-inline-block text-right" style="padding-top: 10px;" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-20px' : (fetchQunt(product) !== 0)}">
                                     <span class="quantity d-block">
                                         <span class="padding-5px border-light-gray sm-text-large">
                                             <a href="javascript:void(0)" (click)="removeTCart(product)"
