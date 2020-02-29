@@ -29,8 +29,8 @@
 </head>
 
 <body>
-<a class="scroll" id="scroll"><span><i class="ti-arrow-up"></i></span></a>
-<a class="scroll" id="scroll1" style="bottom: 5px;display: block;"><span><i class="ti-arrow-down"></i></span></a>
+<a class="scroll" id="scroll"><span><i class="ti-angle-double-up"></i></span></a>
+<!--<a class="scroll" id="scroll1" style="bottom: 5px;display: block;"><span><i class="ti-angle-double-down"></i></span></a>-->
 <app-root></app-root>
 </body>
 <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
@@ -68,20 +68,20 @@
             $('#scroll1').css('bottom', '');
             $('#scroll').fadeOut();
         }
-        if (window.scrollY >= window.innerHeight) {
+       /* if (window.scrollY >= window.innerHeight) {
             $('#scroll1').fadeOut();
         } else {
             $('#scroll1').fadeIn();
-        }
+        }*/
     });
     $('#scroll').on('click',function(){
         $("html, body").animate({ scrollTop: 0 }, 600);
         return false;
     });
-    $('#scroll1').on('click',function(){
+    /*$('#scroll1').on('click',function(){
         $("html, body").animate({ scrollTop: window.innerHeight + 5 }, 600);
         return false;
-    });
+    });*/
     window.addEventListener('online', () => alert('You are back to online'));
     window.addEventListener('offline', () => alert('You are offline'));
 </script>
