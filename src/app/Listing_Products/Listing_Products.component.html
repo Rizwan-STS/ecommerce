@@ -237,7 +237,7 @@
                         </p>
                     </div>
                     <hr>
-                    <div  class="top-left" style="background-color: red;padding: 5px; color: #fff;font-size: 12px;pointer-events: none;" [style.opacity]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 0 : 1">
+                    <div class="top-left" style="background-color: red;padding: 5px; color: #fff;font-size: 12px;pointer-events: none;" [style.opacity]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 0 : 1">
                         Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}%
                         off
                     </div>
@@ -282,25 +282,23 @@
                         <p class="text-left text-medium1 margin-bottom-5px min-height-50px min-width-190px" (click)="AddtoCart(product)" style="min-height: 50px;">
                             {{product.adminProductsResponseModels.name}}</p>
                         <p class=" margin-bottom-5px">
-                            <span class="text-left d-block cokl">
-                                <div>
-                                    ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
-                                </div>
-                                <div>
-                                    <div class="d-inline-block text-right" style="background-color: red;padding: 5px; color: #fff;font-size: 12px;pointer-events: none;" [style.opacity]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 0 : 1">
-                                        Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}% off
-                                    </div>
-                                    <div class="d-inline-block text-right" style="background-color: red;padding: 5px; color: #fff;margin-top: 5px;"  *ngIf="product?.productType == 'Sample'">
-                                        {{product.maxFree}} Free Product
-                                    </div>
-                                </div>
-                            </span>
+
                             <span class="d-block text-left ">
 
                                 <div class="d-inline-block text-left width-100-px">
                                     <img src="assets/img/star.png">  {{product.adminProductsResponseModels?.rating ? product.adminProductsResponseModels?.rating : 0}}
                                 </div>
-
+                                    <div>
+                                        ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
+                                    </div>
+                                    <div>
+                                        <div class="d-inline-block text-right" style="background-color: red;padding: 5px; color: #fff;font-size: 12px;pointer-events: none;" [style.opacity]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 0 : 1">
+                                            Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}% off
+                                        </div>
+                                        <div class="d-inline-block text-right" style="background-color: red;padding: 5px; color: #fff;margin-top: 5px;"  *ngIf="product?.productType == 'Sample'">
+                                            {{product.maxFree}} Free Product
+                                        </div>
+                                    </div>
                                 <div class="d-inline-block text-right" style="padding-top: 10px;" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-20px' : (fetchQunt(product) !== 0)}">
                                     <span class="quantity d-block">
                                         <span class="padding-5px border-light-gray sm-text-large">
