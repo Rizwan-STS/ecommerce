@@ -249,7 +249,7 @@
                         {{product.maxFree}} Free Product
                     </div>
                     <div class="margin-bottom-15px">
-                        <span class="quantity d-block" style="padding-top: 10px;" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-30px' : (fetchQunt(product) !== 0), 'block-display' : (fetchQunt(product) !== 0)}">
+                        <span class="quantity d-block" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-30px' : (fetchQunt(product) !== 0), 'block-display' : (fetchQunt(product) !== 0)}">
 
                             <span class="padding-5px border-light-gray sm-text-large">
                                     <a href="javascript:void(0)" (click)="removeTCart(product)"
@@ -291,7 +291,7 @@
                         <div class=" margin-bottom-5px">
                             <span class="text-left d-block cokl">
                                     ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
-                            
+
                             </span>
                             <div class="d-block text-left " style="display: block !important;margin-top: 12px;">
                                 <div class="d-block text-left width-100-px">
@@ -310,7 +310,7 @@
                                 </div>
                                 <p></p>
                                 <div class="d-block text-left width-100-px" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-15px' : (fetchQunt(product) !== 0)}">
-                                    <div class="d-inline-block text-right" style="padding-top: 10px;" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-20px' : (fetchQunt(product) !== 0)}">
+                                    <div class="d-inline-block text-right" style="padding-top: 10px;" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom1-20px' : (fetchQunt(product) !== 0)}">
                                         <span class="quantity d-block">
                                                 <span class="padding-5px border-light-gray sm-text-large">
                                                     <a href="javascript:void(0)" (click)="removeTCart(product)"
@@ -329,7 +329,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p></p>
+                        <!--<p></p>-->
                         <div class=" clearfix max-width-135px settop-margin15  padding-bottom-15px padding-right-15px" [ngClass]="{'zero-opacity': !(fetchQunt(product) === 0)}">
                             <a href="javascript:void(0)" (click)="addToCartVal(product)" class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
                                     src="assets/img/cart-white.png" width="15px"> Add to cart</a>
