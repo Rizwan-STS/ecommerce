@@ -320,7 +320,7 @@
                            (click)="AddtoCart(product)" style="min-height: 50px;">
                             {{product.adminProductsResponseModels.name}}
                         </p>
-                        <p class=" margin-bottom-5px">
+                        <div class=" margin-bottom-5px">
                             <span class="text-left d-block cokl">
                                 <div>
                                     ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
@@ -338,59 +338,57 @@
                                     </div>
                                 </div>
                             </span>
-                            <span class="d-block text-left " style="display: block !important;margin-top: 12px;">
-                            <span class="d-block text-left ">
-
+                            <div class="d-block text-left " style="display: block !important;margin-top: 12px;">
                                 <div class="d-block text-left width-100-px">
-                                    <img src="assets/img/star.png">  {{product.adminProductsResponseModels?.rating ? product.adminProductsResponseModels?.rating : 0}}
+                                    <img src="assets/img/star.png"> {{product.adminProductsResponseModels?.rating ?
+                                    product.adminProductsResponseModels?.rating : 0}}
                                 </div>
-
+                                <p></p>
+                                <div class="d-inline-block text-right"
+                                     [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-15px' : (fetchQunt(product) !== 0)}">
+                                    <div>
+                                        ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
+                                    </div>
+                                    <div>
+                                        <div class="d-inline-block text-right"
+                                             style="background-color: red;padding: 5px; color: #fff;font-size: 12px;pointer-events: none;"
+                                             [style.opacity]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 0 : 1">
+                                            Buy {{product?.adminProductsResponseModels?.buyQuant}} Get
+                                            {{product?.adminProductsResponseModels?.discountQuant}} @
+                                            {{product?.adminProductsResponseModels?.discountPercent}}% off
+                                        </div>
+                                        <div class="d-inline-block text-right"
+                                             style="background-color: red;padding: 5px; color: #fff;margin-top: 5px;"
+                                             *ngIf="product?.productType == 'Sample'">
+                                            {{product.maxFree}} Free Product
+                                        </div>
+                                    </div>
+                                    <div class="d-inline-block text-right" style="padding-top: 10px;"
+                                         [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-20px' : (fetchQunt(product) !== 0)}">
+                                            <span class="quantity d-block">
+                                                <span class="padding-5px border-light-gray sm-text-large">
+                                                    <a href="javascript:void(0)" (click)="removeTCart(product)"
+                                                       class="minus-btn cokl text-black">
+                                                        <i class="fas fa-minus bg-transparent"></i>
+                                                    </a>
+                                                    <input type="text" name="name" value="{{fetchQunt(product)}}"
+                                                           class="border-left-light-gray border-right-light-gray">
+                                                    <a href="javascript:void(0)" (click)="addToCartProduct(product)"
+                                                       class="plus-btn cokl text-black">
+                                                        <i class="fas fa-plus bg-transparent"></i>
+                                                    </a>
+                                                </span>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <p></p>
-                        <div class="d-inline-block text-right"
-                             [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-15px' : (fetchQunt(product) !== 0)}">
-
-                            <div>
-                                ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
-                            </div>
-                            <div>
-                                <div class="d-inline-block text-right"
-                                     style="background-color: red;padding: 5px; color: #fff;font-size: 12px;pointer-events: none;"
-                                     [style.opacity]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 0 : 1">
-                                    Buy {{product?.adminProductsResponseModels?.buyQuant}} Get
-                                    {{product?.adminProductsResponseModels?.discountQuant}} @
-                                    {{product?.adminProductsResponseModels?.discountPercent}}% off
-                                </div>
-                                <div class="d-inline-block text-right"
-                                     style="background-color: red;padding: 5px; color: #fff;margin-top: 5px;"
-                                     *ngIf="product?.productType == 'Sample'">
-                                    {{product.maxFree}} Free Product
-                                </div>
-                            </div>
-                            <div class="d-inline-block text-right" style="padding-top: 10px;"
-                                 [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-20px' : (fetchQunt(product) !== 0)}">
-                                    <span class="quantity d-block">
-                                        <span class="padding-5px border-light-gray sm-text-large">
-                                            <a href="javascript:void(0)" (click)="removeTCart(product)"
-                                               class="minus-btn cokl text-black"><i
-                                                    class="fas fa-minus bg-transparent"></i></a>
-                                            <input type="text" name="name" value="1"
-                                                   value="{{fetchQunt(product)}}"
-                                                   class="border-left-light-gray border-right-light-gray">
-                                            <a href="javascript:void(0)" (click)="addToCartProduct(product)"
-                                               class="plus-btn cokl text-black"><i
-                                                    class="fas fa-plus bg-transparent"></i></a>
-                                        </span>
-                                    </span>
-                            </div>
-                            </span>
-                            </p>
-                            <p></p>
-                            <div class=" clearfix max-width-135px settop-margin15  padding-bottom-15px padding-right-15px"
-                                 [ngClass]="{'zero-opacity': !(fetchQunt(product) === 0)}">
-                                <a href="javascript:void(0)" (click)="addToCartVal(product)"
-                                   class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
-                                        src="assets/img/cart-white.png" width="15px"> Add to cart</a>
-                            </div>
+                        <div class=" clearfix max-width-135px settop-margin15  padding-bottom-15px padding-right-15px"
+                             [ngClass]="{'zero-opacity': !(fetchQunt(product) === 0)}">
+                            <a href="javascript:void(0)" (click)="addToCartVal(product)"
+                               class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
+                                    src="assets/img/cart-white.png" width="15px"> Add to cart</a>
                         </div>
                     </div>
                     <!-- blog image end -->
