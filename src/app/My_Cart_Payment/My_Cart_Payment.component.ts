@@ -691,7 +691,8 @@ export class MyCartPaymentComponent implements OnInit {
       });
     } else {
       const options = {
-        'key': 'rzp_test_vkOkSpit7MKCcD',
+        'key': 'rzp_test_I8Vwds9E8OTG1d',
+        // 'key': 'rzp_test_vkOkSpit7MKCcD',
         // 'key': 'rzp_live_KBRcQhpDi7EcNy',
         'amount': totAmnt, // 1000 paise = INR 10
         'name': 'RIDE KART',

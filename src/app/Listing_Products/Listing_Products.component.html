@@ -155,7 +155,7 @@
                             <ng-container *ngIf="promocodes.type != 'Direct'">
                                 {{promocodes.amount}}% Discount
                             </ng-container>
-                            on Promo 
+                            on Promo
                         </h5>
                         <button class="btn op-set border-radius-4 form-control text-center line-height-26" *ngIf="promoCodeEnt == null || promoCodeEnt != promocodes.name" (click)="checkPromoCode();" style="margin-bottom:7px;margin-top:7px;color: #fff;background-color:green;float:  right;width: 30% !important; max-width: 100px; margin-right: 5px">Apply</button> &nbsp;
                         <label *ngIf="promoCodeEnt != null || promoCodeEnt == promocodes.name" style="margin-top:7px;color: white;margin-top:0px;font-size: 16px;background: green;padding:3px; float:  right;max-width: 30% !important; border-radius: 5px;padding: 10px; margin-right: 5px;margin-bottom:7px;margin-top:7px;">Applied</label>
@@ -223,7 +223,7 @@
                     </a>
                     <hr>
                     <div class="padding-left-5px productname">
-                        <p class="text-medium1 margin-bottom-5px" [ngClass]="{'text-left' : !isMobile(), 'text-center': isMobile()}" (click)="AddtoCart(product)">
+                        <p class="text-medium1 margin-bottom-5px min-height-50px " [ngClass]="{'text-left' : !isMobile(), 'text-center': isMobile()}" (click)="AddtoCart(product)">
                             {{product.adminProductsResponseModels.name}}</p>
                         <p class="d-flex margin-bottom-5px">
                             <span class=" cokl" [ngClass]="{'text-left width-100-px' : !isMobile(), 'text-center': isMobile()}" [style.width.%]="isMobile() ? 50 : auto">
@@ -271,7 +271,7 @@
                         </a>
                     </div>
                     <div class="padding-left-5px d-inline-block" style="vertical-align: top;max-width: 192px;">
-                        <p class="text-left text-medium1 margin-bottom-5px" (click)="AddtoCart(product)" style="min-height: 50px;">
+                        <p class="text-left text-medium1 margin-bottom-5px min-height-50px min-width-190px" (click)="AddtoCart(product)" style="min-height: 50px;">
                             {{product.adminProductsResponseModels.name}}</p>
                         <p class=" margin-bottom-5px">
                             <span class="text-left d-block cokl">
@@ -300,7 +300,7 @@
                     </span>
                     </p>
                     <p></p>
-                    <div class=" clearfix settop-margin15  padding-bottom-15px padding-right-15px" [ngClass]="{'zero-opacity': !(fetchQunt(product) === 0)}">
+                    <div class=" clearfix max-width-135px settop-margin15  padding-bottom-15px padding-right-15px" [ngClass]="{'zero-opacity': !(fetchQunt(product) === 0)}">
                         <a href="javascript:void(0)" (click)="addToCartVal(product)" class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
                                     src="assets/img/cart-white.png" width="15px"> Add to cart</a>
                     </div>

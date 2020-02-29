@@ -37,8 +37,8 @@
                     <ng-container *ngIf="isMobile()">
                         <div class="row padding-top-25px padding-bottom-25px  border-bottom-s" *ngFor="let product of allProducts">
                             <ng-container *ngFor="let images of product?.adminProductsResponseModels?.productsImagesResponseModel">
-                                <div class="col-xl-3 col-xs-3 col-sm-3 col-3">
-                                    <ng-container *ngIf="images.isDefault">
+                                <div class="col-xl-3 col-xs-3 col-sm-3 col-3" *ngIf="images.isDefault">
+                                    <ng-container>
                                         <img style="width: 80px; height: 80px; float: left" [src]="images.idUrl" alt="cart image">
                                     </ng-container>
                                 </div>
@@ -165,7 +165,7 @@
                             </div>
                         </div>
 
-                        <div class="padding-15px">
+                        <div class="padding-15px" style="padding-bottom: 0px;">
                             <hr>
                             <div class="d-flex set-clip" *ngIf="showPromoCode === 0">
                                 <div class="d-inline-block">
@@ -286,42 +286,42 @@
                             </div>
                             <hr>
                             <div class="row ">
-                                <div class="col-xl-6 text-left">
+                                <div class="col-xl-6 col-6 col-md-6 col-xs-6 col-sm-6 ">
                                     <p class="cokl text-medium no-margin-bottom">Subtotal</p>
                                 </div>
-                                <div class="col-xl-6 text-right">
+                                <div class="col-xl-6 col-6 col-md-6 col-xs-6 col-sm-6 text-align-end">
                                     <p class="no-margin-bottom">₹ {{calculateTotalPrice() }}</p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row ">
-                                <div class="col-xl-6 text-left">
+                                <div class="col-xl-6 col-6 col-md-6 col-xs-6 col-sm-6 ">
                                     <p class="cokl text-medium no-margin-bottom">Tip</p>
                                 </div>
-                                <div class="col-xl-6 text-right">
+                                <div class="col-xl-6 col-6 col-md-6 col-xs-6 col-sm-6 text-align-end">
                                     <p class="no-margin-bottom">₹ {{tipamount }}</p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row ">
-                                <div class="col-xl-7 text-left">
+                                <div class="col-xl-8 col-6 col-md-6 col-xs-6 col-sm-6 ">
                                     <p class="cokl text-medium no-margin-bottom">Promo Discount</p>
                                 </div>
-                                <div class="col-xl-5 text-right">
+                                <div class="col-xl-4 col-6 col-md-6 col-xs-6 col-sm-6 text-align-end">
                                     <p class="no-margin-bottom">₹{{discountAmount}}</p>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row ">
-                                <div class="col-xl-4 text-left">
-                                    <p class="cokl text-medium no-margin-bottom">
+                            <hr class="special-case-hr">
+                            <div class="row special-case">
+                                <div class="col-xl-3 col-md-3 col-xs-6 col-sm-6 col-6" style="padding-right: 0px;">
+                                    <p class="text-medium no-margin-bottom white-color ">
                                         Total
-                                        <span class="text-large cokl d-flex"> Rs. {{getTotalPrice() }}</span>
+                                        <span class="text-large d-flex white-color "> Rs. {{getTotalPrice() }}</span>
                                     </p>
                                 </div>
-                                <div class="col-xl-8 text-right">
-                                    <a href="javascript:void(0)" (click)="checkout()" class="btn btn-small"> <img
-                                            src="assets/img/cart-white.png"> Payment </a>
+                                <div class="col-xl-9 col-md-9 col-xs-6 col-sm-6 col-6 text-align-end">
+                                    <a href="javascript:void(0)" (click)="checkout()" class="btn btn-small" style="background-color: rgba(255,255,255,0.1);">
+                                        <img src="assets/img/cart-white.png" style="margin-right: 5px;">Make Payment </a>
                                 </div>
                             </div>
                         </div>
