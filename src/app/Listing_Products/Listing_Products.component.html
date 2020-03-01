@@ -238,7 +238,7 @@
                                     {{product.maxFree}} Free
                                 </span>
                             </span>
-                         
+
                             <span class="" [ngClass]="{'text-right' : !isMobile(), 'text-right': isMobile()}" [style.width.%]="isMobile() ? 50 : auto">
                                 <img src="assets/img/star.png"> {{product.adminProductsResponseModels?.rating ? product.adminProductsResponseModels?.rating : 0}}
                             </span>
@@ -250,7 +250,7 @@
                         Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}%
                         off
                     </div>
-                 
+
                     <div class="">
                         <span class="quantity d-block" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-20px' : (fetchQunt(product) !== 0), 'block-display' : (fetchQunt(product) !== 0)}">
 
@@ -294,25 +294,25 @@
                         <div class=" margin-bottom-5px">
                             <span class="text-left d-block cokl">
                                     ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
-                                  
                                 <span class="tag-color"  [style.display]="(product?.productType === 'Sample' && product?.maxFree > 0)  ? 'inline-block' : 'none' ">
                                     {{product.maxFree}} Free
                                 </span>
                                 <span class="tag-color" style="margin-left: 2px;"
-                                [style.display]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 'none' : 'inline-block'">
-                                Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}%
-                                off
+                                    [style.display]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 'none' : 'inline-block'">
+                                    Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}%
+                                    off
+                                </span>
                             </span>
-                            </span>
-                            <div class="d-block text-left " style="display: block !important;margin-top: 12px;">
-                                <div class="d-block text-left width-100-px">
-                                    <img src="assets/img/star.png"> {{product.adminProductsResponseModels?.rating ? product.adminProductsResponseModels?.rating
-                                    : 0}}
+                            <div class="row" style="margin-top: 12px;">
+                                <div class="col-xl-6 col-xs-6 col-6 col-md-6">
+                                    <div class="d-block text-left width-100-px">
+                                        <img src="assets/img/star.png"> {{product.adminProductsResponseModels?.rating ? product.adminProductsResponseModels?.rating : 0}}
+                                    </div>
                                 </div>
-                             
-                                <div class="d-block text-left width-100-px" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-5px' : (fetchQunt(product) !== 0)}">
-                                    <div class="d-inline-block text-right" style="padding-top: 10px;" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom1-20px' : (fetchQunt(product) !== 0)}">
-                                        <span class="quantity d-block">
+                                <div class="col-xl-6 col-xs-6 col-6 col-md-6 padding-bottom-5px">
+                                    <div class="d-block text-left width-100-px" *ngIf="fetchQunt(product) !== 0" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bot' : (fetchQunt(product) !== 0)}">
+                                        <div class="d-inline-block text-right" style="padding-top: 10px;" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom1-20px' : (fetchQunt(product) !== 0)}">
+                                            <span class="quantity d-block">
                                                 <span class="padding-5px border-light-gray sm-text-large">
                                                     <a href="javascript:void(0)" (click)="removeTCart(product)"
                                                        class="minus-btn cokl text-black">
@@ -325,14 +325,17 @@
                                                         <i class="fas fa-plus bg-transparent"></i>
                                                     </a>
                                                 </span>
-                                        </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class=" clearfix max-width-135px settop-margin15  padding-bottom-5px padding-right-15px" *ngIf="(fetchQunt(product) === 0)" [ngClass]="{'zero-opacity': !(fetchQunt(product) === 0)}">
+                                        <a href="javascript:void(0)" (click)="addToCartVal(product)" style="border: #FFFFFF;background-color: #ffede0;margin-left: 50px;padding: 8px;width: 35px;height: 35px;" class=" btn-small border-radius-4 form-control text-center text-small2">
+                                            <img class="addCartImage" src="assets/img/cartset.png" width="15px">
+                                            <!--Add to cart-->
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class=" clearfix max-width-135px settop-margin15  padding-bottom-5px padding-right-15px" [ngClass]="{'zero-opacity': !(fetchQunt(product) === 0)}">
-                            <a href="javascript:void(0)" (click)="addToCartVal(product)" class=" btn-small border-radius-4 form-control text-center text-small2"><img class="addCartImage"
-                                    src="assets/img/cart-white.png" width="15px"> Add to cart</a>
                         </div>
                     </div>
                     <!-- blog image end -->
