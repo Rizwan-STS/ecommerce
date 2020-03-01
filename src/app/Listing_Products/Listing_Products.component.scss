@@ -50,11 +50,25 @@
 }
 
 .tag-color{
-  background-color: red;
+  background-color: #ff2d58;
   padding: 4px;
   color: #fff;
   font-size: 9px;
   border-radius: 4px;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.title-style {
+  text-overflow: ellipsis;white-space: nowrap; overflow: hidden;
+}
+
+.btn-small{
+  padding: 6px 6px 6px 6px;
+  height: auto;
+  width: auto;
+}
+
+.addCartImage{
+  max-height: 18px !important;
 }

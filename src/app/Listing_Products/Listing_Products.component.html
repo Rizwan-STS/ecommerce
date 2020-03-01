@@ -37,7 +37,7 @@
                                             </p>
                                         </div>
                                         <!-- product description end -->
-                                        <hr class="border-light-site margin-one-top margin-one-bottom">
+                                        <!-- <hr class="border-light-site margin-one-top margin-one-bottom"> -->
 
                                         <!-- product color Brand -->
                                         <div class="color d-block   ">
@@ -46,7 +46,7 @@
                                                 {{selectedProduct.adminProductsResponseModels.brandname}}</p>
                                         </div>
                                         <!-- product Brand end -->
-                                        <hr class="border-light-site margin-one-top margin-one-bottom">
+                                        <!-- <hr class="border-light-site margin-one-top margin-one-bottom"> -->
                                         <!-- product color Brand -->
                                         <div class="color d-block    ">
                                             <label class="font-weight-600 no-margin-bottom cokl">Category</label>
@@ -54,7 +54,7 @@
                                                 {{selectedProduct.adminProductsResponseModels.categoryname}}</p>
                                         </div>
                                         <!-- product Brand end -->
-                                        <hr class="border-light-site margin-one-top margin-one-bottom">
+                                        <!-- <hr class="border-light-site margin-one-top margin-one-bottom"> -->
                                         <!-- product color Brand -->
                                         <div class="color d-block  ">
                                             <label class="font-weight-600 no-margin-bottom cokl">Size</label>
@@ -216,41 +216,42 @@
         <!-- border start -->
         <div class="border-bottom-light-new padding-top-15px margin-bottom-15px  sm-display-none" style="  width: 82%;  margin-top: -33px;  margin-left: 117px;"></div>
         <!-- border end -->
-        <div [hidden]="displaytype === 'frame'" id="box" class="row padding-top-15px">
+        <div [hidden]="displaytype === 'frame'" id="box" class="row padding-top-10px">
 
-            <div class="col-xl-2 col-lg-2 col-md-4 col-6 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of productsArray">
+            <div class="col-xl-2 col-lg-2 col-md-4 col-6 frame fgrid margin-bottom-20px sm-margin-bottom-10px" *ngFor="let product of productsArray">
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
                     <a (click)="AddtoCart(product)">
                         <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"
                              alt="blog-grid1" class="img-fluid cust-prod-image ">
                     </a>
-                    <hr>
+                    <!-- <hr> -->
                     <div class="padding-left-5px productname">
-                        <p class="text-medium1 margin-bottom-5px min-height-50px " [ngClass]="{'text-left' : !isMobile(), 'text-center': isMobile()}"
+                            <!-- [ngClass]="{'text-left' : !isMobile(), 'text-center': isMobile()}" -->
+                        <p class="text-medium1 title-style margin-bottom-5px text-left"
                             (click)="AddtoCart(product)">
                             {{product.adminProductsResponseModels.name}}</p>
                         <p class="d-flex margin-bottom-5px">
-                            <span class=" cokl" [ngClass]="{'text-left width-100-px' : !isMobile(), 'text-center': isMobile()}" [style.width.%]="isMobile() ? 80 : auto">
+                            <span class=" cokl" [ngClass]="{'text-left width-100-px' : !isMobile(), 'text-left': isMobile()}" [style.width.%]="isMobile() ? 80 : auto">
                                 ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}} &nbsp;
                                 <span class="tag-color" [style.opacity]="(product?.productType == 'Sample') ? 1 : 0">
                                     {{product.maxFree}} Free
                                 </span>
                             </span>
                          
-                            <span class="" [ngClass]="{'text-right' : !isMobile(), 'text-center': isMobile()}" [style.width.%]="isMobile() ? 50 : auto">
+                            <span class="" [ngClass]="{'text-right' : !isMobile(), 'text-right': isMobile()}" [style.width.%]="isMobile() ? 50 : auto">
                                 <img src="assets/img/star.png"> {{product.adminProductsResponseModels?.rating ? product.adminProductsResponseModels?.rating : 0}}
                             </span>
                         </p>
                     </div>
-                    <hr>
-                    <div class="top-left margin-bottom-15px" style="background-color: red;padding: 5px; color: #fff;font-size: 12px;pointer-events: none;"
+                    <!-- <hr> -->
+                    <div class="top-left margin-bottom-15px" style="background-color: #ff2d58; padding: 1px; color: #fff;font-size: 12px;pointer-events: none;"
                         [style.opacity]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 0 : 1">
                         Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}%
                         off
                     </div>
                  
-                    <div class="margin-bottom-15px">
+                    <div class="">
                         <span class="quantity d-block" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-20px' : (fetchQunt(product) !== 0), 'block-display' : (fetchQunt(product) !== 0)}">
 
                             <span class="padding-5px border-light-gray sm-text-large">
@@ -265,9 +266,9 @@
                             </span>
                         </span>
                     </div>
-                    <div class="clearfix settop-margin15 padding-left-15px padding-bottom-15px padding-right-15px" [ngClass]="{'zero-opacity': !(fetchQunt(product) === 0)}">
-                        <a href="javascript:void(0)" class="btn btn-small op-set border-radius-4 form-control text-center text-small2 line-height-26"
-                            (click)="addToCartVal(product)"> <img
+                    <div class="clearfix " [ngClass]="{'zero-opacity': !(fetchQunt(product) === 0)}">
+                        <a href="javascript:void(0)" class="btn btn-small op-set border-radius-4 form-control text-center text-small2"
+                            (click)="addToCartVal(product)"> <img class="addCartImage"
                                 src="assets/img/cart-white.png"> Add to Cart </a>
                     </div>
                 </div>
@@ -275,9 +276,9 @@
 
             </div>
         </div>
-        <div [hidden]="displaytype === 'box'" id="frame" class="row padding-top-15px">
+        <div [hidden]="displaytype === 'box'" id="frame" class="row padding-top-10px">
 
-            <div class="col-xl-4 col-lg-4 col-md-4 col-12 frame fgrid margin-bottom-30px sm-margin-bottom-20px" *ngFor="let product of productsArray">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-12 frame fgrid margin-bottom-20px sm-margin-bottom-10px" *ngFor="let product of productsArray">
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
                     <div class="d-inline-block">
@@ -287,14 +288,14 @@
                         </a>
                     </div>
                     <div class="padding-left-5px d-inline-block" style="vertical-align: top;max-width: 192px;">
-                        <p class="text-left text-medium1 margin-bottom-5px min-height-50px min-width-190px" (click)="AddtoCart(product)" style="min-height: 50px;">
+                        <p class="text-left title-style text-medium1 margin-bottom-5px min-width-190px" (click)="AddtoCart(product)">
                             {{product.adminProductsResponseModels.name}}
                         </p>
                         <div class=" margin-bottom-5px">
                             <span class="text-left d-block cokl">
                                     ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
                                   
-                                <span class="tag-color"  [style.display]="product?.productType === 'Sample'  ? 'inline-block' : 'none' ">
+                                <span class="tag-color"  [style.display]="(product?.productType === 'Sample' && product?.maxFree > 0)  ? 'inline-block' : 'none' ">
                                     {{product.maxFree}} Free
                                 </span>
                                 <span class="tag-color" style="margin-left: 2px;"
@@ -309,8 +310,7 @@
                                     : 0}}
                                 </div>
                              
-                                <p></p>
-                                <div class="d-block text-left width-100-px" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-15px' : (fetchQunt(product) !== 0)}">
+                                <div class="d-block text-left width-100-px" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom-5px' : (fetchQunt(product) !== 0)}">
                                     <div class="d-inline-block text-right" style="padding-top: 10px;" [ngClass]="{'zero-opacity': (fetchQunt(product) === 0), 'padding-bottom1-20px' : (fetchQunt(product) !== 0)}">
                                         <span class="quantity d-block">
                                                 <span class="padding-5px border-light-gray sm-text-large">
@@ -330,9 +330,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!--<p></p>-->
-                        <div class=" clearfix max-width-135px settop-margin15  padding-bottom-15px padding-right-15px" [ngClass]="{'zero-opacity': !(fetchQunt(product) === 0)}">
-                            <a href="javascript:void(0)" (click)="addToCartVal(product)" class=" btn-small border-radius-4 form-control text-center text-small2 line-height-26"><img
+                        <div class=" clearfix max-width-135px settop-margin15  padding-bottom-5px padding-right-15px" [ngClass]="{'zero-opacity': !(fetchQunt(product) === 0)}">
+                            <a href="javascript:void(0)" (click)="addToCartVal(product)" class=" btn-small border-radius-4 form-control text-center text-small2"><img class="addCartImage"
                                     src="assets/img/cart-white.png" width="15px"> Add to cart</a>
                         </div>
                     </div>
