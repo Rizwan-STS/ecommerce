@@ -47,12 +47,12 @@ export class BoxNumberPageComponent implements OnInit {
     }
 
     KeyDown(event, nxt, prv) {
-        if (event.key == 'Backspace' && prv) {
+        if (event.key === 'Backspace' && prv) {
             setTimeout(() => {
                 $('#' + prv).focus();
             }, 100);
             return true;
-        } else {
+        } else if (event.key !== 'Backspace') {
             if (nxt === 'submit') {
                 setTimeout(() => {
                     this.submitBoxNUmber();

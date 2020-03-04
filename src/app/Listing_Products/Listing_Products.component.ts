@@ -93,7 +93,7 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
                 this.promoDiscount = data.message.discountValue;
                 this.promoType = data.message.type;
                 // "Selected Promocode Applied"
-                
+
             }, (error) => {
                 localStorage.removeItem('promocode');
                 this.errorMessage = error.error.message;
@@ -286,7 +286,7 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
 
     InitSlider() {
         this.swiper = new Swiper('#product-slider', {
-            slidesPerView: 4,
+            slidesPerView: 1,
             spaceBetween: 30,
 
             navigation: {
@@ -296,19 +296,19 @@ export class ListingProductsComponent implements OnInit, AfterViewInit {
 
             breakpoints: {
                 1024: {
-                    slidesPerView: 4,
+                    slidesPerView: 1,
                     spaceBetween: 30,
                 },
                 768: {
-                    slidesPerView: 3,
+                    slidesPerView: 1,
                     spaceBetween: 30,
                 },
                 640: {
-                    slidesPerView: 2,
+                    slidesPerView: 1,
                     spaceBetween: 15,
                 },
                 320: {
-                    slidesPerView: 2,
+                    slidesPerView: 1,
                     spaceBetween: 15,
                 }
             }
