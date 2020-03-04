@@ -294,10 +294,12 @@
                         <div class=" margin-bottom-5px">
                             <span class="text-left d-block cokl">
                                     ₹{{product.adminProductsResponseModels.mainprice | number:'1.00-0'}}
-                                <span class="tag-color"  [style.display]="(product?.productType === 'Sample' && product?.maxFree > 0)  ? 'inline-block' : 'none' ">
+                                <span class="tag-color" style="padding-top: 0px !important;
+                                padding-bottom: 0px !important;"  [style.display]="(product?.productType === 'Sample' && product?.maxFree > 0)  ? 'inline-block' : 'none' ">
                                     {{product.maxFree}} Free
                                 </span>
-                                <span class="tag-color" style="margin-left: 2px;"
+                                <span class="tag-color" style="margin-left: 2px;padding-top: 0px !important;
+                                padding-bottom: 0px !important;"
                                     [style.display]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 'none' : 'inline-block'">
                                     Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}%
                                     off
