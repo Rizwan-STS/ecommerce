@@ -63,11 +63,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       //   routerLink: '/PrivacyPolicy',
       //     // image: 'assets/img/info-pro.png'
       // },
-      {
-        name: 'FAQ',
-        routerLink: '/FAQ',
-          // image: 'assets/img/infod-pro.png'
-      },
+      // {
+      //   name: 'FAQ',
+      //   routerLink: '/FAQ',
+      //     // image: 'assets/img/infod-pro.png'
+      // },
       {
         name: 'Contact Us',
         routerLink: '/ContactUs',

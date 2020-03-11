@@ -7,11 +7,11 @@ export const Constants = Object.freeze({
   DIALOGWIDTH: '500px'
 });
 export class Constant {
-  static ROOT_LOADER = false;
-  static COUNT = 0;
-  static COLOR = 'theme';
-  static BGCOLOR = 'red';
-  static SNACKBAR_DURATION = {
-    duration: 4000
-  };
+    static ROOT_LOADER = false;
+    static COUNT = 0;
+    static COLOR = 'theme';
+    static BGCOLOR = 'red';
+    static SNACKBAR_DURATION = {
+        duration: 4000
+    };
 }

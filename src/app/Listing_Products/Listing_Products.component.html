@@ -240,7 +240,7 @@
                             </span>
 
                             <span class="" [ngClass]="{'text-right' : !isMobile(), 'text-right': isMobile()}" [style.width.%]="isMobile() ? 50 : auto">
-                                <img src="assets/img/star.png"> {{product.adminProductsResponseModels?.rating ? product.adminProductsResponseModels?.rating : 0}}
+                                <img src="assets/img/star.png"> {{product.rating ? product.rating : 0}}
                             </span>
                         </p>
                     </div>
@@ -308,7 +308,7 @@
                             <div class="row" style="margin-top: 12px;">
                                 <div class="col-xl-6 col-xs-6 col-6 col-md-6">
                                     <div class="d-block text-left width-100-px">
-                                        <img src="assets/img/star.png"> {{product.adminProductsResponseModels?.rating ? product.adminProductsResponseModels?.rating : 0}}
+                                        <img src="assets/img/star.png"> {{product.rating ? product.rating : 0}}
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-xs-6 col-6 col-md-6 padding-bottom-5px">

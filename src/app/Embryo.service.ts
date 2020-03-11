@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
-// import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty';
+import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty';
 
 
 interface Response {
@@ -35,12 +35,12 @@ export class EmbryoService {
   buyUserCartProducts: any;
 
   constructor(private http: HttpClient,
-    // private toastyService: ToastyService,
-    // private toastyConfig: ToastyConfig
+    private toastyService: ToastyService,
+    private toastyConfig: ToastyConfig
   ) {
 
-    // this.toastyConfig.position = "top-right";
-    // this.toastyConfig.theme = "material";
+    this.toastyConfig.position = "top-right";
+    this.toastyConfig.theme = "material";
     this.calculateLocalWishlistProdCounts();
     this.calculateLocalCartProdCounts();
   }
@@ -71,14 +71,14 @@ export class EmbryoService {
     let exhaustedProduct: boolean = false;
     products = JSON.parse(localStorage.getItem("cart_item")) || [];
     let productsLength = products.length;
-
-    // let toastOption: ToastOptions = {
-    //   title: "Adding Product To Cart",
-    //   msg: "Product adding to the cart",
-    //   showClose: true,
-    //   timeout: 1000,
-    //   theme: "material"
-    // };
+debugger
+    let toastOption: ToastOptions = {
+      title: "Adding Product To Cart",
+      msg: "Product adding to the cart",
+      showClose: true,
+      timeout: 1000,
+      theme: "material"
+    };
     let totalSampleQuant: number = 0;
     let toCheckSample = false;
     if (data.productType == 'Sample') {
@@ -125,9 +125,9 @@ export class EmbryoService {
     //   }
     // }
     if (checkSampleQuant && toCheckSample) {
-      // toastOption.title = "Product Already Added";
-      // toastOption.msg = "You have already added max available quantity";
-      // this.toastyService.wait(toastOption);
+      toastOption.title = "Product Already Added";
+      toastOption.msg = "You have already added max available quantity";
+      this.toastyService.wait(toastOption);
     }
     else {
       let found = products.some(function (el, index) {
@@ -149,12 +149,13 @@ export class EmbryoService {
 
       if (productsLength == products.length) {
         if (exhaustedProduct) {
-          // toastOption.title = "Product Already Added";
-          // toastOption.msg = "You have already added max available quantity";
-          // this.toastyService.wait(toastOption);
+          toastOption.title = "Product Already Added";
+          toastOption.msg = "You have already added max available quantity";
+          this.toastyService.wait(toastOption);
         } else {
-          // toastOption.title = "Product Already Added";
-          // toastOption.msg = "You have already added this product to cart list";
+          toastOption.title = "Product Already Added";
+          toastOption.msg = "You have already added this product to cart list";
+          this.toastyService.wait(toastOption);
         }
       }
     }
@@ -173,13 +174,13 @@ export class EmbryoService {
     products = JSON.parse(localStorage.getItem("cart_item")) || [];
     let productsLength = products.length;
 
-    // let toastOption: ToastOptions = {
-    //   title: "Adding Product To Cart",
-    //   msg: "Product adding to the cart",
-    //   showClose: true,
-    //   timeout: 1000,
-    //   theme: "material"
-    // };
+    let toastOption: ToastOptions = {
+      title: "Adding Product To Cart",
+      msg: "Product adding to the cart",
+      showClose: true,
+      timeout: 1000,
+      theme: "material"
+    };
     debugger;
     let totalSampleQuant: number = 0;
 
@@ -205,11 +206,11 @@ export class EmbryoService {
 
     if (productsLength == products.length) {
       if (exhaustedProduct) {
-        // toastOption.title = "Product Already Added";
-        // toastOption.msg = "You have already added max available quantity";
+        toastOption.title = "Product Already Added";
+        toastOption.msg = "You have already added max available quantity";
       } else {
-        // toastOption.title = "Product Quantity Reduced";
-        // toastOption.msg = "Your cart quantity is reduced";
+        toastOption.title = "Product Quantity Reduced";
+        toastOption.msg = "Your cart quantity is reduced";
       }
     }
 
@@ -262,15 +263,15 @@ export class EmbryoService {
       }
     }
 
-    // let toastOption: ToastOptions = {
-    //   title: "Remove Product From Cart",
-    //   msg: "Product removing from cart",
-    //   showClose: true,
-    //   timeout: 1000,
-    //   theme: "material"
-    // };
+    let toastOption: ToastOptions = {
+      title: "Remove Product From Cart",
+      msg: "Product removing from cart",
+      showClose: true,
+      timeout: 1000,
+      theme: "material"
+    };
 
-    // this.toastyService.wait(toastOption);
+    this.toastyService.wait(toastOption);
     setTimeout(() => {
       // ReAdding the products after remove
       localStorage.setItem("cart_item", JSON.stringify(products));
@@ -286,13 +287,13 @@ export class EmbryoService {
   // Adding new Product to Wishlist in localStorage
   public addToWishlist(data: any) {
 
-    // let toastOption: ToastOptions = {
-    //   title: "Adding Product To Wishlist",
-    //   msg: "Product adding to the wishlist",
-    //   showClose: true,
-    //   timeout: 1000,
-    //   theme: "material"
-    // };
+    let toastOption: ToastOptions = {
+      title: "Adding Product To Wishlist",
+      msg: "Product adding to the wishlist",
+      showClose: true,
+      timeout: 1000,
+      theme: "material"
+    };
 
     let products: any;
     products = JSON.parse(localStorage.getItem("wishlist_item")) || [];
@@ -308,11 +309,11 @@ export class EmbryoService {
     if (!found) { products.push(data); }
 
     if (productsLength == products.length) {
-      // toastOption.title = "Product Already Added";
-      // toastOption.msg = "You have already added this product to wishlist";
+      toastOption.title = "Product Already Added";
+      toastOption.msg = "You have already added this product to wishlist";
     }
 
-    // this.toastyService.wait(toastOption);
+    this.toastyService.wait(toastOption);
     setTimeout(() => {
       localStorage.setItem("wishlist_item", JSON.stringify(products));
       this.calculateLocalWishlistProdCounts();
@@ -339,13 +340,13 @@ export class EmbryoService {
       }
     }
 
-    // const toastOption: ToastOptions = {
-    //   title: "Remove Product From Wishlist",
-    //   msg: "Product removing from wishlist",
-    //   showClose: true,
-    //   timeout: 1000,
-    //   theme: "material"
-    // };
+    const toastOption: ToastOptions = {
+      title: "Remove Product From Wishlist",
+      msg: "Product removing from wishlist",
+      showClose: true,
+      timeout: 1000,
+      theme: "material"
+    };
 
 
     // this.toastyService.wait(toastOption);
@@ -365,15 +366,15 @@ export class EmbryoService {
       a.push(singleData);
     }
 
-    // let toastOption: ToastOptions = {
-    //   title: "Adding All Product To Cart",
-    //   msg: "Products adding to the cart",
-    //   showClose: true,
-    //   timeout: 1000,
-    //   theme: "material"
-    // };
+    let toastOption: ToastOptions = {
+      title: "Adding All Product To Cart",
+      msg: "Products adding to the cart",
+      showClose: true,
+      timeout: 1000,
+      theme: "material"
+    };
 
-    // this.toastyService.wait(toastOption);
+    this.toastyService.wait(toastOption);
     setTimeout(() => {
       localStorage.removeItem('wishlist_item');
       localStorage.setItem("cart_item", JSON.stringify(a));
