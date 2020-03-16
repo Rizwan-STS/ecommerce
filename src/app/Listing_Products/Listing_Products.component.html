@@ -282,10 +282,18 @@
                 <!-- blog image start -->
                 <div class="blog-grid-img bg-white text-center padding-top-15px border-radius-4">
                     <div class="d-inline-block">
-                        <a (click)="AddtoCart(product)">
-                            <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"
-                                 alt="blog-grid1" class="img-fluid d-inline-block cust-prod-image">
-                        </a>
+                        <div style="display: grid;padding-bottom: 12px;">
+                            <a (click)="AddtoCart(product)">
+                                <img src="{{(product.adminProductsResponseModels.productsImagesResponseModel && product.adminProductsResponseModels.productsImagesResponseModel.length > 0) ?  product.adminProductsResponseModels.productsImagesResponseModel[0].idUrl : ''}}"
+                                     alt="blog-grid1" class="img-fluid d-inline-block cust-prod-image">
+                            </a>
+                            <span class="tag-color" style="margin-left: 2px;padding-top: 0px !important;
+                                padding-bottom: 0px !important;"
+                                  [style.opacity]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 0 : 1">
+                                    Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}%
+                                    off
+                                </span>
+                        </div>
                     </div>
                     <div class="padding-left-5px d-inline-block" style="vertical-align: top;max-width: 192px;">
                         <p class="text-left title-style text-medium1 margin-bottom-5px min-width-190px" (click)="AddtoCart(product)">
@@ -298,12 +306,12 @@
                                 padding-bottom: 0px !important;"  [style.display]="(product?.productType === 'Sample' && product?.maxFree > 0)  ? 'inline-block' : 'none' ">
                                     {{product.maxFree}} Free
                                 </span>
-                                <span class="tag-color" style="margin-left: 2px;padding-top: 0px !important;
+                                <!--<span class="tag-color" style="margin-left: 2px;padding-top: 0px !important;
                                 padding-bottom: 0px !important;"
                                     [style.display]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 'none' : 'inline-block'">
                                     Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}%
                                     off
-                                </span>
+                                </span>-->
                             </span>
                             <div class="row" style="margin-top: 12px;">
                                 <div class="col-xl-6 col-xs-6 col-6 col-md-6">
