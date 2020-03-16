@@ -245,7 +245,7 @@
                         </p>
                     </div>
                     <!-- <hr> -->
-                    <div class="top-left margin-bottom-15px" style="background-color: #ff2d58; padding: 1px; color: #fff;font-size: 12px;pointer-events: none;"
+                    <div class="top-left margin-bottom-15px" style="background-color: #ff2d58; padding: 1px; color: #fff;font-size: 12px;pointer-events: none;border-radius: 4px;"
                         [style.opacity]="!(product?.adminProductsResponseModels?.paidQuantity != null && product?.adminProductsResponseModels?.paidQuantity != 0 && product?.adminProductsResponseModels?.buyQuant != null && product?.adminProductsResponseModels?.discountQuant != null && product?.adminProductsResponseModels?.discountPercent != null && product?.adminProductsResponseModels?.discountPercent != '' && product?.adminProductsResponseModels?.discountQuant != '' && product?.adminProductsResponseModels?.buyQuant != '') ? 0 : 1">
                         Buy {{product?.adminProductsResponseModels?.buyQuant}} Get {{product?.adminProductsResponseModels?.discountQuant}} @ {{product?.adminProductsResponseModels?.discountPercent}}%
                         off
